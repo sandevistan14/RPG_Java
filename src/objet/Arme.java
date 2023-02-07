@@ -43,7 +43,15 @@ public class Arme extends Objet{
 
 	public static void Main(String[] args){
 		
-		Arme épeelongue = new Arme("épeelongue","épee",20,0,false);
-	
+		Arme Epeelongue = new Arme("Epeelongue","lame",20,0,false);
+		Arme Arc = new Arme("Arc","Arc",15,0,true);
+		Arme Massue = new Arme("Massue","lourd",40,0,false);
+		Arme baguette = new Arme("baguette","magie",30,0,true);
+		Arme poignard = new Arme("poignard","lame",20,0,false);
 	}
 }
+
+
+
+
+
