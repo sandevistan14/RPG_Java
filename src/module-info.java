@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author jeuxr
+ *
+ */
+module JDR {
+}
