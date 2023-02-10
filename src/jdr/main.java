@@ -32,8 +32,8 @@ public class Main{
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X','X','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X','P','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','P',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/',},
 		 };
 		 
@@ -89,7 +89,7 @@ public class Main{
 		        System.out.print("\n");
 		        String classs = scan.nextLine();
 		        
-		        if (classs.equals("Paladins")){Hero Hero = new Hero('P',"Paladins",0,0,20,120,50);IsClass = true;}
+		        if (classs.equals("Paladins")){Hero Hero = new Hero('P',"Paladins",28,15,20,120,50);IsClass = true;}
 		        if (classs.equals("Paladins info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, good at sword and user of heal magic");}
 		        
 		        if (classs.equals("Archer")){Hero Hero = new Hero('P',"Archer",0,0,40,80,20);IsClass = true;}
@@ -172,33 +172,32 @@ public class Main{
 	        	System.out.println("cancel (return to menu of choose)");
 				Scanner sc3 = new Scanner(System.in);
 		        String str3 = sc.nextLine();
-	        	
-	        	if (str.equals("cancel")){break;}
-	        	if (str.equals("Up")) {
+		        
+	        	if (str3.equals("cancel")){break;}
+	        	if (str3.equals("Up")) {
+	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
 	        		Hero.setPosY(Hero.getPosY() - 1 );
-	        		mapentity[Hero.getPosY()-1][Hero.getPosX()-1] = ' ';
-	        		mapentity[Hero.getPosY()-2][Hero.getPosX()-1] = 'P';
-	        	}
-	        	if (str.equals("Down")) {
-	        		Hero.setPosY(Hero.getPosY() + 1 );
-	        		mapentity[Hero.getPosY()-1][Hero.getPosX()-1] = ' ';
 	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';
 	        	}
-	        	if (str.equals("Right")) {
+	        	if (str3.equals("Down")) {
+	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
+	        		Hero.setPosY(Hero.getPosY() + 1 );
+	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';
+	        	}
+	        	if (str3.equals("Right")) {
+	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
 	        		Hero.setPosX(Hero.getPosX() + 1 );
-	        		mapentity[Hero.getPosY()-1][Hero.getPosX()-1] = ' ';
-	        		mapentity[Hero.getPosY()-1][Hero.getPosX()] = 'P';
+	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';
 	        	}
-	        	if (str.equals("Left")) {
+	        	if (str3.equals("Left")) {
+	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
 	        		Hero.setPosX(Hero.getPosX() - 1 );
-	        		mapentity[Hero.getPosY()-1][Hero.getPosX()-1] = ' ';
-	        		mapentity[Hero.getPosY()-1][Hero.getPosX()-2] = 'P';
+	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';
 	        	}
 	        	
 	        	
+			
 			}
-			
-			
 	 	}
 	}
 }
