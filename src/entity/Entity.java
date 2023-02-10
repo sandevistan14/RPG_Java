@@ -1,13 +1,13 @@
 package entity;
 
 public class Entity{
-   private char lettre;
-   private String name;
-   private static int posY;
-   private static int posX;
-   private int dommage;
-   private int life;
-   private int defense;
+   static char lettre;
+   static String name;
+   static int posY;
+   static int posX;
+   static int dommage;
+   static int life;
+   static int defense;
    
    @SuppressWarnings("static-access")
 public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense) {
@@ -25,7 +25,7 @@ public String getName() {
 }
 
 public void setName(String name) {
-	this.name = name;
+	Entity.name = name;
 }
 
 public static int getPosY() {
@@ -49,7 +49,7 @@ public int getDommage() {
 }
 
 public void setDommage(int dommage) {
-	this.dommage = dommage;
+	Entity.dommage = dommage;
 }
 
 public int getLife() {
@@ -57,7 +57,7 @@ public int getLife() {
 }
 
 public void setLife(int life) {
-	this.life = life;
+	Entity.life = life;
 }
 
 public int getDefense() {
@@ -65,7 +65,7 @@ public int getDefense() {
 }
 
 public void setDefense(int defense) {
-	this.defense = defense;
+	Entity.defense = defense;
 }
 
 public char getLettre() {
@@ -73,7 +73,7 @@ public char getLettre() {
 }
 
 public void setLettre(char lettre) {
-	this.lettre = lettre;
+	Entity.lettre = lettre;
 }
 
    /** Constructs a Author instance with the given inputs */
