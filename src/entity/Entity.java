@@ -1,15 +1,16 @@
 package entity;
 
 public class Entity{
+   private char lettre;
    private String name;
-   private int posY;
-   private int posX;
+   private static int posY;
+   private static int posX;
    private int dommage;
    private int life;
    private int defense;
    
-   public Entity(String name, int posY, int posX, int dommage, int life, int defense,
-		String[] equipement) {
+   @SuppressWarnings("static-access")
+public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense) {
 	super();
 	this.name = name;
 	this.posY = posY;
@@ -17,7 +18,6 @@ public class Entity{
 	this.dommage = dommage;
 	this.life = life;
 	this.defense = defense;
-	this.equipement = equipement;
 }
 
 public String getName() {
@@ -28,20 +28,20 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public int getPosY() {
+public static int getPosY() {
 	return posY;
 }
 
-public void setPosY(int posY) {
-	this.posY = posY;
+public static void setPosY(int posY) {
+	Entity.posY = posY;
 }
 
-public int getPosX() {
+public static int getPosX() {
 	return posX;
 }
 
-public void setPosX(int posX) {
-	this.posX = posX;
+public static void setPosX(int posX) {
+	Entity.posX = posX;
 }
 
 public int getDommage() {
@@ -68,25 +68,14 @@ public void setDefense(int defense) {
 	this.defense = defense;
 }
 
-public String[] getInventaire() {
-	return inventaire;
+public char getLettre() {
+	return lettre;
 }
 
-public void setInventaire(String[] inventaire) {
-	this.inventaire = inventaire;
+public void setLettre(char lettre) {
+	this.lettre = lettre;
 }
 
-public String[] getEquipement() {
-	return equipement;
-}
-
-public void setEquipement(String[] equipement) {
-	this.equipement = equipement;
-}
-
-private String[] inventaire;
-   private String[] equipement;
- 
    /** Constructs a Author instance with the given inputs */
 
 }
