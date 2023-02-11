@@ -44,7 +44,7 @@ public static void setPosX(int posX) {
 	Entity.posX = posX;
 }
 
-public int getDommage() {
+public static int getDommage() {
 	return dommage;
 }
 
