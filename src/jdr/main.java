@@ -113,6 +113,10 @@ public class Main{
 		 boolean IsClass = false;
 		 boolean SlimeFight = false;
 		 
+		 int xp = 0;
+		 int xpreq = 40;
+		 int niveau = 1;
+		 
 		 Monster Slime1 = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
 		 
 		 
@@ -198,11 +202,39 @@ public class Main{
 		 while (true){
 			 
 	//*****************************************************************************
+	//******************************     LEVEL     ********************************
+	//*****************************************************************************
+			 
+			 if(xp%xpreq == 0) {
+				 xpreq += 10;
+				 niveau += 1;
+				 Hero.setLife(Hero.getLife()+10);
+			 }
+			 
+			 
+			 
+			 
+			 
+	//*****************************************************************************
 	//******************************     FIGHT     ********************************
 	//*****************************************************************************
 			 if(mapmonster[Hero.getPosY()][Hero.getPosX()-1] != ' '){
 				 System.out.print("Oh no ! a slime bloc your way !");
 				 while(true) {
+					 
+					 if (Slime1.getLife() < 1) {
+						 System.out.print("\n");
+						 System.out.print("Congrats you kill the monster !");
+						 System.out.print("\n");
+						 System.out.print("You earn 20xp !");
+						 System.out.print("\n");
+						 System.out.print("\n");
+						 xp += 20;
+						 mapmonster[Hero.getPosY()][Hero.getPosX()-1] = ' ';
+						 break;
+					 }
+						 
+					 
 					 System.out.print("\n");
 					 System.out.print("              ░░░░░░░░░░               |----------|");
 					 System.out.print("\n");
