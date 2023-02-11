@@ -52,15 +52,15 @@ public void setDommage(int dommage) {
 	Entity.dommage = dommage;
 }
 
-public static int getLife() {
+public int getLife() {
 	return life;
 }
 
-public static void setLife(int life) {
+public void setLife(int life) {
 	Entity.life = life;
 }
 
-public int getDefense() {
+public static int getDefense() {
 	return defense;
 }
 

@@ -1,5 +1,7 @@
 package jdr;
 import java.util.Scanner;
+
+import entity.Entity;
 import entity.Hero;
 import entity.Monster;
 
@@ -68,9 +70,9 @@ public class Main{
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/',},
@@ -102,7 +104,7 @@ public class Main{
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X',' ','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
@@ -111,11 +113,10 @@ public class Main{
 		 
 		 boolean ConstantMap = true;
 		 boolean IsClass = false;
-		 boolean SlimeFight = false;
 		 
 		 int xp = 0;
 		 int xpreq = 40;
-		 int niveau = 1;
+		 int level = 1;
 		 
 		 Monster Slime1 = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
 		 
@@ -171,19 +172,19 @@ public class Main{
 		        System.out.print("\n");
 		        String classs = scan.nextLine();
 		        
-		        if (classs.equals("Paladins")){Hero Hero = new Hero('P',"Paladins",28,15,20,120,50);IsClass = true;}
+		        if (classs.equals("Paladins")){Hero hero = new Hero('P',"Paladins",28,15,20,120,50);IsClass = true;}
 		        if (classs.equals("Paladins info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, good at sword and user of heal magic");}
 		        
-		        if (classs.equals("Archer")){Hero Hero = new Hero('P',"Archer",28,15,40,80,20);IsClass = true;}
+		        if (classs.equals("Archer")){Hero hero = new Hero('P',"Archer",28,15,40,80,20);IsClass = true;}
 		        if (classs.equals("Archer info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, powerfull user of magic");}
 		        
-		        if (classs.equals("Chevalier")){Hero Hero = new Hero('P',"Chevalier",28,15,30,100,40);IsClass = true;}
+		        if (classs.equals("Chevalier")){Hero hero = new Hero('P',"Chevalier",28,15,30,100,40);IsClass = true;}
 		        if (classs.equals("Chevalier info")){System.out.println("0,0,30,100,40");}
 		        
-		        if (classs.equals("Mage")){Hero Hero = new Hero('P',"Mage",28,15,40,70,0);IsClass = true;}
+		        if (classs.equals("Mage")){Hero hero = new Hero('P',"Mage",28,15,40,70,0);IsClass = true;}
 		        if (classs.equals("Mage info")){System.out.println("Dommage : 40, LifePoint : 70 defence : 0, powerfull user of magic");}
 		        
-		        if (classs.equals("Assassin")){Hero Hero = new Hero('P',"Assassin",28,15,50,80,0);IsClass = true;}
+		        if (classs.equals("Assassin")){Hero hero = new Hero('P',"Assassin",28,15,50,80,0);IsClass = true;}
 		        if (classs.equals("Assassin info")){System.out.println("0,0,50,80,0");}
 	        } 
 	        
@@ -205,10 +206,21 @@ public class Main{
 	//******************************     LEVEL     ********************************
 	//*****************************************************************************
 			 
-			 if(xp%xpreq == 0) {
+			 if(xp >= xpreq) {
+				 xp -= xpreq;
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 System.out.print("Congrats level UP ! Your now level :");
+				 System.out.print(level);
+				 System.out.print("\n");
+				 System.out.print("+5 HP, +5 Dommage, +5 Defense");
+				 System.out.print("\n");
 				 xpreq += 10;
-				 niveau += 1;
-				 Hero.setLife(Hero.getLife()+10);
+				 level += 1;
+				 hero.setLife(hero.getLife()+5);
+				 hero.setLife(hero.getDommage()+5);
+				 hero.setLife(hero.getDefense()+5);
+				 
 			 }
 			 
 			 
@@ -218,7 +230,7 @@ public class Main{
 	//*****************************************************************************
 	//******************************     FIGHT     ********************************
 	//*****************************************************************************
-			 if(mapmonster[Hero.getPosY()][Hero.getPosX()-1] != ' '){
+			 if(mapmonster[Hero.getPosY()][Hero.getPosX()-1] != 'S'){
 				 System.out.print("Oh no ! a slime bloc your way !");
 				 while(true) {
 					 
