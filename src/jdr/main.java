@@ -2,7 +2,6 @@ package jdr;
 import java.util.Scanner;
 import entity.Hero;
 import entity.Monster;
-import entity.Monster.Slime;
 
 public class Main{
 	 public static void main(String[] args) {
