@@ -1,13 +1,13 @@
 package entity;
 
 public class Entity{
-   static char lettre;
-   static String name;
-   static int posY;
-   static int posX;
-   static int dommage;
-   static int life;
-   static int defense;
+   char lettre;
+   String name;
+   int posY;
+   int posX;
+   int dommage;
+   int life;
+   int defense;
    
    @SuppressWarnings("static-access")
 public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense) {
@@ -25,55 +25,55 @@ public String getName() {
 }
 
 public void setName(String name) {
-	Entity.name = name;
+	this.name = name;
 }
 
-public static int getPosY() {
-	return posY;
+public int getPosY() {
+	return this.posY;
 }
 
-public static void setPosY(int posY) {
-	Entity.posY = posY;
+public void setPosY(int posY) {
+	this.posY = posY;
 }
 
-public static int getPosX() {
-	return posX;
+public int getPosX() {
+	return this.posX;
 }
 
-public static void setPosX(int posX) {
-	Entity.posX = posX;
+public void setPosX(int posX) {
+	this.posX = posX;
 }
 
-public static int getDommage() {
-	return dommage;
+public int getDommage() {
+	return this.dommage;
 }
 
 public void setDommage(int dommage) {
-	Entity.dommage = dommage;
+	this.dommage = dommage;
 }
 
 public int getLife() {
-	return life;
+	return this.life;
 }
 
 public void setLife(int life) {
-	Entity.life = life;
+	this.life = life;
 }
 
-public static int getDefense() {
-	return defense;
+public  int getDefense() {
+	return this.defense;
 }
 
-public void setDefense(int defense) {
-	Entity.defense = defense;
+public  void setDefense(int defense) {
+	this.defense = defense;
 }
 
 public char getLettre() {
-	return lettre;
+	return this.lettre;
 }
 
 public void setLettre(char lettre) {
-	Entity.lettre = lettre;
+	this.lettre = lettre;
 }
 
    /** Constructs a Author instance with the given inputs */

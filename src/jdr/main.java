@@ -6,7 +6,83 @@ import entity.Hero;
 import entity.Monster;
 
 public class Main{
-	 public static void main(String[] args) {	
+	
+	public static void fight(Hero Hero1,Monster Slime,int xp,char[][] mapmonster ) {
+		 System.out.print("Oh no ! a slime bloc your way !");
+		 while(true) {
+			 
+			 if (Slime.getLife() < 1) {
+				 System.out.print("\n");
+				 System.out.print("Congrats you kill the monster !");
+				 System.out.print("\n");
+				 System.out.print("You earn 20xp !");
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 xp += 20;
+				 mapmonster[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+				 break;
+			 }
+			 double num = Math.random()*100;
+			 if(num > 50) {
+				 System.out.print("\n");
+				 System.out.println("                      /´¯/) ");
+				 System.out.println("                    ,/¯  /");
+				 System.out.println("                   /    / ");
+				 System.out.println("             /´¯/'   '/´¯¯`·¸ ");
+				 System.out.println("          /'/   /    /       /¨¯\\ ");
+				 System.out.println("        ('(   ´   ´     ¯~/'   ')"); 
+				 System.out.println("         \\                 '     /"); 
+				 System.out.println("          ''   \\           _ ·´ "); 
+				 System.out.println("            \\              ( "); 
+				 System.out.println("              \\             \\   "); 
+			 }
+			 
+			 if(num <= 50) {
+			 System.out.print("\n");
+			 System.out.println("              ░░░░░░░░░░               |----------|");
+			 System.out.println("          ░░░░        ░░░░░░           |HP :\t" + Slime.getLife()+"|");
+			 System.out.println("        ░░                  ░░         |----------|");
+			 System.out.println("      ░░                    ░░░░    ");
+			 System.out.println("    ░░                      ░░░░░░  ");
+			 System.out.println("    ░░                        ░░░░  ");
+			 System.out.println("  ░░                ░░    ░░  ░░░░░░");
+			 System.out.println("  ░░                ██░░  ██    ░░░░");
+			 System.out.println("  ░░                ██░░  ██    ░░░░");
+			 System.out.println("  ░░            ░░            ░░░░░░");
+			 System.out.println("  ░░░░░░                      ░░░░░░");
+			 System.out.println("    ░░░░░░                  ░░░░░░  ");
+			 System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ");
+			 System.out.println("       ░░░░░░░░░░░░░░░░░░░░░░      ");
+			 System.out.print("\n");
+			 System.out.print("\n");
+			 }
+			 System.out.print("What do you want to do ?");
+			 System.out.print("\n");
+			 System.out.print("|--------------------------------------------|");
+			 System.out.print("\n");
+			 System.out.print("|     Attack    |     Inv     |     Flee     |");
+			 System.out.print("\n");
+			 System.out.print("|--------------------------------------------|");
+			 System.out.print("\n");
+			 
+			 Scanner sc4 = new Scanner(System.in);
+			 String str4 = sc4.nextLine();
+			 
+			 if(str4.equals("Attack")) {
+				 Slime.setLife(Slime.getLife()- (Hero1.getDommage()));
+			 }
+			 
+			 if(str4.equals("Flee")) {
+				 break;
+			 }
+			 
+		 }// end of while for fight 
+		 
+	}
+	
+	private static Entity Hero;
+
+	public static void main(String[] args) {	
 		 
 			//*****************************************************************************
 			//**************************     Initialisation     ***************************
@@ -70,10 +146,10 @@ public class Main{
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/',},
 		 };
@@ -102,9 +178,9 @@ public class Main{
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X',' ','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','X','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
@@ -118,7 +194,10 @@ public class Main{
 		 int xpreq = 40;
 		 int level = 1;
 		 
-		 Monster Slime1 = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
+		 Monster[] TabMonster = new Monster[1];
+		 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
+		 Hero Hero1 = new Hero('P',"",28,15,0,0,0);
+		 
 		 
 		 
 		 
@@ -155,7 +234,7 @@ public class Main{
 		 
 		 
 //*****************************************************************************
-//*******************************     HERO     ********************************
+//*******************************     Hero     ********************************
 //*****************************************************************************	
 	        while (IsClass == false) {
 				Scanner scan = new Scanner(System.in);
@@ -172,19 +251,47 @@ public class Main{
 		        System.out.print("\n");
 		        String classs = scan.nextLine();
 		        
-		        if (classs.equals("Paladins")){Hero hero = new Hero('P',"Paladins",28,15,20,120,50);IsClass = true;}
+		        if (classs.equals("Paladins")){
+		        	Hero1.setName("Paladins");
+		        	Hero1.setDommage(20);
+		        	Hero1.setLife(120);
+		        	Hero1.setDefense(50);
+		        	IsClass = true;}
+		        
 		        if (classs.equals("Paladins info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, good at sword and user of heal magic");}
 		        
-		        if (classs.equals("Archer")){Hero hero = new Hero('P',"Archer",28,15,40,80,20);IsClass = true;}
+		        if (classs.equals("Archer")){
+		        	Hero1.setName("Archer");
+		        	Hero1.setDommage(40);
+		        	Hero1.setLife(80);
+		        	Hero1.setDefense(20);
+		        	IsClass = true;}
+		        
 		        if (classs.equals("Archer info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, powerfull user of magic");}
 		        
-		        if (classs.equals("Chevalier")){Hero hero = new Hero('P',"Chevalier",28,15,30,100,40);IsClass = true;}
+		        if (classs.equals("Chevalier")){
+		        	Hero1.setName("Chevalier");
+		        	Hero1.setDommage(30);
+		        	Hero1.setLife(100);
+		        	Hero1.setDefense(40);
+		        	IsClass = true;}
+		        
 		        if (classs.equals("Chevalier info")){System.out.println("0,0,30,100,40");}
 		        
-		        if (classs.equals("Mage")){Hero hero = new Hero('P',"Mage",28,15,40,70,0);IsClass = true;}
+		        if (classs.equals("Mage")){
+		        	Hero1.setName("Mage");
+		        	Hero1.setDommage(40);
+		        	Hero1.setLife(70);
+		        	Hero1.setDefense(0);
+		        	IsClass = true;}
 		        if (classs.equals("Mage info")){System.out.println("Dommage : 40, LifePoint : 70 defence : 0, powerfull user of magic");}
 		        
-		        if (classs.equals("Assassin")){Hero hero = new Hero('P',"Assassin",28,15,50,80,0);IsClass = true;}
+		        if (classs.equals("Assassin")){
+		        	Hero1.setName("Assassin");
+		        	Hero1.setDommage(50);
+		        	Hero1.setLife(80);
+		        	Hero1.setDefense(0);
+		        	IsClass = true;}
 		        if (classs.equals("Assassin info")){System.out.println("0,0,50,80,0");}
 	        } 
 	        
@@ -217,89 +324,28 @@ public class Main{
 				 System.out.print("\n");
 				 xpreq += 10;
 				 level += 1;
-				 hero.setLife(hero.getLife()+5);
-				 hero.setLife(hero.getDommage()+5);
-				 hero.setLife(hero.getDefense()+5);
+				 Hero1.setLife(Hero1.getLife()+5);
+				 Hero1.setDommage(Hero1.getDommage()+5);
+				 Hero1.setDefense(Hero1.getDefense()+5);
 				 
 			 }
-			 
-			 
-			 
-			 
 			 
 	//*****************************************************************************
 	//******************************     FIGHT     ********************************
 	//*****************************************************************************
-			 if(mapmonster[Hero.getPosY()][Hero.getPosX()-1] != 'S'){
-				 System.out.print("Oh no ! a slime bloc your way !");
-				 while(true) {
-					 
-					 if (Slime1.getLife() < 1) {
-						 System.out.print("\n");
-						 System.out.print("Congrats you kill the monster !");
-						 System.out.print("\n");
-						 System.out.print("You earn 20xp !");
-						 System.out.print("\n");
-						 System.out.print("\n");
-						 xp += 20;
-						 mapmonster[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-						 break;
-					 }
-						 
-					 
-					 System.out.print("\n");
-					 System.out.print("              ░░░░░░░░░░               |----------|");
-					 System.out.print("\n");
-					 System.out.print("          ░░░░        ░░░░░░           |HP :\t" + Slime1.getLife()+"|");
-					 System.out.print("\n");
-					 System.out.print("        ░░                  ░░         |----------|");
-					 System.out.print("\n");
-					 System.out.print("      ░░                    ░░░░    ");
-					 System.out.print("\n");
-					 System.out.print("    ░░                      ░░░░░░  ");
-					 System.out.print("\n");
-					 System.out.print("    ░░                        ░░░░  ");
-					 System.out.print("\n");
-					 System.out.print("  ░░                ░░    ░░  ░░░░░░");
-					 System.out.print("\n");
-					 System.out.print("  ░░                ██░░  ██    ░░░░");
-					 System.out.print("\n");
-					 System.out.print("  ░░                ██░░  ██    ░░░░");
-					 System.out.print("\n");
-					 System.out.print("  ░░            ░░            ░░░░░░");
-					 System.out.print("\n");
-					 System.out.print("  ░░░░░░                      ░░░░░░");
-					 System.out.print("\n");
-					 System.out.print("    ░░░░░░                  ░░░░░░  ");
-					 System.out.print("\n");
-					 System.out.print("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ");
-					 System.out.print("\n");
-					 System.out.print("       ░░░░░░░░░░░░░░░░░░░░░░      ");
-					 System.out.print("\n");
-					 System.out.print("\n");
-					 
-					 System.out.print("What do you want to do ?");
-					 System.out.print("\n");
-					 System.out.print("|--------------------------------------------|");
-					 System.out.print("\n");
-					 System.out.print("|     Attack    |     Inv     |     Flee     |");
-					 System.out.print("\n");
-					 System.out.print("|--------------------------------------------|");
-					 System.out.print("\n");
-					 
-					 Scanner sc4 = new Scanner(System.in);
-					 String str4 = sc4.nextLine();
-					 
-					 if(str4.equals("Attack")) {
-						 Slime1.setLife(Slime1.getLife()- (Hero.getDommage()));
-					 }
-					 
-					 if(str4.equals("Flee")) {
-						 break;
+			 for(int i = 0;i < TabMonster.length; i += 1) {
+				 if(TabMonster[i].getPosX() == Hero1.getPosX() && TabMonster[i].getPosY() == Hero1.getPosY()) {
+					 String nom = TabMonster[i].getName();  
+					 char premierCaractere = nom.charAt(0);
+					 if(premierCaractere == 'S') {
+						 fight(Hero1,TabMonster[i], xp,mapmonster);
 					 }
 				 }
 			 }
 			 
+	//*****************************************************************************
+	//*******************************     MAP     *********************************
+	//*****************************************************************************	
 			 
 			 if (ConstantMap == true) {
 				 for(int i = 0;i < map.length; i += 1) {
@@ -389,28 +435,28 @@ public class Main{
 	    	//********************************     UP     *********************************
 	    	//*****************************************************************************
         	if (str.equals("Up") || str.equals("uP") || str.equals("up") || str.equals("UP"))  {
-        		if (map[Hero.getPosY()-1][Hero.getPosX()-1] == 'X' || map[Hero.getPosY()-1][Hero.getPosX()-1] == '/') {
+        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
         			System.out.print("\n");}
         		else {
-	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-	        		Hero.setPosY(Hero.getPosY() - 1 );
-	        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+	        		Hero1.setPosY(Hero1.getPosY() - 1 );
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
         	}
         	
 	    	//*****************************************************************************
 	    	//*******************************     DOWN     ********************************
 	    	//*****************************************************************************
         	if (str.equals("Down") || str.equals("down") || str.equals("DOWN") || str.equals("DOwn")) {
-        		if (map[Hero.getPosY()+1][Hero.getPosX()-1] == 'X' || map[Hero.getPosY()+1][Hero.getPosX()-1] == '/') {
+        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
         			System.out.print("\n");}
         		else {
-        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-        		Hero.setPosY(Hero.getPosY() + 1 );
-        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+        		Hero1.setPosY(Hero1.getPosY() + 1 );
+        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
         		
         	}
         	
@@ -419,14 +465,14 @@ public class Main{
 	    	//******************************     RIGHT     ********************************
 	    	//*****************************************************************************
         	if (str.equals("Right") || str.equals("right") || str.equals("RIGHT") || str.equals("RIght")) {
-        		if (map[Hero.getPosY()][Hero.getPosX()] == 'X' || map[Hero.getPosY()][Hero.getPosX()] == '/') {
+        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
         			System.out.print("\n");}
         		else {
-        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-        		Hero.setPosX(Hero.getPosX() + 1 );
-        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+        		Hero1.setPosX(Hero1.getPosX() + 1 );
+        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
         	}
         	
         	
@@ -434,14 +480,14 @@ public class Main{
 	    	//*******************************     LEFT     ********************************
 	    	//*****************************************************************************
         	if (str.equals("Left") || str.equals("left") || str.equals("LEFT") || str.equals("LEft") ) {
-        		if (map[Hero.getPosY()][Hero.getPosX()-2] == 'X' || map[Hero.getPosY()][Hero.getPosX()-2] == '/') {
+        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
         			System.out.print("\n");}
         		else {
-        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-        		Hero.setPosX(Hero.getPosX() - 1 );
-        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+        		Hero1.setPosX(Hero1.getPosX() - 1 );
+        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
         	}
         	
 	    	//*****************************************************************************
@@ -464,56 +510,56 @@ public class Main{
 		    	//********************************     UP     *********************************
 		    	//*****************************************************************************
 	        	if (str3.equals("Up") || str3.equals("uP") || str3.equals("up") || str3.equals("UP"))  {
-	        		if (map[Hero.getPosY()-1][Hero.getPosX()-1] == 'X' || map[Hero.getPosY()-1][Hero.getPosX()-1] == '/') {
+	        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
 	        			System.out.print("\n");}
 	        		else {
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-		        		Hero.setPosY(Hero.getPosY() - 1 );
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+		        		Hero1.setPosY(Hero1.getPosY() - 1 );
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
 	        	}
 	        	
 		    	//*****************************************************************************
 		    	//*******************************     DOWN     ********************************
 		    	//*****************************************************************************
 	        	if (str3.equals("Down") || str3.equals("down") || str3.equals("DOWN") || str3.equals("DOwn")) {
-	        		if (map[Hero.getPosY()+1][Hero.getPosX()-1] == 'X' || map[Hero.getPosY()+1][Hero.getPosX()-1] == '/') {
+	        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
 	        			System.out.print("\n");}
 	        		else {
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-		        		Hero.setPosY(Hero.getPosY() + 1 );
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+		        		Hero1.setPosY(Hero1.getPosY() + 1 );
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
 	        	}
 	        	
 		    	//*****************************************************************************
 		    	//******************************     RIGHT     ********************************
 		    	//*****************************************************************************
 	        	if (str3.equals("Right") || str3.equals("right") || str3.equals("RIGHT") || str3.equals("RIght")) {
-	        		if (map[Hero.getPosY()][Hero.getPosX()] == 'X' || map[Hero.getPosY()][Hero.getPosX()] == '/') {
+	        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
 	        			System.out.print("\n");}
 		        		else {
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-		        		Hero.setPosX(Hero.getPosX() + 1 );
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+		        		Hero1.setPosX(Hero1.getPosX() + 1 );
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
 	        	}
 	        	
 		    	//*****************************************************************************
 		    	//*******************************     LEFT     ********************************
 		    	//*****************************************************************************
 	        	if (str3.equals("Left") || str3.equals("left") || str3.equals("LEFT") || str3.equals("LEft") ) {
-	        		if (map[Hero.getPosY()][Hero.getPosX()-2] == 'X' || map[Hero.getPosY()][Hero.getPosX()-2] == '/') {
+	        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
 	        			System.out.print("\n");}
 	        		else {
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = ' ';
-		        		Hero.setPosX(Hero.getPosX() - 1 );
-		        		mapentity[Hero.getPosY()][Hero.getPosX()-1] = 'P';}
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+		        		Hero1.setPosX(Hero1.getPosX() - 1 );
+		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
 	        	}
 	        	
 			
