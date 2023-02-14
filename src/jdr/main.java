@@ -46,12 +46,86 @@ public class Main{
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 System.out.print("\n");
-				 System.out.print("Game over");
+				 System.out.print("                    .-------.\r\n"
+				 		+ "                    |(~\\o/~)|\r\n"
+				 		+ "                  _.||\\/X\\/||._\r\n"
+				 		+ "               ,-\"  || \\ / ||  \"-,\r\n"
+				 		+ "             ,'  () ||o X o|| ()  ',\r\n"
+				 		+ "            / ()  ,-|| / \\ ||-,  () \\\r\n"
+				 		+ "           : o  ,'  ||/\\X/\\||  ',  o ;\r\n"
+				 		+ "        .----------._)~   ~(_.----------.\r\n"
+				 		+ "        |\\/)~~(\\/\\   (~\\ /~)   /\\/)~~(\\/|\r\n"
+				 		+ "        |(X () X) >o  >-X-<  o< (X () X)|\r\n"
+				 		+ "        |/\\)__(/\\/  _(_/|\\_)_  \\/\\)__(/\\|\r\n"
+				 		+ "        '----------' )     ( '----------'\r\n"
+				 		+ "           ; o  ',  ||\\/~\\/||  ,'  o ;\r\n"
+				 		+ "            \\ ()  '-|| \\o/ ||-'  () /\r\n"
+				 		+ "             ',  () |(~\\ /~)| ()  ,'\r\n"
+				 		+ "               '-._ ||\\/X\\/|| _.-'\r\n"
+				 		+ "                   '|| \\ / ||'\r\n"
+				 		+ "                    ||  X  ||\r\n"
+				 		+ "                    ||\\(/\\/||\r\n"
+				 		+ "                    ||=)O(=||\r\n"
+				 		+ "                    ||/\\/)\\||\r\n"
+				 		+ "                    ||  X  ||\r\n"
+				 		+ "                    || / \\ ||\r\n"
+				 		+ "                    ||/\\X/\\||\r\n"
+				 		+ "                    |(_/o\\_)|\r\n"
+				 		+ "                    '._____.'");
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 System.out.print("                   Game over");
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 xp = -69;
 				 break;
+			 }
+			 
+			 if(premierCaractere == 'M') {
+			 System.out.println(
+			  "                                           .\"\"--..__\r\n"
+			 + "                     _                     []       ``-.._\r\n"
+			 + "                  .'` `'.                  ||__           `-._\r\n"
+			 + "                 /    ,-.\\                 ||_ ```---..__     `-.\r\n"
+			 + "                /    /:::\\\\               /|//}          ``--._  `.\r\n"
+			 + "                |    |:::||              |////}                `-. \\\r\n"
+			 + "                |    |:::||             //'///                    `.\\\r\n"
+			 + "                |    |:::||            //  ||'                      `|\r\n"
+			 + "                /    |:::|/        _,-//\\  ||\r\n"
+			 + "               /`    |:::|`-,__,-'`  |/  \\ ||\r\n"
+			 + "             /`  |   |'' ||           \\   |||\r\n"
+			 + "           /`    \\   |   ||            |  /||\r\n"
+			 + "         |`       |  |   |)            \\ | ||\r\n"
+			 + "        |          \\ |   /      ,.__    \\| ||\r\n"
+			 + "        /           `         /`    `\\   | ||\r\n"
+			 + "       |                     /        \\  / ||\r\n"
+			 + "       |                     |        | /  ||\r\n"
+			 + "       /         /           |        `(   ||\r\n"
+			 + "      /          .           /          )  ||\r\n"
+			 + "     |            \\          |     ________||\r\n"
+			 + "    /             |          /     `-------.|\r\n"
+			 + "   |\\            /          |              ||\r\n"
+			 + "   \\/`-._       |           /              ||\r\n"
+			 + "    //   `.    /`           |              ||\r\n"
+			 + "   //`.    `. |             \\              ||\r\n"
+			 + "  ///\\ `-._  )/             |              ||\r\n"
+			 + " //// )   .(/               |              ||\r\n"
+			 + " ||||   ,'` )               /              //\r\n"
+			 + " ||||  /                    /             || \r\n"
+			 + " `\\\\` /`                    |             // \r\n"
+			 + "     |`                     \\            ||  \r\n"
+			 + "    /                        |           //  \r\n"
+			 + "  /`                          \\         //   \r\n"
+			 + "/`                            |        ||    \r\n"
+			 + "`-.___,-.      .-.        ___,'        (/    \r\n"
+			 + "         `---'`   `'----'`");
+				System.out.println("|----------|");
+				System.out.println("|HP :\t" + monster.getLife()+"|");
+				System.out.println("|----------|");
+				System.out.println("\n");
+				
 			 }
 			 
 			 
@@ -181,7 +255,7 @@ public class Main{
 			 if(str4.equals("Attack")) {
 				 monster.setLife(monster.getLife()- (Hero1.getDommage()));
 				 System.out.print("\n");
-				 System.out.print("You attack "+ monster.getName() +" and inflict "+ Hero1.getDommage()+" dommage");
+				 System.out.print("You attack "+ monster.getName() +" and inflict "+ Hero1.getDommage()+" dommages");
 				 System.out.print("\n");
 				 act = true;
 			 }
@@ -192,7 +266,7 @@ public class Main{
 			 
 			 if ((!(monster.getLife() < 1)) && act == true) {
 			 System.out.print("\n");
-			 System.out.print("The "+ monster.getName() +" attack you and inflict you "+ monster.getDommage()+" dommage");
+			 System.out.print("The "+ monster.getName() +" attack you and inflict you "+ monster.getDommage()+" dommages");
 			 System.out.print("\n");
 			 Hero1.setLife(Hero1.getLife() - monster.getDommage());
 			 Thread.sleep(4000);
@@ -262,7 +336,7 @@ public class Main{
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','M',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','D',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
@@ -313,9 +387,10 @@ public class Main{
 		 int xpreq = 40;
 		 int level = 1;
 		 
-		 Monster[] TabMonster = new Monster[2];
+		 Monster[] TabMonster = new Monster[3];
 		 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
 		 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50);
+		 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200);
 		 Hero Hero1 = new Hero('P',"",28,15,0,0,0);
 		 
 		 
