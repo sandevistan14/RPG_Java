@@ -23,38 +23,38 @@ public class Main{
 				 break;
 			 }
 			 double num = Math.random()*100;
-			 if(num > 50) {
-				 System.out.print("\n");
-				 System.out.println("                      /´¯/) ");
-				 System.out.println("                    ,/¯  /");
-				 System.out.println("                   /    / ");
-				 System.out.println("             /´¯/'   '/´¯¯`·¸ ");
-				 System.out.println("          /'/   /    /       /¨¯\\ ");
-				 System.out.println("        ('(   ´   ´     ¯~/'   ')"); 
-				 System.out.println("         \\                 '     /"); 
-				 System.out.println("          ''   \\           _ ·´ "); 
-				 System.out.println("            \\              ( "); 
-				 System.out.println("              \\             \\   "); 
+			 if(num > 90) {
+																																																				 System.out.print("\n");
+																																																				 System.out.println("                      /´¯/) ");
+																																																				 System.out.println("                    ,/¯  /");
+																																																				 System.out.println("                   /    / ");
+																																																				 System.out.println("             /´¯/'   '/´¯¯`·¸ ");
+																																																				 System.out.println("          /'/   /    /       /¨¯\\ ");
+																																																				 System.out.println("        ('(   ´   ´     ¯~/'   ')"); 
+																																																				 System.out.println("         \\                 '     /"); 
+																																																				 System.out.println("          ''   \\           _ ·´ "); 
+																																																				 System.out.println("            \\              ( "); 
+																																																				 System.out.println("              \\             \\   "); 
 			 }
 			 
-			 if(num <= 50) {
-			 System.out.print("\n");
-			 System.out.println("              ░░░░░░░░░░               |----------|");
-			 System.out.println("          ░░░░        ░░░░░░           |HP :\t" + Slime.getLife()+"|");
-			 System.out.println("        ░░                  ░░         |----------|");
-			 System.out.println("      ░░                    ░░░░    ");
-			 System.out.println("    ░░                      ░░░░░░  ");
-			 System.out.println("    ░░                        ░░░░  ");
-			 System.out.println("  ░░                ░░    ░░  ░░░░░░");
-			 System.out.println("  ░░                ██░░  ██    ░░░░");
-			 System.out.println("  ░░                ██░░  ██    ░░░░");
-			 System.out.println("  ░░            ░░            ░░░░░░");
-			 System.out.println("  ░░░░░░                      ░░░░░░");
-			 System.out.println("    ░░░░░░                  ░░░░░░  ");
-			 System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ");
-			 System.out.println("       ░░░░░░░░░░░░░░░░░░░░░░      ");
-			 System.out.print("\n");
-			 System.out.print("\n");
+			 if(num <= 90) {
+				 System.out.print("\n");
+				 System.out.println("              ░░░░░░░░░░               |----------|");
+				 System.out.println("          ░░░░        ░░░░░░           |HP :\t" + Slime.getLife()+"|");
+				 System.out.println("        ░░                  ░░         |----------|");
+				 System.out.println("      ░░                    ░░░░    ");
+				 System.out.println("    ░░                      ░░░░░░  ");
+				 System.out.println("    ░░                        ░░░░  ");
+				 System.out.println("  ░░                ░░    ░░  ░░░░░░");
+				 System.out.println("  ░░                ██░░  ██    ░░░░");
+				 System.out.println("  ░░                ██░░  ██    ░░░░");
+				 System.out.println("  ░░            ░░            ░░░░░░");
+				 System.out.println("  ░░░░░░                      ░░░░░░");
+				 System.out.println("    ░░░░░░                  ░░░░░░  ");
+				 System.out.println("    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ");
+				 System.out.println("       ░░░░░░░░░░░░░░░░░░░░░░      ");
+				 System.out.print("\n");
+				 System.out.print("\n");
 			 }
 			 System.out.print("What do you want to do ?");
 			 System.out.print("\n");
@@ -148,7 +148,7 @@ public class Main{
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/',},
@@ -194,11 +194,10 @@ public class Main{
 		 int xpreq = 40;
 		 int level = 1;
 		 
-		 Monster[] TabMonster = new Monster[1];
+		 Monster[] TabMonster = new Monster[2];
 		 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
+		 TabMonster[1] = new Monster('S', "Slime2", 26, 16, 10, 40, 0);
 		 Hero Hero1 = new Hero('P',"",28,15,0,0,0);
-		 
-		 
 		 
 		 
 		 
