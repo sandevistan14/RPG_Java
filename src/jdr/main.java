@@ -25,16 +25,16 @@ public class Main{
 			 double num = Math.random()*100;
 			 if(num > 90) {
 																																																				 System.out.print("\n");
-																																																				 System.out.println("                      /´¯/) ");
-																																																				 System.out.println("                    ,/¯  /");
-																																																				 System.out.println("                   /    / ");
-																																																				 System.out.println("             /´¯/'   '/´¯¯`·¸ ");
+																																																				 System.out.println("                      /´¯/)        |----------|");
+																																																				 System.out.println("                    ,/¯  /         |HP :    "+ Slime.getLife()+ "|");
+																																																				 System.out.println("                   /    /          |----------|");
+																																																				 System.out.println("             /´¯/'   '/´¯¯`·¸      ");
 																																																				 System.out.println("          /'/   /    /       /¨¯\\ ");
-																																																				 System.out.println("        ('(   ´   ´     ¯~/'   ')"); 
+																																																				 System.out.println("        ('(   ´   ´     ¯~/'   ')  "); 
 																																																				 System.out.println("         \\                 '     /"); 
-																																																				 System.out.println("          ''   \\           _ ·´ "); 
-																																																				 System.out.println("            \\              ( "); 
-																																																				 System.out.println("              \\             \\   "); 
+																																																				 System.out.println("          ''   \\           _ ·´   "); 
+																																																				 System.out.println("            \\              (      "); 
+																																																				 System.out.println("              \\             \\    "); 
 			 }
 			 
 			 if(num <= 90) {
