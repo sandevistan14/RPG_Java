@@ -9,9 +9,8 @@ public class Entity{
    int life;
    int defense;
    
-   @SuppressWarnings("static-access")
+
 public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense) {
-	super();
 	this.name = name;
 	this.posY = posY;
 	this.posX = posX;

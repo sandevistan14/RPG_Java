@@ -20,5 +20,4 @@ public class Objet{
 	public void setType(String type) {
 		Type = type;
 	}
-	
 }

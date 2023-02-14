@@ -1,32 +1,139 @@
 package jdr;
 import java.util.Scanner;
-
-import entity.Entity;
 import entity.Hero;
 import entity.Monster;
 
 public class Main{
 	
-	public static void fight(Hero Hero1,Monster Slime,int xp,char[][] mapmonster ) {
-		 System.out.print("Oh no ! a slime bloc your way !");
+    public static final String ANSI_RESET = "\u001B[0m";
+    
+    // Declaring the color
+    // Custom declaration
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+  
+
+
+	
+	public static int fight(Hero Hero1,Monster monster,int xp,char[][] mapmonster) throws InterruptedException {
+		 String nom = monster.getName();  
+		 char premierCaractere = nom.charAt(0);
+		 if(premierCaractere == 'S') {
+			 System.out.print("Oh no ! a slime bloc your way !");
+		 }
+		 if(premierCaractere == 'D') {
+			 System.out.print("Oh no ! a Dragon bloc your way !");
+		 }
 		 while(true) {
-			 
-			 if (Slime.getLife() < 1) {
+			 boolean act = false;
+			 if (monster.getLife() < 1) {
 				 System.out.print("\n");
 				 System.out.print("Congrats you kill the monster !");
 				 System.out.print("\n");
 				 System.out.print("You earn 20xp !");
 				 System.out.print("\n");
 				 System.out.print("\n");
+				 Thread.sleep(4000);
 				 xp += 20;
 				 mapmonster[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
 				 break;
 			 }
+			 
+			 
+			 if (Hero1.getLife() < 1) {
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 System.out.print("Game over");
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 System.out.print("\n");
+				 xp = -69;
+				 break;
+			 }
+			 
+			 
+			 
+			 if(premierCaractere == 'D') {
+			 
+				System.out.println("                                                                                                                                                                                  \r\n"
+						+ "                                                                                                                                            ░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▒▒░░░░  \r\n"
+						+ "    ░░▒▒▓▓▓▓▓▓▒▒▒▒▒▒░░                                                                                                            ░░▒▒▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████▓▓▒▒  \r\n"
+						+ "  ▒▒██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒                                                                                                    ▒▒▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓██████████▓▓▓▓▓▓▓▓▒▒          \r\n"
+						+ "░░░░░░▒▒██▓▓██████▓▓▓▓▓▓▓▓██▓▓                                                                                            ▒▒▓▓██▓▓▒▒▓▓▓▓▓▓▓▓▓▓████████▓▓▓▓▓▓▓▓▓▓▒▒                \r\n"
+						+ "          ░░██▓▓██████▓▓▓▓▓▓▓▓▓▓▒▒                                                                                    ▓▓██▓▓▓▓▒▒▓▓▓▓▓▓▓▓██████████████▓▓▓▓▒▒                      \r\n"
+						+ "              ▒▒██▓▓████▓▓▓▓██▓▓▓▓▓▓░░                                                                            ▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓██████████████▓▓██░░                          \r\n"
+						+ "                  ▒▒▓▓████▓▓▓▓▓▓▓▓▓▓▒▒▒▒                                                ▒▒                    ▒▒▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓████████████████                                \r\n"
+						+ "                    ░░██████▓▓▒▒▓▓██▓▓▓▓▒▒            ▒▒                                ▒▒                ░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████████░░                                  \r\n"
+						+ "                        ██████▓▓▒▒▓▓██▓▓▓▓▓▓            ░░                              ▓▓              ▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████▓▓▓▓▓▓░░                                      \r\n"
+						+ "                          ██████▓▓▒▒▓▓▓▓▓▓▓▓▓▓          ██                              ▓▓            ▒▒▒▒▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▒▒                                          \r\n"
+						+ "                            ██████▓▓▒▒▓▓▓▓▓▓▓▓▓▓░░        ▒▒                            ▓▓        ░░▒▒░░▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒                                              \r\n"
+						+ "                            ░░████▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓░░      ▓▓                ░░          ▓▓      ▒▒▓▓▒▒▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░                                      \r\n"
+						+ "                                ████▓▓▓▓▓▓▒▒░░▓▓▓▓▓▓      ░░▓▓              ▓▓        ░░▓▓  ░░░░▒▒▓▓▒▒▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▒▒                                \r\n"
+						+ "                        ▒▒▓▓▓▓████████▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓▓      ▓▓              ▒▒▒▒      ▒▒▓▓  ▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒                            \r\n"
+						+ "                    ▒▒▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▒▒▓▓▒▒▓▓▒▒▒▒▓▓▓▓    ▓▓▓▓            ▒▒▓▓      ▓▓▓▓  ▓▓▓▓▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░                        \r\n"
+						+ "                  ▓▓▓▓▓▓▓▓██▓▓▒▒▓▓▓▓████▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓▓▓▓  ░░▓▓  ░░        ░░▓▓      ▓▓▓▓  ▒▒▒▒▓▓████▓▓▓▓▓▓▓▓▒▒▒▒░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████▓▓▓▓▓▓▓▓▒▒                      \r\n"
+						+ "                ██████████████████▓▓▓▓████▓▓▓▓▒▒▒▒▓▓▒▒▓▓▓▓░░  ▓▓▒▒░░        ▒▒▓▓▓▓  ▒▒▓▓▓▓▒▒▒▒████▓▓▓▓▓▓████████▓▓▒▒▓▓▓▓▓▓▓▓▓▓██████████████████████████▓▓▓▓▓▓                    \r\n"
+						+ "              ▒▒▓▓██████████████████▓▓████▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▒▒  ▓▓██░░░░      ▓▓▓▓▓▓  ▓▓▓▓▓▓▒▒▓▓██▓▓▓▓▓▓████████▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓████████████▓▓▓▓████▓▓▓▓██████▓▓▓▓                  \r\n"
+						+ "              ▓▓██▓▓▒▒▒▒▒▒████████████████▓▓████▓▓▒▒▒▒▓▓▓▓██  ▒▒▓▓░░░░    ▓▓████▓▓░░▓▓▓▓░░▒▒██████████▓▓██████▓▓▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓                \r\n"
+						+ "                                  ░░▓▓██████▓▓▓▓████▓▓▒▒▓▓▓▓▓▓░░▒▒▓▓    ▓▓░░████▓▓▓▓▒▒▒▒  ▒▒▒▒▒▒████▓▓▒▒▓▓▓▓████▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒  ░░░░▒▒▒▒▓▓██▓▓▓▓████████▓▓              \r\n"
+						+ "                              ▓▓▓▓▓▓▓▓▓▓██████▓▓██▓▓████▒▒██▓▓▒▒▓▓██  ▓▓██▓▓▓▓▓▓▓▓▒▒▒▒▓▓▒▒    ██▓▓▓▓██████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒                        ░░▒▒██▓▓▓▓▓▓            \r\n"
+						+ "                            ██▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▒▒▓▓████▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓██▒▒▓▓████▓▓▓▓    ██▒▒  ▒▒▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                              ▓▓▓▓▒▒          \r\n"
+						+ "                          ▓▓▓▓▓▓██████████▓▓▓▓██████▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓██▒▒▓▓  ▒▒██▒▒  ▒▒██▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒▓▓░░                              ▓▓          \r\n"
+						+ "                        ░░▓▓▓▓████████████████▓▓▓▓████▓▓██████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▒▒▓▓░░▓▓▒▒  ▒▒██▓▓▓▓▓▓▓▓██████▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▒▒▓▓                                ░░        \r\n"
+						+ "                        ▓▓▓▓██████████████████████▓▓▓▓██████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓██▓▓▓▓▒▒░░▓▓▓▓▓▓▓▓▓▓██▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓▓                                        \r\n"
+						+ "                        ▓▓████████▒▒░░        ░░▓▓██████▓▓██▒▒▓▓▓▓▓▓▒▒▓▓▓▓██████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  ▒▒▒▒░░      ▒▒▓▓██▓▓████▓▓▓▓▓▓                                      \r\n"
+						+ "                      ░░▓▓▓▓▓▓▓▓                    ▒▒▓▓██▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▒▒▒▒  ▒▒                ▒▒▓▓▓▓▓▓▓▓▓▓░░                                    \r\n"
+						+ "                      ░░██▓▓▒▒                        ░░████▓▓▓▓▓▓██████▓▓▓▓▓▓████▓▓████▓▓▓▓▓▓██████▓▓▒▒░░▒▒▓▓                      ▒▒▓▓▓▓██▓▓                                    \r\n"
+						+ "                      ░░▓▓▓▓                          ▓▓▓▓██▓▓▓▓██████████████▓▓▓▓▓▓▓▓████████▓▓▓▓▒▒▓▓▓▓▓▓▒▒                            ▓▓▓▓▓▓▓▓                                  \r\n"
+						+ "                      ░░▓▓░░                          ▓▓▓▓██▓▓▓▓██▓▓██████████▓▓▒▒▓▓▓▓▓▓████▓▓██▓▓▓▓▓▓▒▒                                  ▒▒▓▓██▒▒                                \r\n"
+						+ "                        ▓▓                            ██▓▓██▓▓▓▓▒▒  ████▓▓████▒▒▓▓▒▒▓▓▓▓██▓▓████▓▓▓▓▓▓▓▓    ▒▒                                ▓▓▓▓                                \r\n"
+						+ "                        ▓▓                            ▓▓▓▓▓▓▓▓▓▓    ░░▓▓██▓▓▓▓▓▓▓▓▓▓▓▓██████▓▓████▓▓▓▓██    ██                                  ▒▒░░                              \r\n"
+						+ "                        ░░                            ▓▓██▓▓▓▓▓▓░░    ▓▓▓▓▓▓▓▓██▓▓▓▓██▓▓▓▓██████▓▓▒▒▓▓▓▓░░░░▓▓                                    ▓▓                              \r\n"
+						+ "                                              ░░      ▓▓██▓▓██▓▓▓▓    ░░██▓▓▓▓▓▓▓▓▓▓██▓▓██▓▓████▓▓▒▒▒▒▓▓▒▒▓▓▒▒                                      ░░                            \r\n"
+						+ "                                              ░░░░    ▒▒██▓▓▓▓▓▓██░░▒▒  ██▓▓▓▓░░▓▓██▓▓██▓▓██▓▓▓▓▓▓▓▓▒▒▒▒████                                                                      \r\n"
+						+ "                                                ▒▒▒▒    ▓▓██▓▓▓▓▒▒▓▓▓▓  ▓▓▓▓░░      ▓▓▒▒▓▓▓▓▓▓██▓▓▓▓▒▒▒▒▓▓▓▓                                                                      \r\n"
+						+ "                                                  ▓▓▓▓▒▒▓▓██▓▓▓▓▓▓▓▓▓▓  ░░▒▒          ▓▓██▓▓██▓▓▓▓▓▓▒▒▓▓▓▓▓▓                                                                      \r\n"
+						+ "                                                    ▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▒▒              ░░▓▓▓▓████▓▓██▓▓▓▓▓▓▓▓▓▓                                                                      \r\n"
+						+ "                                                        ▓▓████▒▒▓▓▓▓▒▒              ▒▒▓▓██████▓▓████▓▓▓▓▓▓▓▓                                                                      \r\n"
+						+ "                                                          ████▓▓▓▓▓▓▓▓              ▓▓▓▓██████  ████▓▓▓▓▒▒▓▓░░                                                                    \r\n"
+						+ "                                                          ▓▓▓▓"+ ANSI_RED +"▒▒" + ANSI_RESET +"▓▓▓▓▓▓▓▓          ▒▒▓▓██████  ▒▒  ▓▓▓▓▒▒▒▒▓▓▓▓                                                                    \r\n"
+						+ "                                                          ▓▓▓▓▓▓██▓▓████▒▒        ▓▓▒▒██▓▓▓▓████░░██████▓▓██▓▓                                                                    \r\n"
+						+ "                                                            ▓▓▓▓▓▓  ▒▒▓▓▓▓        ▓▓████▓▓████▓▓  ▓▓██▓▓▓▓▓▓▓▓▒▒                                                                  \r\n"
+						+ "                                                            ░░▓▓██    ▒▒▓▓        ▓▓██▓▓░░████    ██▓▓██▓▓▓▓▓▓▓▓▓▓                                                                \r\n"
+						+ "                                                              ▓▓▓▓      ░░        ▒▒██░░░░▓▓▓▓    ██▓▓██  ▓▓▒▒██▓▓██                                                              \r\n"
+						+ "                                                              ▓▓▓▓                ░░    ▓▓██▒▒  ░░▓▓▓▓██      ██▓▓▓▓                                                              \r\n"
+						+ "                                                                ▓▓                    ▒▒▓▓▓▓▒▒  ░░▓▓▓▓▒▒      ▓▓▓▓▓▓                                                              \r\n"
+						+ "                                                                                  ░░██▓▓▓▓██    ██▓▓▓▓        ▒▒▓▓▓▓▒▒                                                            \r\n"
+						+ "                                                                                ████▓▓▓▓██      ██▓▓▓▓        ▒▒▓▓▓▓▓▓                                                            \r\n"
+						+ "                                                                              ▒▒░░▓▓▒▒██░░      ▓▓▓▓▒▒        ▒▒▓▓▓▓▓▓▓▓                                                          \r\n"
+						+ "                                                                    ██          ▒▒  ▒▒        ▒▒██▓▓          ▓▓▓▓▓▓██▓▓░░                                                        \r\n"
+						+ "                                                                    ▓▓              ▒▒        ██▓▓▒▒        ░░▓▓▓▓▓▓▓▓▓▓▒▒                                                        \r\n"
+						+ "                                                                    ▓▓                      ░░██▓▓░░        ▒▒▓▓██▓▓▒▒▓▓▓▓                                                        \r\n"
+						+ "                                                                    ▓▓                    ▒▒▓▓▓▓▓▓          ▓▓██▒▒▓▓░░▓▓▓▓                                                        \r\n"
+						+ "                                                                    ▓▓░░                  ████▓▓            ▓▓░░  ▓▓    ▓▓                                                        \r\n"
+						+ "                                                                    ▒▒▓▓              ░░  ████▒▒            ▓▓    ▓▓    ▒▒                                                        \r\n"
+						+ "                                                                    ░░▓▓              ▒▒▓▓██▓▓              ▒▒    ▓▓                                                              \r\n"
+						+ "                                                                      ▓▓▓▓░░░░░░  ▒▒▒▒██▓▓██                ░░    ░░                                                              \r\n"
+						+ "                                                                      ░░▓▓▓▓▒▒▓▓▒▒▓▓▓▓██▓▓                                                                                        \r\n"
+						+ "                                                                        ▒▒▓▓▓▓▓▓▓▓▓▓▓▓░░                                                                                          "
+						);
+				System.out.println("|----------|");
+				System.out.println("|HP :\t" + monster.getLife()+"|");
+				System.out.println("|----------|");
+				System.out.println("\n");
+				 
+			 }
+			 
+			 if(premierCaractere == 'S') {
+			 
 			 double num = Math.random()*100;
 			 if(num > 90) {
 																																																				 System.out.print("\n");
 																																																				 System.out.println("                      /´¯/)        |----------|");
-																																																				 System.out.println("                    ,/¯  /         |HP :    "+ Slime.getLife()+ "|");
+																																																				 System.out.println("                    ,/¯  /         |HP :    "+ monster.getLife()+ "|");
 																																																				 System.out.println("                   /    /          |----------|");
 																																																				 System.out.println("             /´¯/'   '/´¯¯`·¸      ");
 																																																				 System.out.println("          /'/   /    /       /¨¯\\ ");
@@ -40,7 +147,7 @@ public class Main{
 			 if(num <= 90) {
 				 System.out.print("\n");
 				 System.out.println("              ░░░░░░░░░░               |----------|");
-				 System.out.println("          ░░░░        ░░░░░░           |HP :\t" + Slime.getLife()+"|");
+				 System.out.println("          ░░░░        ░░░░░░           |HP :\t" + monster.getLife()+"|");
 				 System.out.println("        ░░                  ░░         |----------|");
 				 System.out.println("      ░░                    ░░░░    ");
 				 System.out.println("    ░░                      ░░░░░░  ");
@@ -56,6 +163,7 @@ public class Main{
 				 System.out.print("\n");
 				 System.out.print("\n");
 			 }
+			 }
 			 System.out.print("What do you want to do ?");
 			 System.out.print("\n");
 			 System.out.print("|--------------------------------------------|");
@@ -64,25 +172,37 @@ public class Main{
 			 System.out.print("\n");
 			 System.out.print("|--------------------------------------------|");
 			 System.out.print("\n");
+			 System.out.print("Hero HP : " + Hero1.getLife());
+			 System.out.print("\n");
 			 
 			 Scanner sc4 = new Scanner(System.in);
 			 String str4 = sc4.nextLine();
 			 
 			 if(str4.equals("Attack")) {
-				 Slime.setLife(Slime.getLife()- (Hero1.getDommage()));
+				 monster.setLife(monster.getLife()- (Hero1.getDommage()));
+				 System.out.print("\n");
+				 System.out.print("You attack "+ monster.getName() +" and inflict "+ Hero1.getDommage()+" dommage");
+				 System.out.print("\n");
+				 act = true;
 			 }
 			 
 			 if(str4.equals("Flee")) {
 				 break;
 			 }
 			 
+			 if ((!(monster.getLife() < 1)) && act == true) {
+			 System.out.print("\n");
+			 System.out.print("The "+ monster.getName() +" attack you and inflict you "+ monster.getDommage()+" dommage");
+			 System.out.print("\n");
+			 Hero1.setLife(Hero1.getLife() - monster.getDommage());
+			 Thread.sleep(4000);
+			 }
+			 
 		 }// end of while for fight 
-		 
+		 return xp;
 	}
 	
-	private static Entity Hero;
-
-	public static void main(String[] args) {	
+	public static void main(String[] args) throws InterruptedException {	
 		 
 			//*****************************************************************************
 			//**************************     Initialisation     ***************************
@@ -143,12 +263,12 @@ public class Main{
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','D',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
-				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
+				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','S',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','/',},
 				 {'/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/',},
@@ -173,21 +293,20 @@ public class Main{
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','X','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
-				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','F','F','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','F','F','F','F','.','.','X','X','X','.','X','X','X','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','F','F','F','F','X','X','X','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','F','F','F','.','.','.','.','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','F','F','F','X','X','X','X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','F','F','.','.','.','X','X','X','.','X','X','X','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
+				 {'/','.','.','.','.','.','.','.','.','.','.','.','.','X','.','X','.','.','.','.','.','.','.','.','.','.','.','.','.','/',},
 				 {'/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/','/',},
 		 };
 		 
-		 boolean ConstantMap = true;
 		 boolean IsClass = false;
 		 
 		 int xp = 0;
@@ -196,7 +315,7 @@ public class Main{
 		 
 		 Monster[] TabMonster = new Monster[2];
 		 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
-		 TabMonster[1] = new Monster('S', "Slime2", 26, 16, 10, 40, 0);
+		 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50);
 		 Hero Hero1 = new Hero('P',"",28,15,0,0,0);
 		 
 		 
@@ -307,6 +426,18 @@ public class Main{
 //******************************     WHILE     ********************************
 //*****************************************************************************
 		 while (true){
+
+	//*****************************************************************************
+	//******************************     FIGHT     ********************************
+	//*****************************************************************************
+			 for(int i = 0;i < TabMonster.length; i += 1) {
+				 if(TabMonster[i].getPosX() == Hero1.getPosX() && TabMonster[i].getPosY() == Hero1.getPosY()) {
+						 xp = fight(Hero1,TabMonster[i], xp,mapmonster);
+				 }
+			 }
+			 if(xp == -69) {
+				 break;
+			 }
 			 
 	//*****************************************************************************
 	//******************************     LEVEL     ********************************
@@ -314,6 +445,11 @@ public class Main{
 			 
 			 if(xp >= xpreq) {
 				 xp -= xpreq;
+				 xpreq += 10;
+				 level += 1;
+				 Hero1.setLife(Hero1.getLife()+5);
+				 Hero1.setDommage(Hero1.getDommage()+5);
+				 Hero1.setDefense(Hero1.getDefense()+5);
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 System.out.print("Congrats level UP ! Your now level :");
@@ -321,48 +457,37 @@ public class Main{
 				 System.out.print("\n");
 				 System.out.print("+5 HP, +5 Dommage, +5 Defense");
 				 System.out.print("\n");
-				 xpreq += 10;
-				 level += 1;
-				 Hero1.setLife(Hero1.getLife()+5);
-				 Hero1.setDommage(Hero1.getDommage()+5);
-				 Hero1.setDefense(Hero1.getDefense()+5);
 				 
 			 }
 			 
-	//*****************************************************************************
-	//******************************     FIGHT     ********************************
-	//*****************************************************************************
-			 for(int i = 0;i < TabMonster.length; i += 1) {
-				 if(TabMonster[i].getPosX() == Hero1.getPosX() && TabMonster[i].getPosY() == Hero1.getPosY()) {
-					 String nom = TabMonster[i].getName();  
-					 char premierCaractere = nom.charAt(0);
-					 if(premierCaractere == 'S') {
-						 fight(Hero1,TabMonster[i], xp,mapmonster);
-					 }
-				 }
-			 }
 			 
 	//*****************************************************************************
-	//*******************************     MAP     *********************************
+	//****************************     MAPCONST     *******************************
 	//*****************************************************************************	
 			 
-			 if (ConstantMap == true) {
-				 for(int i = 0;i < map.length; i += 1) {
-					 for(int k = 0;k < map[i].length; k += 1) {
-						 if (mapentity[i][k] != ' ') {
-							 System.out.print(mapentity[i][k]);
+			 for(int i = 0;i < map.length; i += 1) {
+				 for(int k = 0;k < map[i].length; k += 1) {
+					 if (mapentity[i][k] != ' ' && mapentity[i][k] != '/') {
+						 System.out.print(ANSI_YELLOW + mapentity[i][k] + ANSI_RESET);
+					 }
+					 else if(mapmonster[i][k] != ' ' && mapmonster[i][k] != '/' ) {
+						 System.out.print(ANSI_RED + mapmonster[i][k] + ANSI_RESET);
+					 }
+					 else {
+						 if (mapentity[i][k] == '/') {
+								 System.out.print(ANSI_PURPLE + map[i][k] + ANSI_RESET);
 						 }
-						 else if(mapmonster[i][k] != ' ') {
-							 System.out.print(mapmonster[i][k]);
+						 else if(map[i][k] == 'F') {
+							 System.out.print(ANSI_GREEN + map[i][k] + ANSI_RESET);
 						 }
 						 else {
 							 System.out.print(map[i][k]);
 						 }
 					 }
-					 System.out.print("\n");
 				 }
+				 System.out.print("\n");
 			 }
-			 
+		 
 	//*****************************************************************************
 	//******************************     INPUT     ********************************
 	//*****************************************************************************
@@ -385,130 +510,32 @@ public class Main{
 	    	//*****************************************************************************
 	    	//*****************************     LEAVE     *********************************
 	    	//*****************************************************************************	
-	        if (str.equals("constant map on")){
-	        	ConstantMap = true;
-	        }
-	        if (str.equals("constant map off")){
-	        	ConstantMap = false;
-	        }
-	        
-	    	//*****************************************************************************
-	    	//*******************************     MAP     *********************************
-	    	//*****************************************************************************	
+
 	        if (str.equals("leave")){
 	        	System.out.println("fin de la partie");
 	        	break;
 	        }
 	        
+	        
+	    	//*****************************************************************************
+	    	//*******************************     MAP     *********************************
+	    	//*****************************************************************************	
+
 	        if (str.equals("map info")){
 	        	System.out.println("/ = fin de carte");
 	        	System.out.println("X = mur");
 	        	System.out.println("P = personnage");
 	        	System.out.println("S = Slime (Monstre)");
 	        }
-	        
-			if (str.equals("show map") || str.equals("showmap") || str.equals("map") || str.equals("MAP")|| str.equals("Map") ){
-				
-				 for(int i = 0;i < map.length; i += 1) {
-					 for(int k = 0;k < map[i].length; k += 1) {
-						 if (mapentity[i][k] != ' ') {
-							 System.out.print(mapentity[i][k]);
-						 }
-						 else if(mapmonster[i][k] != ' ') {
-							 System.out.print(mapmonster[i][k]);
-						 }
-						 else {
-							 System.out.print(map[i][k]);
-						 }
-					 }
-					 System.out.print("\n");
-				 }
-			}
-			
-			
+
 	    	//*****************************************************************************
 	    	//******************************     MOOVE     ********************************
 	    	//*****************************************************************************
-        	
-	    	//*****************************************************************************
-	    	//********************************     UP     *********************************
-	    	//*****************************************************************************
-        	if (str.equals("Up") || str.equals("uP") || str.equals("up") || str.equals("UP"))  {
-        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
-        			System.out.print("\n");
-        			System.out.print("A wall block your way");
-        			System.out.print("\n");}
-        		else {
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-	        		Hero1.setPosY(Hero1.getPosY() - 1 );
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-        	}
-        	
-	    	//*****************************************************************************
-	    	//*******************************     DOWN     ********************************
-	    	//*****************************************************************************
-        	if (str.equals("Down") || str.equals("down") || str.equals("DOWN") || str.equals("DOwn")) {
-        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
-        			System.out.print("\n");
-        			System.out.print("A wall block your way");
-        			System.out.print("\n");}
-        		else {
-        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-        		Hero1.setPosY(Hero1.getPosY() + 1 );
-        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-        		
-        	}
-        	
-        	
-	    	//*****************************************************************************
-	    	//******************************     RIGHT     ********************************
-	    	//*****************************************************************************
-        	if (str.equals("Right") || str.equals("right") || str.equals("RIGHT") || str.equals("RIght")) {
-        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
-        			System.out.print("\n");
-        			System.out.print("A wall block your way");
-        			System.out.print("\n");}
-        		else {
-        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-        		Hero1.setPosX(Hero1.getPosX() + 1 );
-        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-        	}
-        	
-        	
-	    	//*****************************************************************************
-	    	//*******************************     LEFT     ********************************
-	    	//*****************************************************************************
-        	if (str.equals("Left") || str.equals("left") || str.equals("LEFT") || str.equals("LEft") ) {
-        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
-        			System.out.print("\n");
-        			System.out.print("A wall block your way");
-        			System.out.print("\n");}
-        		else {
-        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-        		Hero1.setPosX(Hero1.getPosX() - 1 );
-        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-        	}
-        	
-	    	//*****************************************************************************
-	    	//******************************     ELSE     *********************************
-	    	//*****************************************************************************
-			if (str.equals("move")) {
-	        	System.out.println("Where do you want to go ?");
-	        	System.out.println("Up");
-	        	System.out.println("Down");
-	        	System.out.println("Right");
-	        	System.out.println("Left");
-	        	System.out.println("cancel (return to menu of choose)");
-				Scanner sc3 = new Scanner(System.in);
-		        String str3 = sc.nextLine();
-		        
-	        	if (str3.equals("cancel")){break;}
-	        	if (str.equals("cancel")){break;}
 	        	
 		    	//*****************************************************************************
 		    	//********************************     UP     *********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Up") || str3.equals("uP") || str3.equals("up") || str3.equals("UP"))  {
+	        	if (str.equals("Up") || str.equals("uP") || str.equals("up") || str.equals("UP"))  {
 	        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
@@ -522,50 +549,125 @@ public class Main{
 		    	//*****************************************************************************
 		    	//*******************************     DOWN     ********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Down") || str3.equals("down") || str3.equals("DOWN") || str3.equals("DOwn")) {
+	        	if (str.equals("Down") || str.equals("down") || str.equals("DOWN") || str.equals("DOwn")) {
 	        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
 	        			System.out.print("\n");}
 	        		else {
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-		        		Hero1.setPosY(Hero1.getPosY() + 1 );
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+	        		Hero1.setPosY(Hero1.getPosY() + 1 );
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+	        		
 	        	}
+	        	
 	        	
 		    	//*****************************************************************************
 		    	//******************************     RIGHT     ********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Right") || str3.equals("right") || str3.equals("RIGHT") || str3.equals("RIght")) {
+	        	if (str.equals("Right") || str.equals("right") || str.equals("RIGHT") || str.equals("RIght")) {
 	        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
 	        			System.out.print("\n");}
-		        		else {
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-		        		Hero1.setPosX(Hero1.getPosX() + 1 );
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+	        		else {
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+	        		Hero1.setPosX(Hero1.getPosX() + 1 );
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
 	        	}
+	        	
 	        	
 		    	//*****************************************************************************
 		    	//*******************************     LEFT     ********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Left") || str3.equals("left") || str3.equals("LEFT") || str3.equals("LEft") ) {
+	        	if (str.equals("Left") || str.equals("left") || str.equals("LEFT") || str.equals("LEft") ) {
 	        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
 	        			System.out.print("\n");}
 	        		else {
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-		        		Hero1.setPosX(Hero1.getPosX() - 1 );
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+	        		Hero1.setPosX(Hero1.getPosX() - 1 );
+	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
 	        	}
 	        	
-			
-			}//end if move
+		    	//*****************************************************************************
+		    	//******************************     ELSE     *********************************
+		    	//*****************************************************************************
+				if (str.equals("move")) {
+		        	System.out.println("Where do you want to go ?");
+		        	System.out.println("Up");
+		        	System.out.println("Down");
+		        	System.out.println("Right");
+		        	System.out.println("Left");
+		        	System.out.println("cancel (return to menu of choose)");
+					Scanner sc3 = new Scanner(System.in);
+			        String str3 = sc.nextLine();
+			        
+		        	if (str3.equals("cancel")){break;}
+		        	if (str.equals("cancel")){break;}
+		        	
+			    	//*****************************************************************************
+			    	//********************************     UP     *********************************
+			    	//*****************************************************************************
+		        	if (str3.equals("Up") || str3.equals("uP") || str3.equals("up") || str3.equals("UP"))  {
+		        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
+		        			System.out.print("\n");
+		        			System.out.print("A wall block your way");
+		        			System.out.print("\n");}
+		        		else {
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+			        		Hero1.setPosY(Hero1.getPosY() - 1 );
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+		        	}
+		        	
+			    	//*****************************************************************************
+			    	//*******************************     DOWN     ********************************
+			    	//*****************************************************************************
+		        	if (str3.equals("Down") || str3.equals("down") || str3.equals("DOWN") || str3.equals("DOwn")) {
+		        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
+		        			System.out.print("\n");
+		        			System.out.print("A wall block your way");
+		        			System.out.print("\n");}
+		        		else {
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+			        		Hero1.setPosY(Hero1.getPosY() + 1 );
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+		        	}
+		        	
+			    	//*****************************************************************************
+			    	//******************************     RIGHT     ********************************
+			    	//*****************************************************************************
+		        	if (str3.equals("Right") || str3.equals("right") || str3.equals("RIGHT") || str3.equals("RIght")) {
+		        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
+		        			System.out.print("\n");
+		        			System.out.print("A wall block your way");
+		        			System.out.print("\n");}
+			        		else {
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+			        		Hero1.setPosX(Hero1.getPosX() + 1 );
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+		        	}
+		        	
+			    	//*****************************************************************************
+			    	//*******************************     LEFT     ********************************
+			    	//*****************************************************************************
+		        	if (str3.equals("Left") || str3.equals("left") || str3.equals("LEFT") || str3.equals("LEft") ) {
+		        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
+		        			System.out.print("\n");
+		        			System.out.print("A wall block your way");
+		        			System.out.print("\n");}
+		        		else {
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
+			        		Hero1.setPosX(Hero1.getPosX() - 1 );
+			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
+		        	}
+		        	
+				
+				}//end if move
 			
 	 	}// end while
 		 
 	}// =end main
-	 
+
 }//end Main
