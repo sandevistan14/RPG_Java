@@ -18,9 +18,7 @@ public class inventaire{
 	private int nbpotion;
 	
 	
-	public inventaire(Arme[] invArme, int nbarme, boot[] invboot, int nbboot, Legging[] invLegging, int nblegging,
-			ChestPlate[] invChestPlate, int nbChestPlate, Helmet[] invHelmet, int nbHelmet, artefact[] invArtefact,
-			int nbArtefact, Potion[] invPotion, int nbpotion) {
+	public inventaire(Arme[] invArme, int nbarme, artefact[] invArtefact, int nbArtefact, Potion[] invPotion, int nbpotion) {
 		this.InvArme = invArme = new objet.Arme[2];
 		this.nbarme = nbarme = 0;
 
@@ -37,11 +35,11 @@ public class inventaire{
 		System.out.println("|------------------------|------------------------|------------------------|");
 		System.out.println("|          Arme :        |          Artefact :    |          Potion :      |");
 		System.out.println("|------------------------|------------------------|------------------------|");
-		System.out.println("|    Emplacement 1 :     |      Emplacement 1 :   |      Emplacement 1 :   |");
-		System.out.println("|\t   "+ InvArme[0]+"  \t |\t"+ InvArtefact[0]+ "\t|\t  "+ InvPotion[0]+   "|");
+		System.out.println("|      Emplacement 1 :   |      Emplacement 1 :   |      Emplacement 1 :   |");
+		System.out.println("|\t   "+ InvArme[0]+" \t |\t"+ InvArtefact[0]+ "\t|\t  "+ InvPotion[0]+   "|");
 		System.out.println("|                        |\t                      |                        |");
 		System.out.println("|      Emplacement 2 :   |      Emplacement 2 :   |      Emplacement 2 :   |");
-		System.out.println("|\t   "+ InvArme[1]+"   \t |\t   "+ InvArtefact[1]+"\t|\t   "+ InvPotion[1]+ "|");
+		System.out.println("|\t   "+ InvArme[1]+"   \t |\t   "+ InvArtefact[1]+"\t|\t"+ InvPotion[1]+ "|");
 		System.out.println("|                        |                        |                        |");
 		System.out.println("|                        |      Emplacement 3 :   |      Emplacement 3 :   |");
 		System.out.println("|                        |\t   "+ InvArtefact[2]+"|\t   "+ InvPotion[2]+  "|");
