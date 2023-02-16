@@ -1,14 +1,15 @@
 package jdr;
 import java.util.Scanner;
+import entity.inventaire;
 import entity.Hero;
 import entity.Monster;
+import objet.Arme;
+import objet.Potion;
+import objet.artefact;
 
 public class Main{
 	
     public static final String ANSI_RESET = "\u001B[0m";
-    
-    // Declaring the color
-    // Custom declaration
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -75,7 +76,7 @@ public class Main{
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 System.out.print("\n");
-				 System.out.print("                   Game over");
+				 System.out.print("                    Game over");
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 System.out.print("\n");
@@ -383,14 +384,31 @@ public class Main{
 		 
 		 boolean IsClass = false;
 		 
+		 inventaire inventory = new inventaire(null, 0, null, 0, null, 0, null, 0, null, 0, null, 0, null, 0);
+		 
 		 int xp = 0;
 		 int xpreq = 40;
 		 int level = 1;
 		 
+		 Arme[] TabArme = new Arme[5];
+			TabArme[0] = new Arme("Epeelongue","lame",20,0);
+			TabArme[1] = new Arme("Arc","Arc",15,0);
+			TabArme[2] = new Arme("Massue","lourd",40,0);
+			TabArme[3] = new Arme("baguette","magie",30,0);
+			TabArme[4] = new Arme("poignard","lame",30,15);
+			
+		artefact[] TabArtefact = new artefact[1];
+			TabArtefact[0] = new artefact("talissement de fortification","artefact","Dommage",20);
+			
+		Potion[] TabPotion = new Potion[1];
+			TabPotion[0] = new Potion("Potion de soin","Soin",40);
+		
+		 
 		 Monster[] TabMonster = new Monster[3];
-		 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
-		 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50);
-		 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200);
+			 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
+			 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50);
+			 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200);
+			 
 		 Hero Hero1 = new Hero('P',"",28,15,0,0,0);
 		 
 		 
@@ -522,15 +540,15 @@ public class Main{
 				 xp -= xpreq;
 				 xpreq += 10;
 				 level += 1;
-				 Hero1.setLife(Hero1.getLife()+5);
-				 Hero1.setDommage(Hero1.getDommage()+5);
+				 Hero1.setLife(Hero1.getLife()+20);
+				 Hero1.setDommage(Hero1.getDommage()+10);
 				 Hero1.setDefense(Hero1.getDefense()+5);
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 System.out.print("Congrats level UP ! Your now level :");
 				 System.out.print(level);
 				 System.out.print("\n");
-				 System.out.print("+5 HP, +5 Dommage, +5 Defense");
+				 System.out.print("+20 HP, +10 Dommage, +5 Defense");
 				 System.out.print("\n");
 				 
 			 }
@@ -590,6 +608,16 @@ public class Main{
 	        	System.out.println("fin de la partie");
 	        	break;
 	        }
+	        
+	        
+	    	//*****************************************************************************
+	    	//**************************     INVENTORY     ********************************
+	    	//*****************************************************************************	
+
+	        if (str.equals("inventory")){
+	        	inventory.OpenInventory();
+	        }
+	        
 	        
 	        
 	    	//*****************************************************************************
