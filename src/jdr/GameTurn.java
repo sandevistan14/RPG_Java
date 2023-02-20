@@ -206,16 +206,19 @@ public class GameTurn{
 						 System.out.print(AsciiArt.ANSI_YELLOW + mapentity[i][k] + AsciiArt.ANSI_RESET);
 					 }
 					 else if(mapmonster[i][k] != ' ' && mapmonster[i][k] != '/' ) {
-						 System.out.print(AsciiArt.ANSI_RED + mapmonster[i][k] + AsciiArt.ANSI_RESET);
+						 System.out.print( AsciiArt.ANSI_REDBACKGROUND  + mapmonster[i][k] + AsciiArt.ANSI_RESET);
 					 }
 					 else {
 						 if (mapentity[i][k] == '/') {
 								 System.out.print(AsciiArt.ANSI_PURPLE + map[i][k] + AsciiArt.ANSI_RESET);
 						 }
 						 else if(map[i][k] == 'F') {
-							 System.out.print(AsciiArt.ANSI_GREEN + map[i][k] + AsciiArt.ANSI_RESET);
+							 System.out.print(AsciiArt.ANSI_GREEN  + AsciiArt.ANSI_GREENBACKGROUND + map[i][k] + AsciiArt.ANSI_RESET);
 						 }
-						 else {
+						 else if(map[i][k] == 'X'){
+							 System.out.print(AsciiArt.ANSI_WHITEBACKGROUND +  map[i][k] + AsciiArt.ANSI_RESET);
+						 }
+						 else{
 							 System.out.print(map[i][k]);
 						 }
 					 }

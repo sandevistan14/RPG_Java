@@ -10,7 +10,9 @@ public class AsciiArt{
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_PURPLE = "\u001B[35m";
-	
+    public static final String ANSI_GREENBACKGROUND = "\u001B[42m"; 
+    public static final String ANSI_WHITEBACKGROUND = "\u001B[47m"; 
+    public static final String ANSI_REDBACKGROUND = "\u001B[41m";   
 	public static void PrintDead(){
 		System.out.print("\n");
 		 System.out.print("\n");
@@ -50,6 +52,7 @@ public class AsciiArt{
 		 System.out.print("\n");
 	}
 	public static void PrintMotherOfDeath(Monster monster) {
+		System.out.println("\n");
 		System.out.println(
 				  "                                           .\"\"--..__\r\n"
 				 + "                     _                     []       ``-.._\r\n"
