@@ -5,7 +5,7 @@ import entity.Hero;
 import entity.Monster;
 import objet.Arme;
 import objet.Potion;
-import objet.artefact;
+import objet.Artefact;
 
 public class GameTurn{
 	
@@ -24,46 +24,66 @@ public class GameTurn{
 		 
 		 //level system
 		 int xp = 0;
+		 int xpfight = 0;
 		 int xpreq = 40;
 		 int level = 1;
-		 
+		 Object[] Inv = new Object[3];
+			 Inv[0] = new Arme("Epeelongue","lame",20,0);
+			 Inv[1] = new Arme("Arc","Arc",15,0);
+			 Inv[2] = new Artefact("talissement de fortification","artefact","Dommage",20);
+			 Inv[3] = new Potion("Potion de soin","Soin",40);
 		 //weapon
-		 Arme[] TabArme = new Arme[5];
-			TabArme[0] = new Arme("Epeelongue","lame",20,0);
-			TabArme[1] = new Arme("Arc","Arc",15,0);
-			TabArme[2] = new Arme("Massue","lourd",40,0);
-			TabArme[3] = new Arme("baguette","magie",30,0);
-			TabArme[4] = new Arme("poignard","lame",30,15);
+		 Arme[] InvArme = new Arme[2];
+//			 InvArme[0] = new Arme("Epeelongue","lame",20,0);
+//			 InvArme[1] = new Arme("Arc","Arc",15,0);
+//			 InvArme[2] = new Arme("Massue","lourd",40,0);
+//			 InvArme[3] = new Arme("baguette","magie",30,0);
+//			 InvArme[4] = new Arme("poignard","lame",30,15);
 			
 		//Artefact
-		artefact[] TabArtefact = new artefact[1];
-			TabArtefact[0] = new artefact("talissement de fortification","artefact","Dommage",20);
+		Artefact[] InvArtefact = new Artefact[3];
+//			InvArtefact[0] = new Artefact("talissement de fortification","artefact","Dommage",20);
 		
 		//Potion
-		Potion[] TabPotion = new Potion[1];
-			TabPotion[0] = new Potion("Potion de soin","Soin",40);
+		Potion[] InvPotion = new Potion[5];
+//			InvPotion[0] = new Potion("Potion de soin","Soin",40);
 		
-		 
+			Monster[] TabMonsterForest = new Monster[5];
+				int MonsterInForest = 0;
+				TabMonsterForest[0] = new Monster('W', "WolfF1", 0, 0, 20, 80, 0,20);
+				TabMonsterForest[1] = new Monster('S', "SlimeF1", 0, 0, 10, 40, 0,10);
+				TabMonsterForest[2] = new Monster('W', "WolfF2", 0, 0, 20, 80, 0,20);
+				TabMonsterForest[3] = new Monster('S', "SlimeF2", 0, 0, 10, 40, 0,10);
+				TabMonsterForest[4] = new Monster('W', "WolfF3", 0, 0, 20, 80, 0,20);
+
+			 
 		 Monster[] TabMonster = new Monster[4];
-			 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0);
-			 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50);
-			 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200);
-			 TabMonster[3] = new Monster('W', "Wolf", 27, 15, 20, 80, 10);
+			 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0,10);
+			 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50,100);
+			 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200,999999);
+			 TabMonster[3] = new Monster('W', "Wolf", 27, 15, 20, 80, 10,20);
 			 
 		 Hero Hero1 = new Hero('P',"",28,15,0,0,0);
 		 
 		 //inventory
 		 inventaire inventory = new inventaire(null, 0, null, 0, null, 0);
 		 
+		//Flee
+		 int ReturnX = Hero1.getPosX();
+		 int ReturnY = Hero1.getPosY();
+		 
 		//*****************************************************************************
 		//****************************     Difficulty     *****************************
 		//*****************************************************************************	
 		 	boolean DIfficulty = false;
+		 	boolean godmod = false;
 	        while (DIfficulty == false) {
 	        	
 				Scanner scan4 = new Scanner(System.in);
 		        System.out.print("\n");
 		        System.out.print("choisisez le niveau de difficulté : ");
+		        System.out.print("\n");
+		        System.out.print("- godmod (more than easy)");
 		        System.out.print("\n");
 		        System.out.print("- Easy");
 		        System.out.print("\n");
@@ -73,13 +93,17 @@ public class GameTurn{
 		        System.out.print("\n");
 		        String Diff = scan4.nextLine();
 		        
-		        if (Diff.equals("Easy")) {
+		        if (Diff.equals("godmod")) {
+		        	godmod = true;
 		        	DIfficulty = true;
 		        }
-		        if (Diff.equals("Normal")) {
+		        else if (Diff.equals("Easy")) {
 		        	DIfficulty = true;
 		        }
-		        if (Diff.equals("Hard")) {
+		        else if (Diff.equals("Normal")) {
+		        	DIfficulty = true;
+		        }
+		        else if (Diff.equals("Hard")) {
 		        	DIfficulty = true;
 		        }
 		        
@@ -165,20 +189,42 @@ public class GameTurn{
 	//*****************************************************************************
 	//******************************     FIGHT     ********************************
 	//*****************************************************************************
-			 for(int i = 0;i < TabMonster.length; i += 1) {
-				 if(TabMonster[i].getPosX() == Hero1.getPosX() && TabMonster[i].getPosY() == Hero1.getPosY()) {
-						 xp = Fight.fight(Hero1,TabMonster[i], xp,mapmonster);
+			 if (MonsterInForest < 6 && map[Hero1.getPosY()][Hero1.getPosX()-1] == 'F') {
+				 double rand = Math.random()*100;
+				 if(rand >= 80) {
+					 xpfight = -50;
+					 xpfight = Fight.fight(Hero1,TabMonsterForest[MonsterInForest], xpfight ,mapmonster);
+					 MonsterInForest += 1;
 				 }
 			 }
-			 if(xp == -69) {
+			 for(int i = 0;i < TabMonster.length; i += 1) {
+				 if(TabMonster[i].getPosX() == Hero1.getPosX() && TabMonster[i].getPosY() == Hero1.getPosY()) {
+					 xpfight = Fight.fight(Hero1,TabMonster[i], xpfight ,mapmonster);
+					 if(xpfight == 0) {
+						 mapentity[Hero1.getPosY()][Hero1.getPosX() - 1] = ' ';
+						 Hero1.setPosX(ReturnX);
+						 Hero1.setPosY(ReturnY);
+						 mapentity[Hero1.getPosY()][Hero1.getPosX() - 1] = 'P';
+						 break;
+					 }
+				 }
+			 }
+			 if(xpfight == -69) {
 				 break;
 			 }
+			 if(godmod == true) {
+				 xpfight = 223999;
+				 godmod = false;
+			 }
+			 xp += xpfight;
+			 xpfight = 0;
+
 			 
 	//*****************************************************************************
 	//******************************     LEVEL     ********************************
 	//*****************************************************************************
 			 
-			 if(xp >= xpreq) {
+			 while(xp >= xpreq) {
 				 xp -= xpreq;
 				 xpreq += 10;
 				 level += 1;
@@ -202,7 +248,10 @@ public class GameTurn{
 			 
 			 for(int i = 0;i < map.length; i += 1) {
 				 for(int k = 0;k < map[i].length; k += 1) {
-					 if (mapentity[i][k] != ' ' && mapentity[i][k] != '/') {
+					 if(mapentity[i][k] == 'P' && map[i][k] == 'F') {
+						 System.out.print(AsciiArt.ANSI_GREENBACKGROUND + mapentity[i][k] + AsciiArt.ANSI_RESET);
+					 }
+					 else if (mapentity[i][k] != ' ' && mapentity[i][k] != '/') {
 						 System.out.print(AsciiArt.ANSI_YELLOW + mapentity[i][k] + AsciiArt.ANSI_RESET);
 					 }
 					 else if(mapmonster[i][k] != ' ' && mapmonster[i][k] != '/' ) {
@@ -210,7 +259,7 @@ public class GameTurn{
 					 }
 					 else {
 						 if (mapentity[i][k] == '/') {
-								 System.out.print(AsciiArt.ANSI_PURPLE + map[i][k] + AsciiArt.ANSI_RESET);
+								 System.out.print(AsciiArt.ANSI_PURPLEBACKGROUND + AsciiArt.ANSI_PURPLE + map[i][k] + AsciiArt.ANSI_RESET);
 						 }
 						 else if(map[i][k] == 'F') {
 							 System.out.print(AsciiArt.ANSI_GREEN  + AsciiArt.ANSI_GREENBACKGROUND + map[i][k] + AsciiArt.ANSI_RESET);
@@ -260,7 +309,7 @@ public class GameTurn{
 	    	//*****************************************************************************	
 
 	        if (str.equals("inventory")){
-	        	inventory.OpenInventory();
+	        	inventory.OpenInventory(InvArme,InvArtefact,InvPotion);
 	        }
 	        
 	        
@@ -283,6 +332,15 @@ public class GameTurn{
 		    	//*****************************************************************************
 		    	//********************************     UP     *********************************
 		    	//*****************************************************************************
+	        if((str.equals("Up") || str.equals("uP") || str.equals("up") || str.equals("UP"))
+	        	|| (str.equals("Down") || str.equals("down") || str.equals("DOWN") || str.equals("DOwn"))
+	        	|| (str.equals("Right") || str.equals("right") || str.equals("RIGHT") || str.equals("RIght"))
+	        	|| (str.equals("Left") || str.equals("left") || str.equals("LEFT") || str.equals("LEft"))
+	        	||  (str.equals("move"))){
+	        	
+	        		ReturnX = Hero1.getPosX();
+	        		ReturnY = Hero1.getPosY();
+	        	
 	        	if (str.equals("Up") || str.equals("uP") || str.equals("up") || str.equals("UP"))  {
 	        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
 	        			System.out.print("\n");
@@ -411,8 +469,9 @@ public class GameTurn{
 			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
 		        	}
 		        	
-				
 				}//end if move
+				
+	        }//end of if all move
 			
 	 	}// end while
 		 

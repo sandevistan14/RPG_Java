@@ -8,18 +8,22 @@ import entity.Monster;
 public class Fight{
 	
 	public static int fight(Hero Hero1,Monster monster,int xp,char[][] mapmonster) throws InterruptedException {
-		 String nom = monster.getName();  
+		 String nom = monster.getName(); 
+		 boolean Flee = true;
 		 char premierCaractere = nom.charAt(0);
+		 if(xp == -50) {
+			 Flee = false;
+		 }
 		 if(premierCaractere == 'S') {
 			 System.out.print("Oh no ! a slime bloc your way !");
 		 }
-		 if(premierCaractere == 'D') {
+		 else if(premierCaractere == 'D') {
 			 System.out.print("Oh no ! a Dragon bloc your way !");
 		 }
-		 if(premierCaractere == 'M') {
+		 else if(premierCaractere == 'M') {
 			 System.out.print("You found the secret boss the mother of death");
 		 }
-		 if(premierCaractere == 'W') {
+		 else if(premierCaractere == 'W') {
 			 System.out.print("Oh no ! An angry wolf block you way !");
 		 }
 		 while(true) {
@@ -28,11 +32,11 @@ public class Fight{
 				 System.out.print("\n");
 				 System.out.print("Congrats you kill the monster !");
 				 System.out.print("\n");
-				 System.out.print("You earn 20xp !");
+				 System.out.print("You earn "+ monster.getXp()+" xp !");
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 Thread.sleep(4000);
-				 xp += 20;
+				 xp = monster.getXp();
 				 mapmonster[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
 				 break;
 			 }
@@ -49,7 +53,7 @@ public class Fight{
 				 if(num > 90) {AsciiArt.PrintMiddleFinger(monster);}
 				 if(num <= 90) {AsciiArt.PrintSlime(monster);}}
 			 
-			 AsciiArt.PrintAction(Hero1);//show possible actions
+			 AsciiArt.PrintAction(Hero1,Flee);//show possible actions
 			 
 			 
 			 Scanner sc4 = new Scanner(System.in);
@@ -63,7 +67,8 @@ public class Fight{
 				 act = true;
 			 }
 			 
-			 if(str4.equals("Flee")) {
+			 if(str4.equals("Flee") && Flee == true) {
+				 xp = 0;
 				 break;
 			 }
 			 

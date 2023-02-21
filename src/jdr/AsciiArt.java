@@ -11,8 +11,10 @@ public class AsciiArt{
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_GREENBACKGROUND = "\u001B[42m"; 
-    public static final String ANSI_WHITEBACKGROUND = "\u001B[47m"; 
-    public static final String ANSI_REDBACKGROUND = "\u001B[41m";   
+    public static final String ANSI_WHITEBACKGROUND = "\u001B[47m";
+    public static final String ANSI_REDBACKGROUND = "\u001B[41m";  
+    public static final String ANSI_PURPLEBACKGROUND = "\u001B[45m";
+    
 	public static void PrintDead(){
 		System.out.print("\n");
 		 System.out.print("\n");
@@ -167,7 +169,7 @@ public class AsciiArt{
 	}
 	
 	public static void PrintMiddleFinger(Monster monster) {
-		 System.out.print("Oh no ! the slime provoke you !");
+		 System.out.println("Oh no ! the slime provoke you !");
 		 System.out.print("\n");
 		 System.out.println("                      /´¯/)        |----------|");
 		 System.out.println("                    ,/¯  /         |HP :    "+ monster.getLife()+ "|");
@@ -201,7 +203,8 @@ public class AsciiArt{
 		 System.out.print("\n");
 	}
 	
-	public static void PrintAction(Hero Hero1) {
+	public static void PrintAction(Hero Hero1, boolean Flee) {
+		if(Flee == true) {
 		 System.out.print("What do you want to do ?");
 		 System.out.print("\n");
 		 System.out.print("|--------------------------------------------|");
@@ -211,7 +214,18 @@ public class AsciiArt{
 		 System.out.print("|--------------------------------------------|");
 		 System.out.print("\n");
 		 System.out.print("Hero HP : " + Hero1.getLife());
-		 System.out.print("\n");
+		 System.out.print("\n");}
+		else{
+			 System.out.print("What do you want to do ?");
+			 System.out.print("\n");
+			 System.out.print("|-----------------------------|");
+			 System.out.print("\n");
+			 System.out.print("|     Attack    |     Inv     |");
+			 System.out.print("\n");
+			 System.out.print("|-----------------------------|");
+			 System.out.print("\n");
+			 System.out.print("Hero HP : " + Hero1.getLife());
+			 System.out.print("\n");}
 	}
 	
 	public static void PrintWolf(Monster monster) {

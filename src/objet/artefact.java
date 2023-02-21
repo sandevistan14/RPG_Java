@@ -1,9 +1,9 @@
 package objet;
 
-public class artefact extends Objet{
+public class Artefact extends Objet{
 	String BonusName;
 	int Bonus;
-	public artefact(String name, String type, String bonusName, int bonus) {
+	public Artefact(String name, String type, String bonusName, int bonus) {
 		super(name, type);
 		BonusName = bonusName;
 		Bonus = bonus;
