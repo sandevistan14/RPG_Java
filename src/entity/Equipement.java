@@ -1,10 +1,13 @@
 package entity;
 
+import java.util.Scanner;
+
 import Armor.ChestPlate;
 import Armor.Helmet;
 import Armor.Legging;
 import Armor.boot;
 import objet.Arme;
+import objet.Objet;
 
 public class Equipement{
 
@@ -35,6 +38,7 @@ public class Equipement{
 		this.nbChestPlate = nbChestPlate = 0;
 		this.invHelmet = invHelmet = new Armor.Helmet[1];
 		this.nbHelmet = nbHelmet = 0;
-	}
+	}	
+	
 	
 }

@@ -1,17 +1,18 @@
 package Armor;
 
-public class Armor{
+import objet.Objet;
+
+public class Armor extends Objet{
 	
 	int bonusLife;
 	int bonusDefense;
 	int ReturnDommage;
-	
-	
-	public Armor(int bonusLife, int bonusDefense, int returnDommage) {
-		super();
+
+	public Armor(String name, String type, int bonusLife, int bonusDefense, int returnDommage) {
+		super(name, type);
 		this.bonusLife = bonusLife;
 		this.bonusDefense = bonusDefense;
-		this.ReturnDommage = returnDommage;
+		ReturnDommage = returnDommage;
 	}
 
 
