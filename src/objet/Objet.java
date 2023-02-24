@@ -1,6 +1,10 @@
 package objet;
 
 public class Objet{
+	
+
+
+
 	String Name;
 	String Type;
 	public Objet(String name, String type) {
@@ -20,4 +24,12 @@ public class Objet{
 	public void setType(String type) {
 		Type = type;
 	}
+	
+	public static Objet drop(Objet[] inv) {
+		int num = (int) (Math.random()*100);
+		Objet obj = inv[num%inv.length];
+		return obj;
+	}
+	
 }
+

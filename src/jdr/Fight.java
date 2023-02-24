@@ -77,7 +77,7 @@ public class Fight{
 			 System.out.print("The "+ monster.getName() +" attack you and inflict you "+ monster.getDommage()+" dommages");
 			 System.out.print("\n");
 			 Hero1.setLife(Hero1.getLife() - monster.getDommage());
-			 Thread.sleep(4000);
+			 Thread.sleep(2000);
 			 }
 			 
 		 }// end of while for fight 

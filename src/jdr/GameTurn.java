@@ -13,6 +13,8 @@ import entity.Monster;
 import objet.Arme;
 import objet.Potion;
 import objet.Artefact;
+import objet.Objet;
+
 
 public class GameTurn{
 	
@@ -35,30 +37,29 @@ public class GameTurn{
 		 int xpreq = 40;
 		 int level = 1;
 		 
-		 //object
-		 Object[] Inv = new Object[11];
-			 Inv[0] = new Arme("Epeelongue","lame",20,0);
-			 Inv[1] = new Arme("Arc","Arc",15,0);
-			 Inv[2] = new Arme("Massue","lourd",40,0);
-			 Inv[3] = new Arme("baguette","magie",30,0);
-			 Inv[4] = new Arme("poignard","lame",30,15);
-			 Inv[5] = new Artefact("talissement de fortification","artefact","Dommage",20);
-			 Inv[6] = new Potion("Potion de soin","Soin",40);
+		 //objet
+		 Objet[] Inv = new Objet[11];
+			 Inv[0] = new Arme("Epeelongue","Arme",20,0);
+			 Inv[1] = new Arme("Arc","Arme",15,0);
+			 Inv[2] = new Arme("Massue","Arme",40,0);
+			 Inv[3] = new Arme("baguette","Arme",30,0);
+			 Inv[4] = new Arme("poignard","Arme",30,15);
+			 Inv[5] = new Artefact("talissement de fortification","Artefact","Dommage",20);
+			 Inv[6] = new Potion("Potion de soin","Potion",40);
 			 Inv[7] = new boot("StandarBoot","Boot",5, 2, 0);
 			 Inv[8] = new Helmet("StandarHelmet", "Helmet", 5, 2, 0);
 			 Inv[9] = new ChestPlate("StandarChestPlate","ChestPlate", 5, 2, 0);
 			 Inv[10] = new Legging("StandarLegging", "Legging", 5, 2, 0);
 			 
 		 //weapon
-		 Arme[] InvArme = new Arme[2];
-		 Arme[] EqiArme = new Arme[1];
+		 Objet[] InvArme = new Arme[2];
+		 Objet[] EqiArme = new Arme[1];
 			
 		//Artefact
-		Artefact[] InvArtefact = new Artefact[3];
-		Artefact[] EquiArtefact = new Artefact[1];
+		 Objet[] InvArtefact = new Artefact[3];
 		
 		//Potion
-		Potion[] InvPotion = new Potion[5];
+		 Objet[] InvPotion = new Potion[5];
 		
 			Monster[] TabMonsterForest = new Monster[5];
 				int MonsterInForest = 0;
@@ -197,7 +198,7 @@ public class GameTurn{
 //******************************     WHILE     ********************************
 //*****************************************************************************
 		 while (true){
-
+			 
 	//*****************************************************************************
 	//******************************     FIGHT     ********************************
 	//*****************************************************************************
@@ -223,6 +224,39 @@ public class GameTurn{
 			 }
 			 if(xpfight == -69) {
 				 break;
+			 }
+			 else if(xpfight > 0) {
+				Objet drop = Objet.drop(Inv);
+		        System.out.print("\n");
+		        System.out.print(AsciiArt.ANSI_YELLOW + "il s'emblerait que le monstre est drop un objet : "+  drop.getName() + AsciiArt.ANSI_RESET);
+		        System.out.print("\n");
+		        Thread.sleep(3000);
+		        while(true) {
+					Scanner scan = new Scanner(System.in);
+			        System.out.print("\n");
+			        System.out.print("What do you want to do ?");
+			        System.out.print("\n- Equip \n- Put into the inventory \n- Ignor(will delet the object)");
+			        System.out.print("\n");
+			        String strdrop = scan.nextLine();
+			        if(strdrop.equals("Ignor")) {
+			        	break;
+			        }
+			        else if(strdrop.equals("Put into the inventory")) {
+			        	if(drop.getType().equals("Arme")) {
+				        	InvArme = inventaire.AddIntoInv(InvArme,drop);
+			        	}
+			        	else if(drop.getType().equals("Potion")) {
+			        		InvPotion = inventaire.AddIntoInv(InvPotion,drop);
+			        	}
+			        	else if(drop.getType().equals("Artefact")) {
+				        	InvArtefact = inventaire.AddIntoInv(InvArtefact,drop);
+			        	}
+			        	else {
+					        System.out.println("You can't put this object into your inventory");
+			        	}
+			        }
+		        }
+		        
 			 }
 			 if(godmod == true) {
 				 xpfight = 223999;
@@ -321,21 +355,7 @@ public class GameTurn{
 	    	//*****************************************************************************	
 
 	        if (str.equals("inventory")){
-	        	while(true) {
-	        		inventory.OpenInventory(InvArme,InvArtefact,InvPotion);
-	    			Scanner sc9 = new Scanner(System.in);
-	    	        System.out.print("\n");
-	    	        System.out.println("quel action voulez vous faire :");
-	    	        System.out.println("leave");
-	    	        System.out.print("\n");
-	    	        String str9 = sc9.nextLine();
-	    	        if(str9.equals("equip")) {
-	    	        	
-	    	        }
-	    	        if(str9.equals("leave")) {
-	    	        	break;
-	    	        }
-	        	}
+	        		inventory.OpenInventory(InvArme,EqiArme,InvArtefact,InvPotion);
 	        }
 	        
 	        

@@ -1,7 +1,6 @@
 package entity;
 import java.util.Objects;
 import java.util.Scanner;
-
 import Armor.ChestPlate;
 import Armor.Helmet;
 import Armor.Legging;
@@ -33,7 +32,7 @@ public class inventaire{
 		this.nbpotion = nbpotion = 0;
 	}
 	
-	public Objet[] EquipObjet(Objet[] EqObjet, Objet Objet ) {
+	public Objet[] EquipObjet(Objet[] EqObjet, Objet Objet,int pos) {
 		while(true) {
 			System.out.print("\n");
 			System.out.println("voulez vous remplacez " + EqObjet[1] + " par " + Objet);
@@ -44,16 +43,60 @@ public class inventaire{
 			String str = scan.nextLine();
 			
 			if(str.equals("yes")) {
-				EqObjet[0] = Objet;
+				EqObjet[pos] = Objet;
 				return EqObjet;
 			}
 		}
 	}
 	
-	public void OpenInventory(Arme[] InvArme, Artefact[] InvArtefact, Potion[] InvPotion) {
-		Arme[] TempInvArme = new Arme[2];
-		Artefact[] TempInvArtefact = new Artefact[3];
-		Potion[] TempInvPotion = new Potion[5];
+	public Objet[] AddIntoInv(Objet[] TabObj,Objet obj) {
+		System.out.print("\n");
+		System.out.print("Voulez vous le mettre dans votre inventaire ?");
+		System.out.print("\n");
+		while(true) {
+			Scanner scan4 = new Scanner(System.in);
+			String str4 = scan4.nextLine();
+			if(str4.equals("Yes")) {
+				for(int i = 0;i < TabObj.length; i += 1) {
+					if(Objects.isNull(TabObj[i])) {
+						TabObj[i] = obj;
+					}
+					else if(TabObj[i].getName() == "vide") {
+						TabObj[i] = obj;
+					}
+				}
+				while(true) {
+					System.out.print("\n");
+					System.out.print("Votre inventaire est plein a quel place voulez vous l'equipe ");
+					System.out.println("(Si vous remplacez un objet il sera définitivement supprimer)");
+					System.out.print("\n");
+					for(int i = 0;i < TabObj.length; i += 1) {
+						System.out.print("Place n°" + i+1 + "Nom de l'arme :"+ TabObj[i].getName());
+					}
+					Scanner scan5 = new Scanner(System.in);
+					String str5 = scan5.nextLine();
+					for(int i = 0;i < TabObj.length; i += 1) {
+						if(i+1 == Integer.parseInt(str5)) {
+							TabObj[i] = obj;
+							return TabObj;
+						}
+						
+					}
+					
+				}
+			}
+			if(str4.equals("No")) {
+				return TabObj;
+			}
+		}
+	}
+	
+	
+	
+	public void OpenInventory(Objet[] InvArme, Objet[] EquipWeapon, Objet[] InvArtefact, Objet[] InvPotion) {
+		Objet[] TempInvArme = new Arme[2];
+		Objet[] TempInvArtefact = new Artefact[3];
+		Objet[] TempInvPotion = new Potion[5];
 		
 		while(true) {
 				// check if Arme is null or not and if it's null send empty
@@ -68,11 +111,11 @@ public class inventaire{
 			System.out.println("Inventory :");
 			System.out.print("\n");
 			System.out.println("|------------------------|------------------------|------------------------|");
-			System.out.println("|          Arme :        |          Artefact :    |          Potion :      |");
+			System.out.println("|          Weapon :      |          Artefact :    |          Potion :      |");
 			System.out.println("|------------------------|------------------------|------------------------|");
 			System.out.println("|      Emplacement 1 :   |      Emplacement 1 :   |      Emplacement 1 :   |");
 			System.out.println("|\t   "+ TempInvArme[0].getName()+" \t |\t"+ TempInvArtefact[0].getName()+ "\t|\t  "+ TempInvPotion[0].getName()+   "|");
-			System.out.println("|                        |\t                      |                        |");
+			System.out.println("|                        |                        |                        |");
 			System.out.println("|      Emplacement 2 :   |      Emplacement 2 :   |      Emplacement 2 :   |");
 			System.out.println("|\t   "+ TempInvArme[1].getName()+"   \t |\t   "+ TempInvArtefact[1].getName()+"|\t"+ TempInvPotion[1].getName()+ "  |");
 			System.out.println("|                        |                        |                        |");
@@ -87,17 +130,35 @@ public class inventaire{
 			System.out.println("|                        |                        |                        |");	
 			System.out.println("|------------------------|------------------------|------------------------|");
 			System.out.print("\n");
-			System.out.print("\n");
-			System.out.print("\n");
-			System.out.print("\n");
+			System.out.println("What do you want to do ?");
+			System.out.println("- Leave");
+			System.out.println("- Equip");
 			System.out.print("\n");
 			System.out.print("\n");
 			Scanner scan = new Scanner(System.in);
 			String str = scan.nextLine();
 			
 			if(str.equals("Leave")){break;}
-			
-			
+			if(str.equals("Equip")) {
+				System.out.print("\n");
+				Scanner scan2 = new Scanner(System.in);
+				String str2 = scan2.nextLine();
+				System.out.println("what do yo want to equip ?");
+				System.out.println("- Weapon");
+				if(str2.equals("Weapon")) {
+					while(true) {
+						System.out.println("Whitch weapon do you want to equip ?");
+						System.out.print("\n");
+						Scanner scan3 = new Scanner(System.in);
+						String str3 = scan2.nextLine();
+						for(int i = 0;i < TempInvArme.length;i+=1) {
+							if(TempInvArme[i].getName().equals(str3)) {
+								EquipWeapon = (Arme[]) EquipObjet(EquipWeapon,TempInvArme[i],i);
+							}//end if name = str3
+						}//end for i in InvArme
+					}//end while true arme
+				}//end if str2 == weapon
+			}//end if str == equip
 		}// end while inventory
 	}//end open inventory
 }//end public class inventaire
