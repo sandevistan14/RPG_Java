@@ -32,61 +32,51 @@ public class inventaire{
 		this.nbpotion = nbpotion = 0;
 	}
 	
-	public Objet[] EquipObjet(Objet[] EqObjet, Objet Objet,int pos) {
+	public static Objet[] EquipObjet(Objet[] EqObjet, Objet Objet,int pos) {
 		while(true) {
 			System.out.print("\n");
-			System.out.println("voulez vous remplacez " + EqObjet[1] + " par " + Objet);
+			System.out.println("voulez vous remplacez " + EqObjet[0].getName() + " par " + Objet.getName());
 			System.out.print("\n");
 			System.out.print("Si vous voulez plus d'info sur les Objet tapez 'info <nomarme>'");
 			System.out.print("\n");
 			Scanner scan = new Scanner(System.in);
 			String str = scan.nextLine();
 			
-			if(str.equals("yes")) {
+			if(str.equals("Yes")) {
 				EqObjet[pos] = Objet;
+				return EqObjet;
+			}
+			else if (str.equals("No")){
 				return EqObjet;
 			}
 		}
 	}
 	
-	public Objet[] AddIntoInv(Objet[] TabObj,Objet obj) {
-		System.out.print("\n");
-		System.out.print("Voulez vous le mettre dans votre inventaire ?");
-		System.out.print("\n");
-		while(true) {
-			Scanner scan4 = new Scanner(System.in);
-			String str4 = scan4.nextLine();
-			if(str4.equals("Yes")) {
-				for(int i = 0;i < TabObj.length; i += 1) {
-					if(Objects.isNull(TabObj[i])) {
-						TabObj[i] = obj;
-					}
-					else if(TabObj[i].getName() == "vide") {
-						TabObj[i] = obj;
-					}
-				}
-				while(true) {
-					System.out.print("\n");
-					System.out.print("Votre inventaire est plein a quel place voulez vous l'equipe ");
-					System.out.println("(Si vous remplacez un objet il sera définitivement supprimer)");
-					System.out.print("\n");
-					for(int i = 0;i < TabObj.length; i += 1) {
-						System.out.print("Place n°" + i+1 + "Nom de l'arme :"+ TabObj[i].getName());
-					}
-					Scanner scan5 = new Scanner(System.in);
-					String str5 = scan5.nextLine();
-					for(int i = 0;i < TabObj.length; i += 1) {
-						if(i+1 == Integer.parseInt(str5)) {
-							TabObj[i] = obj;
-							return TabObj;
-						}
-						
-					}
-					
-				}
+	public static Objet[] AddIntoInv(Objet[] TabObj,Objet obj) {
+		for(int i = 0;i < TabObj.length; i += 1) {
+			if(Objects.isNull(TabObj[i])) {
+				TabObj[i] = obj;
 			}
-			if(str4.equals("No")) {
-				return TabObj;
+			else if(TabObj[i].getName() == "vide") {
+				TabObj[i] = obj;
+			}
+		}
+		
+		while(true) {
+			System.out.print("\n");
+			System.out.print("Votre inventaire est plein a quel place voulez vous l'equipe ");
+			System.out.println("(Si vous remplacez un objet il sera définitivement supprimer)");
+			System.out.print("\n");
+			for(int k = 1;k < TabObj.length+1; k += 1) {
+				System.out.println("Place n°" + k + " -> Nom de l'arme : "+ TabObj[k-1].getName());
+			}
+			Scanner scan5 = new Scanner(System.in);
+			String str5 = scan5.nextLine();
+			for(int m = 0;m < TabObj.length; m += 1) {
+				if(m+1 == Integer.parseInt(str5)) {
+					TabObj[m] = obj;
+					return TabObj;
+				}
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 //package
 package jdr;
 
+import java.util.Objects;
 //import
 import java.util.Scanner;
 import Armor.ChestPlate;
@@ -8,6 +9,7 @@ import Armor.Helmet;
 import Armor.Legging;
 import Armor.boot;
 import entity.inventaire;
+import entity.Entity;
 import entity.Hero;
 import entity.Monster;
 import objet.Arme;
@@ -226,9 +228,9 @@ public class GameTurn{
 				 break;
 			 }
 			 else if(xpfight > 0) {
-				Objet drop = Objet.drop(Inv);
+				Objet dropp = Objet.drop(Inv);
 		        System.out.print("\n");
-		        System.out.print(AsciiArt.ANSI_YELLOW + "il s'emblerait que le monstre est drop un objet : "+  drop.getName() + AsciiArt.ANSI_RESET);
+		        System.out.print(AsciiArt.ANSI_YELLOW + "il s'emblerait que le monstre est drop un objet : "+  dropp.getName() + AsciiArt.ANSI_RESET);
 		        System.out.print("\n");
 		        Thread.sleep(3000);
 		        while(true) {
@@ -242,17 +244,50 @@ public class GameTurn{
 			        	break;
 			        }
 			        else if(strdrop.equals("Put into the inventory")) {
-			        	if(drop.getType().equals("Arme")) {
-				        	InvArme = inventaire.AddIntoInv(InvArme,drop);
+			        	if(dropp.getType().equals("Arme")) {
+			        		int[] tabint;
+				        	InvArme = inventaire.AddIntoInv(InvArme,dropp);
+				        	break;
 			        	}
-			        	else if(drop.getType().equals("Potion")) {
-			        		InvPotion = inventaire.AddIntoInv(InvPotion,drop);
+			        	else if(dropp.getType().equals("Potion")) {
+			        		InvPotion = inventaire.AddIntoInv(InvPotion,dropp);
+			        		break;
 			        	}
-			        	else if(drop.getType().equals("Artefact")) {
-				        	InvArtefact = inventaire.AddIntoInv(InvArtefact,drop);
+			        	else if(dropp.getType().equals("Artefact")) {
+				        	InvArtefact = inventaire.AddIntoInv(InvArtefact,dropp);
+				        	break;
 			        	}
 			        	else {
 					        System.out.println("You can't put this object into your inventory");
+			        	}
+			        }
+			        else if(strdrop.equals("Equip")) {
+			        	while(true) {
+
+
+				        	if(dropp.getType().equals("Arme")) {
+				        		if (Objects.isNull(EqiArme[0])){
+				        			System.out.println("You equip " + dropp.getName());
+				        			EqiArme = inventaire.EquipObjet(EqiArme,dropp,0);
+				        			break;
+				        		}
+				        		else {
+					        		System.out.println("Are you sur to extchange "+ EqiArme[0].getName() +" with " + dropp.getName());
+					        		String streqip = scan.nextLine();
+					        		
+					        		if(streqip.equals("Yes")) {
+					        			EqiArme = inventaire.EquipObjet(EqiArme,dropp,0);
+					        			break;
+					        		}
+					        		else if(streqip.equals("Yes")) {
+					        			break;
+					        		}
+						        	else {
+						        		System.out.println("You can't equip this");
+						        		break;
+						        	}
+				        		}
+				        	}
 			        	}
 			        }
 		        }
