@@ -55,7 +55,13 @@ public class GameTurn{
 			 
 		 //weapon
 		 Objet[] InvArme = new Arme[2];
-		 Objet[] EqiArme = new Arme[1];
+		 Arme[] EqiArme = new Arme[1];
+		 
+		 //Armor
+		 boot[] EqiBoot = new boot[1];
+		 Helmet[] EqiHelmet = new Helmet[1];
+		 ChestPlate[] EqiChestPlate = new ChestPlate[1];
+		 Legging[] EqiLegging = new Legging[1];
 			
 		//Artefact
 		 Objet[] InvArtefact = new Artefact[3];
@@ -65,20 +71,20 @@ public class GameTurn{
 		
 			Monster[] TabMonsterForest = new Monster[5];
 				int MonsterInForest = 0;
-				TabMonsterForest[0] = new Monster('W', "WolfF1", 0, 0, 20, 80, 0,20);
-				TabMonsterForest[1] = new Monster('S', "SlimeF1", 0, 0, 10, 40, 0,10);
-				TabMonsterForest[2] = new Monster('W', "WolfF2", 0, 0, 20, 80, 0,20);
-				TabMonsterForest[3] = new Monster('S', "SlimeF2", 0, 0, 10, 40, 0,10);
-				TabMonsterForest[4] = new Monster('W', "WolfF3", 0, 0, 20, 80, 0,20);
+				TabMonsterForest[0] = new Monster('W', "WolfF1", 0, 0, 20, 80, 0,20,40);
+				TabMonsterForest[1] = new Monster('S', "SlimeF1", 0, 0, 10, 40, 0,10,10);
+				TabMonsterForest[2] = new Monster('W', "WolfF2", 0, 0, 20, 80, 0,20,40);
+				TabMonsterForest[3] = new Monster('S', "SlimeF2", 0, 0, 10, 40, 0,10,10);
+				TabMonsterForest[4] = new Monster('W', "WolfF3", 0, 0, 20, 80, 0,20,40);
 
 			 
 		 Monster[] TabMonster = new Monster[4];
-			 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0,10);
-			 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50,100);
-			 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200,999999);
-			 TabMonster[3] = new Monster('W', "Wolf", 27, 15, 20, 80, 10,20);
+			 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0,10,0);
+			 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50,100,30);
+			 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200,999999,0);
+			 TabMonster[3] = new Monster('W', "Wolf", 27, 15, 20, 80, 10,20,40);
 			 
-		 Hero Hero1 = new Hero('P',"",28,15,0,0,0);
+		 Hero Hero1 = new Hero('P',"",28,15,0,0,0,0,0,0);
 		 
 		 //inventory
 		 inventaire inventory = new inventaire(null, 0, null, 0, null, 0);
@@ -124,86 +130,22 @@ public class GameTurn{
 		        
 	        }
 		 
-		 
-//*****************************************************************************
-//*******************************     Hero     ********************************
-//*****************************************************************************	
-	        while (IsClass == false) {
-				Scanner scan = new Scanner(System.in);
-		        System.out.print("\n");
-		        System.out.print("choisisez votre classe : ");
-		        System.out.print("\n");
-		        System.out.println("- Paladins");
-		        System.out.println("- Archer");
-		        System.out.println("- Chevalier");
-		        System.out.println("- Mage");
-		        System.out.println("- Assassin");
-		        System.out.print("\n");
-		        System.out.println("if you want more information on the class tape 'NameClass info'");
-		        System.out.print("\n");
-		        String classs = scan.nextLine();
-		        
-		        if (classs.equals("Paladins")){
-		        	Hero1.setName("Paladins");
-		        	Hero1.setDommage(20);
-		        	Hero1.setLife(120);
-		        	Hero1.setDefense(50);
-		        	IsClass = true;}
-		        
-		        if (classs.equals("Paladins info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, good at sword and user of heal magic");}
-		        
-		        if (classs.equals("Archer")){
-		        	Hero1.setName("Archer");
-		        	Hero1.setDommage(40);
-		        	Hero1.setLife(80);
-		        	Hero1.setDefense(20);
-		        	IsClass = true;}
-		        
-		        if (classs.equals("Archer info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, powerfull user of magic");}
-		        
-		        if (classs.equals("Chevalier")){
-		        	Hero1.setName("Chevalier");
-		        	Hero1.setDommage(30);
-		        	Hero1.setLife(100);
-		        	Hero1.setDefense(40);
-		        	IsClass = true;}
-		        
-		        if (classs.equals("Chevalier info")){System.out.println("0,0,30,100,40");}
-		        
-		        if (classs.equals("Mage")){
-		        	Hero1.setName("Mage");
-		        	Hero1.setDommage(40);
-		        	Hero1.setLife(70);
-		        	Hero1.setDefense(0);
-		        	IsClass = true;}
-		        if (classs.equals("Mage info")){System.out.println("Dommage : 40, LifePoint : 70 defence : 0, powerfull user of magic");}
-		        
-		        if (classs.equals("Assassin")){
-		        	Hero1.setName("Assassin");
-		        	Hero1.setDommage(50);
-		        	Hero1.setLife(80);
-		        	Hero1.setDefense(0);
-		        	IsClass = true;}
-		        if (classs.equals("Assassin info")){System.out.println("0,0,50,80,0");}
-	        } 
-	        
-	        
-//*****************************************************************************
-//**************************     Introduction     *****************************
-//*****************************************************************************        
-	        
-	        System.out.print("\n");
-	        System.out.print("Bienvenue au monde de blablablabla");
-	        System.out.print("\n");
+
+	        Hero.SetHeroClass(Hero1);//Set Hero Class
+	                
+	        Text.text_intro(); //Introduction text
 	        
 //*****************************************************************************
 //******************************     WHILE     ********************************
 //*****************************************************************************
 		 while (true){
 			 
+			 
+			 
 	//*****************************************************************************
 	//******************************     FIGHT     ********************************
 	//*****************************************************************************
+			 
 			 if (MonsterInForest < 6 && map[Hero1.getPosY()][Hero1.getPosX()-1] == 'F') {
 				 double rand = Math.random()*100;
 				 if(rand >= 80) {
@@ -261,14 +203,13 @@ public class GameTurn{
 					        System.out.println("You can't put this object into your inventory");
 			        	}
 			        }
+			        
 			        else if(strdrop.equals("Equip")) {
 			        	while(true) {
-
-
 				        	if(dropp.getType().equals("Arme")) {
 				        		if (Objects.isNull(EqiArme[0])){
 				        			System.out.println("You equip " + dropp.getName());
-				        			EqiArme = inventaire.EquipObjet(EqiArme,dropp,0);
+				        			EqiArme[0] = (Arme) dropp;
 				        			break;
 				        		}
 				        		else {
@@ -276,7 +217,7 @@ public class GameTurn{
 					        		String streqip = scan.nextLine();
 					        		
 					        		if(streqip.equals("Yes")) {
-					        			EqiArme = inventaire.EquipObjet(EqiArme,dropp,0);
+					        			EqiArme = (Arme[]) inventaire.EquipObjet(EqiArme,dropp,0);
 					        			break;
 					        		}
 					        		else if(streqip.equals("Yes")) {
@@ -288,7 +229,103 @@ public class GameTurn{
 						        	}
 				        		}
 				        	}
+				        	if(dropp.getType().equals("Boot")) {
+				        		if (Objects.isNull(EqiBoot[0])){
+				        			System.out.println("You equip " + dropp.getName());
+				        			EqiBoot[0] = (boot) dropp;
+				        			break;
+				        		}
+				        		else {
+					        		System.out.println("Are you sur to extchange "+ EqiBoot[0].getName() +" with " + dropp.getName());
+					        		String streqip = scan.nextLine();
+					        		
+					        		if(streqip.equals("Yes")) {
+					        			EqiBoot = (boot[]) inventaire.EquipObjet(EqiBoot,dropp,0);
+					        			break;
+					        		}
+					        		else if(streqip.equals("Yes")) {
+					        			break;
+					        		}
+						        	else {
+						        		System.out.println("You can't equip this");
+						        		break;
+						        	}
+				        		}
+				        	}
+				        	if(dropp.getType().equals("ChestPlate")) {
+				        		if (Objects.isNull(EqiChestPlate[0])){
+				        			System.out.println("You equip " + dropp.getName());
+				        			EqiChestPlate[0] = (ChestPlate) dropp;
+				        			break;
+				        		}
+				        		else {
+					        		System.out.println("Are you sur to extchange "+ EqiChestPlate[0].getName() +" with " + dropp.getName());
+					        		String streqip = scan.nextLine();
+					        		
+					        		if(streqip.equals("Yes")) {
+					        			EqiChestPlate = (ChestPlate[]) inventaire.EquipObjet(EqiChestPlate,dropp,0);
+					        			break;
+					        		}
+					        		else if(streqip.equals("Yes")) {
+					        			break;
+					        		}
+						        	else {
+						        		System.out.println("You can't equip this");
+						        		break;
+						        	}
+				        		}
+				        	}
+				        	if(dropp.getType().equals("Helmet")) {
+				        		if (Objects.isNull(EqiHelmet[0])){
+				        			System.out.println("You equip " + dropp.getName());
+				        			EqiHelmet[0] = (Helmet) dropp;
+				        			break;
+				        		}
+				        		else {
+					        		System.out.println("Are you sur to extchange "+ EqiHelmet[0].getName() +" with " + dropp.getName());
+					        		String streqip = scan.nextLine();
+					        		
+					        		if(streqip.equals("Yes")) {
+					        			EqiHelmet = (Helmet[]) inventaire.EquipObjet(EqiArme,dropp,0);
+					        			break;
+					        		}
+					        		else if(streqip.equals("Yes")) {
+					        			break;
+					        		}
+						        	else {
+						        		System.out.println("You can't equip this");
+						        		break;
+						        	}
+				        		}
+				        	}
+				        	if(dropp.getType().equals("Legging")) {
+				        		if (Objects.isNull(EqiLegging[0])){
+				        			System.out.println("You equip " + dropp.getName());
+				        			EqiLegging[0] = (Legging) dropp;
+				        			break;
+				        		}
+				        		else {
+					        		System.out.println("Are you sur to extchange "+ EqiLegging[0].getName() +" with " + dropp.getName());
+					        		String streqip = scan.nextLine();
+					        		
+					        		if(streqip.equals("Yes")) {
+					        			EqiLegging = (Legging[]) inventaire.EquipObjet(EqiLegging,dropp,0);
+					        			break;
+					        		}
+					        		else if(streqip.equals("Yes")) {
+					        			break;
+					        		}
+						        	else {
+						        		System.out.println("You can't equip this");
+						        		break;
+						        	}
+				        		}
+				        	}
+				  
+				        		
+				        	
 			        	}
+			        	break;
 			        }
 		        }
 		        
@@ -327,49 +364,13 @@ public class GameTurn{
 	//****************************     MAPCONST     *******************************
 	//*****************************************************************************	
 			 
-			 for(int i = 0;i < map.length; i += 1) {
-				 for(int k = 0;k < map[i].length; k += 1) {
-					 if(mapentity[i][k] == 'P' && map[i][k] == 'F') {
-						 System.out.print(AsciiArt.ANSI_GREENBACKGROUND + mapentity[i][k] + AsciiArt.ANSI_RESET);
-					 }
-					 else if (mapentity[i][k] != ' ' && mapentity[i][k] != '/') {
-						 System.out.print(AsciiArt.ANSI_YELLOW + mapentity[i][k] + AsciiArt.ANSI_RESET);
-					 }
-					 else if(mapmonster[i][k] != ' ' && mapmonster[i][k] != '/' ) {
-						 System.out.print( AsciiArt.ANSI_REDBACKGROUND  + mapmonster[i][k] + AsciiArt.ANSI_RESET);
-					 }
-					 else {
-						 if (mapentity[i][k] == '/') {
-								 System.out.print(AsciiArt.ANSI_PURPLEBACKGROUND + AsciiArt.ANSI_PURPLE + map[i][k] + AsciiArt.ANSI_RESET);
-						 }
-						 else if(map[i][k] == 'F') {
-							 System.out.print(AsciiArt.ANSI_GREEN  + AsciiArt.ANSI_GREENBACKGROUND + map[i][k] + AsciiArt.ANSI_RESET);
-						 }
-						 else if(map[i][k] == 'X'){
-							 System.out.print(AsciiArt.ANSI_WHITEBACKGROUND +  map[i][k] + AsciiArt.ANSI_RESET);
-						 }
-						 else{
-							 System.out.print(map[i][k]);
-						 }
-					 }
-				 }
-				 System.out.print("\n");
-			 }
+			Map.PrintMap(map, mapentity, mapmonster);
 		 
 	//*****************************************************************************
 	//******************************     INPUT     ********************************
 	//*****************************************************************************
-	        @SuppressWarnings("resource")
-			Scanner sc = new Scanner(System.in);
-	        System.out.print("\n");
-	        System.out.println("quel action voulez vous faire :");
-	        System.out.println("- move");
-	        System.out.println("- inventory");
-	        System.out.println("- leave (for leave the game)");
-	        System.out.println("- show map");
-	        System.out.println("- map info");
-	        System.out.println("- constant map on/off(map will be show after at each command");
-	        String str = sc.nextLine();
+			String action = Text.ActionList();
+	        
 	        
 	//*****************************************************************************
 	//*****************************     OUTPUT     ********************************
@@ -379,7 +380,7 @@ public class GameTurn{
 	    	//*****************************     LEAVE     *********************************
 	    	//*****************************************************************************	
 
-	        if (str.equals("leave")){
+	        if (action.equals("leave")){
 	        	System.out.println("fin de la partie");
 	        	break;
 	        }
@@ -389,7 +390,7 @@ public class GameTurn{
 	    	//**************************     INVENTORY     ********************************
 	    	//*****************************************************************************	
 
-	        if (str.equals("inventory")){
+	        if (action.equals("inventory")){
 	        		inventory.OpenInventory(InvArme,EqiArme,InvArtefact,InvPotion);
 	        }
 	        
@@ -399,160 +400,18 @@ public class GameTurn{
 	    	//*******************************     MAP     *********************************
 	    	//*****************************************************************************	
 
-	        if (str.equals("map info")){
+	        if (action.equals("map info")){
 	        	System.out.println("/ = fin de carte");
-	        	System.out.println("X = mur");
+	        	System.out.println("White = Wall");
+	        	System.out.println("Green = forest");
 	        	System.out.println("P = personnage");
 	        	System.out.println("S = Slime (Monstre)");
 	        }
-
-	    	//*****************************************************************************
+	        
+			//*****************************************************************************
 	    	//******************************     MOOVE     ********************************
 	    	//*****************************************************************************
-	        	
-		    	//*****************************************************************************
-		    	//********************************     UP     *********************************
-		    	//*****************************************************************************
-	        if((str.equals("Up") || str.equals("uP") || str.equals("up") || str.equals("UP"))
-	        	|| (str.equals("Down") || str.equals("down") || str.equals("DOWN") || str.equals("DOwn"))
-	        	|| (str.equals("Right") || str.equals("right") || str.equals("RIGHT") || str.equals("RIght"))
-	        	|| (str.equals("Left") || str.equals("left") || str.equals("LEFT") || str.equals("LEft"))
-	        	||  (str.equals("move"))){
-	        	
-	        		ReturnX = Hero1.getPosX();
-	        		ReturnY = Hero1.getPosY();
-	        	
-	        	if (str.equals("Up") || str.equals("uP") || str.equals("up") || str.equals("UP"))  {
-	        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
-	        			System.out.print("\n");
-	        			System.out.print("A wall block your way");
-	        			System.out.print("\n");}
-	        		else {
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-		        		Hero1.setPosY(Hero1.getPosY() - 1 );
-		        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-	        	}
-	        	
-		    	//*****************************************************************************
-		    	//*******************************     DOWN     ********************************
-		    	//*****************************************************************************
-	        	if (str.equals("Down") || str.equals("down") || str.equals("DOWN") || str.equals("DOwn")) {
-	        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
-	        			System.out.print("\n");
-	        			System.out.print("A wall block your way");
-	        			System.out.print("\n");}
-	        		else {
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-	        		Hero1.setPosY(Hero1.getPosY() + 1 );
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-	        		
-	        	}
-	        	
-	        	
-		    	//*****************************************************************************
-		    	//******************************     RIGHT     ********************************
-		    	//*****************************************************************************
-	        	if (str.equals("Right") || str.equals("right") || str.equals("RIGHT") || str.equals("RIght")) {
-	        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
-	        			System.out.print("\n");
-	        			System.out.print("A wall block your way");
-	        			System.out.print("\n");}
-	        		else {
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-	        		Hero1.setPosX(Hero1.getPosX() + 1 );
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-	        	}
-	        	
-	        	
-		    	//*****************************************************************************
-		    	//*******************************     LEFT     ********************************
-		    	//*****************************************************************************
-	        	if (str.equals("Left") || str.equals("left") || str.equals("LEFT") || str.equals("LEft") ) {
-	        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
-	        			System.out.print("\n");
-	        			System.out.print("A wall block your way");
-	        			System.out.print("\n");}
-	        		else {
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-	        		Hero1.setPosX(Hero1.getPosX() - 1 );
-	        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-	        	}
-	        	
-		    	//*****************************************************************************
-		    	//******************************     ELSE     *********************************
-		    	//*****************************************************************************
-				if (str.equals("move")) {
-		        	System.out.println("Where do you want to go ?");
-		        	System.out.println("Up");
-		        	System.out.println("Down");
-		        	System.out.println("Right");
-		        	System.out.println("Left");
-		        	System.out.println("cancel (return to menu of choose)");
-					Scanner sc3 = new Scanner(System.in);
-			        String str3 = sc.nextLine();
-			        
-		        	if (str3.equals("cancel")){break;}
-		        	if (str.equals("cancel")){break;}
-		        	
-			    	//*****************************************************************************
-			    	//********************************     UP     *********************************
-			    	//*****************************************************************************
-		        	if (str3.equals("Up") || str3.equals("uP") || str3.equals("up") || str3.equals("UP"))  {
-		        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
-		        			System.out.print("\n");
-		        			System.out.print("A wall block your way");
-		        			System.out.print("\n");}
-		        		else {
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-			        		Hero1.setPosY(Hero1.getPosY() - 1 );
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-		        	}
-		        	
-			    	//*****************************************************************************
-			    	//*******************************     DOWN     ********************************
-			    	//*****************************************************************************
-		        	if (str3.equals("Down") || str3.equals("down") || str3.equals("DOWN") || str3.equals("DOwn")) {
-		        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
-		        			System.out.print("\n");
-		        			System.out.print("A wall block your way");
-		        			System.out.print("\n");}
-		        		else {
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-			        		Hero1.setPosY(Hero1.getPosY() + 1 );
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-		        	}
-		        	
-			    	//*****************************************************************************
-			    	//******************************     RIGHT     ********************************
-			    	//*****************************************************************************
-		        	if (str3.equals("Right") || str3.equals("right") || str3.equals("RIGHT") || str3.equals("RIght")) {
-		        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
-		        			System.out.print("\n");
-		        			System.out.print("A wall block your way");
-		        			System.out.print("\n");}
-			        		else {
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-			        		Hero1.setPosX(Hero1.getPosX() + 1 );
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-		        	}
-		        	
-			    	//*****************************************************************************
-			    	//*******************************     LEFT     ********************************
-			    	//*****************************************************************************
-		        	if (str3.equals("Left") || str3.equals("left") || str3.equals("LEFT") || str3.equals("LEft") ) {
-		        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
-		        			System.out.print("\n");
-		        			System.out.print("A wall block your way");
-		        			System.out.print("\n");}
-		        		else {
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';
-			        		Hero1.setPosX(Hero1.getPosX() - 1 );
-			        		mapentity[Hero1.getPosY()][Hero1.getPosX()-1] = 'P';}
-		        	}
-		        	
-				}//end if move
-				
-	        }//end of if all move
+	        mapentity = Move.MoveHero(mapentity, map, action, Hero1);
 			
 	 	}// end while
 		 

@@ -8,15 +8,25 @@ public class Entity{
    int dommage;
    int life;
    int defense;
+   int speed;
    
 
-public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense) {
+public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense, int speed) {
 	this.name = name;
 	this.posY = posY;
 	this.posX = posX;
 	this.dommage = dommage;
 	this.life = life;
 	this.defense = defense;
+	this.speed = speed;
+}
+
+public int getSpeed() {
+	return speed;
+}
+
+public void setSpeed(int speed) {
+	this.speed = speed;
 }
 
 public String getName() {

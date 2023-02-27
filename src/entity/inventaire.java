@@ -129,6 +129,7 @@ public class inventaire{
 			String str = scan.nextLine();
 			
 			if(str.equals("Leave")){break;}
+			
 			if(str.equals("Equip")) {
 				System.out.print("\n");
 				Scanner scan2 = new Scanner(System.in);
