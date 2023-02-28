@@ -28,6 +28,7 @@ public class Fight{
 		 //speed
 		 boolean speed = false;
 		 if(monster.getSpeed() > Hero1.getSpeed()){speed = true;}
+		 
 		 //for the speed
 		 if(speed == true) {
 			 
@@ -67,14 +68,6 @@ public class Fight{
 				 mapmonster[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';// erase the monster on the map
 				 break;
 			 }
-			 
-			 //if you get kill : Game Over
-			 if (Hero1.getLife() < 1) {
-				 AsciiArt.PrintDead();
-				 xp = -69;// to know that you have been killed in the return
-		         break;}
-			 
-			 //print the sprite 
 			 if(premierCaractere == 'M') {AsciiArt.PrintMotherOfDeath(monster);}
 			 if(premierCaractere == 'D') {AsciiArt.PrintRedEyesDragon(monster);}
 			 if(premierCaractere == 'W') {AsciiArt.PrintWolf(monster);}
@@ -84,8 +77,17 @@ public class Fight{
 			 
 			 
 			 AsciiArt.PrintAction(Hero1,Flee);//show possible actions
+			 
+			 //if you get kill : Game Over
+			 if (Hero1.getLife() < 1) {
+				 AsciiArt.PrintDead();
+				 xp = -69;// to know that you have been killed in the return
+		         break;}
+			 
+			 //print the sprite 
+
 			 @SuppressWarnings("resource")
-			Scanner sc4 = new Scanner(System.in);
+			 Scanner sc4 = new Scanner(System.in);
 			 String str4 = sc4.nextLine();
 			 
 
@@ -94,13 +96,14 @@ public class Fight{
 				 inventaire.OpenInventory(Hero1, InvArme,EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
 			 }
 			 
-			 int HeroDommage = (Hero1.getDommage() + EqiArme[0].getBonusDommage()) - (monster.getDefense()/10);
-			 
-			 Hero1.setLife(EqiArme[0].getDrainOfLife()+Hero1.getLife());
-			 if(Hero1.getLife()>Hero1.getMaxHP()) {
-				 Hero1.setLife(Hero1.getMaxHP());
-			 }			 
-			 if(str4.equals("Attack")) {//if Attack
+			 else if(str4.equals("Attack")) {//if Attack
+				 int HeroDommage = (Hero1.getDommage() + EqiArme[0].getBonusDommage()) - (monster.getDefense()/10);
+				 
+				 Hero1.setLife(EqiArme[0].getDrainOfLife()+Hero1.getLife());
+				 if(Hero1.getLife()>Hero1.getMaxHP()) {
+					 Hero1.setLife(Hero1.getMaxHP());
+				 }			 
+				 
 				 monster.setLife(monster.getLife()- (HeroDommage));
 				 System.out.print("\n");
 				 System.out.print("You attack "+ monster.getName() +" and inflict "+ HeroDommage +" dommages");
@@ -108,7 +111,7 @@ public class Fight{
 				 act = true;
 			 }
 			 
-			 if(str4.equals("Flee") && Flee == true) {xp = 0;break;}//if Flee if possible
+			 else if(str4.equals("Flee") && Flee == true) {xp = 0;break;}//if Flee if possible
 			 
 			 
 			 //monster Attack

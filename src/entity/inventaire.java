@@ -105,6 +105,7 @@ public class inventaire{
 			System.out.println("|------------------------|------------------------|------------------------|");
 			System.out.print("\n");
 			System.out.println("Equip Stuff : ");
+			System.out.print("\n");
 			System.out.println("Hemet : " + EqiHelmet[0].getName());
 			System.out.println("ChestPlate : "+EqiChestPlate[0].getName());
 			System.out.println("Legging : " + EqiLegging[0].getName());
@@ -158,6 +159,7 @@ public class inventaire{
 				Scanner scan2 = new Scanner(System.in);
 				String str2 = scan2.nextLine();
 				if(str2.equals("Weapon")) {
+					boolean breaker = false;
 					while(true) {
 						System.out.println("Whitch weapon do you want to equip ?");
 						System.out.print("\n");
@@ -166,8 +168,14 @@ public class inventaire{
 						for(int i = 0;i < InvArme.length;i+=1) {
 							if(InvArme[i].getName().equals(str3)) {
 								EqiArme = (Arme[]) EquipObjet(EqiArme,InvArme[i],i);
+								breaker = true;
+								break;
 							}//end if name = str3
 						}//end for i in InvArme
+						if(breaker == true) {
+							breaker = false;
+							break;
+						}
 					}//end while true arme
 				}//end if str2 == weapon
 			}//end if str == equip

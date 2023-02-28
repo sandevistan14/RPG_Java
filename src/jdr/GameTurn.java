@@ -37,18 +37,23 @@ public class GameTurn{
 		 int level = 1;
 		 
 		 //objet
-		 Objet[] Inv = new Objet[11];
-			 Inv[0] = new Arme("Epeelongue","Arme",20,0);
-			 Inv[1] = new Arme("Arc","Arme",15,0);
-			 Inv[2] = new Arme("Massue","Arme",40,0);
-			 Inv[3] = new Arme("baguette","Arme",30,0);
-			 Inv[4] = new Arme("poignard","Arme",30,15);
-			 Inv[5] = new Artefact("talissement de fortification","Artefact","Dommage",20);
-			 Inv[6] = new Potion("Potion de soin","Potion",40);
-			 Inv[7] = new boot("StandarBoot","Boot",0, 10, 0);
-			 Inv[8] = new Helmet("StandarHelmet", "Helmet", 0, 10, 0);
-			 Inv[9] = new ChestPlate("StandarChestPlate","ChestPlate", 0, 20, 0);
-			 Inv[10] = new Legging("StandarLegging", "Legging", 0, 10, 0);
+		 Objet[] CommunLoot = new Objet[12];
+		 CommunLoot[0] = new Arme("Epeelongue","Arme",20,1);
+		 CommunLoot[1] = new Arme("Arc","Arme",15,1);
+		 CommunLoot[2] = new Arme("Massue","Arme",25,1);
+		 CommunLoot[3] = new Arme("baguette","Arme",20,1);
+		 CommunLoot[4] = new Arme("poignard","Arme",15,5);
+		 CommunLoot[5] = new Artefact("talissement de fortification","Artefact","Dommage",20);
+		 CommunLoot[6] = new Potion("Petite Potion de soin","Potion",20);
+		 CommunLoot[7] = new Potion("Moyenne Potion de soin","Potion",40);
+		 CommunLoot[8] = new boot("StandarBoot","Boot",0, 10, 0);
+		 CommunLoot[9] = new Helmet("StandarHelmet", "Helmet", 0, 10, 0);
+		 CommunLoot[10] = new ChestPlate("StandarChestPlate","ChestPlate", 0, 20, 0);
+		 CommunLoot[11] = new Legging("StandarLegging", "Legging", 0, 10, 0);
+		 
+		//objet
+		 Objet[] RareLoot = new Objet[1];
+		 RareLoot[0] = new Arme("Epee du vide","Arme",40,5);
 			 
 		 //weapon
 		 Arme[] InvArme = new Arme[2];
@@ -95,8 +100,8 @@ public class GameTurn{
 		 inventaire inventory = new inventaire(null, 0, null, 0, null, 0);
 		 
 		//Flee
-		 int ReturnX = Hero1.getPosX();
-		 int ReturnY = Hero1.getPosY();
+		 Hero1.setReturnX(Hero1.getPosX());
+		 Hero1.setReturnY(Hero1.getPosY());
 
 	        Hero.SetHeroClass(Hero1);//Set Hero Class
 	                
@@ -130,8 +135,36 @@ public class GameTurn{
 //******************************     WHILE     ********************************
 //*****************************************************************************
 		 while (true){
+			 System.out.println(CommunLoot[4].toString());
+			 EqiArme[0] = (Arme) CommunLoot[4];
+			 System.out.println(((Potion) CommunLoot[6]).getHeal());
+			 System.out.println((((Arme) CommunLoot[4]).getBonusDommage()));
+			 System.out.println(((Arme) RareLoot[0]).getBonusDommage());
+			//*****************************************************************************
+			//******************************     CHEST     ********************************
+			//*****************************************************************************
 			 
-
+			 if(map[Hero1.getPosY()][Hero1.getPosX()-1] == 'C') {
+				 if(!(Map.CheckAround(Hero1, mapmonster))) {
+					 System.out.println("Vous ouvrez le coffre et gagnez 5xp");
+					 xpfight = 5;
+					 map[Hero1.getPosY()][Hero1.getPosX()-1] = '.';
+				 }
+				 else {
+					 System.out.println("Vous ne pouvez pas ouvrir le coffre il y a un enemie autour");
+				 }
+			 }
+			 else if(map[Hero1.getPosY()][Hero1.getPosX()-1] == 'G') {
+				 if(!(Map.CheckAround(Hero1, mapmonster))) {
+					 System.out.println("Vous ouvrez le Giga coffre et gagnez 8xp");
+					 xpfight = 8;
+					 map[Hero1.getPosY()][Hero1.getPosX()-1] = '.';
+				 }
+				 else {
+					 System.out.println("Vous ne pouvez pas ouvrir le Giga coffre il y a un enemie autour");
+				 }
+			 }
+				 
 	//*****************************************************************************
 	//******************************     FIGHT     ********************************
 	//*****************************************************************************
@@ -146,25 +179,38 @@ public class GameTurn{
 			 }
 			 for(int i = 0;i < TabMonster.length; i += 1) {
 				 if(TabMonster[i].getPosX() == Hero1.getPosX() && TabMonster[i].getPosY() == Hero1.getPosY()) {
-					 System.out.print(InvArme[0].getBonusDommage());
 					 xpfight = Fight.fight(Hero1, TabMonster[i], xpfight, mapmonster, InvArme, EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
 					 if(xpfight == 0) {
 						 mapentity[Hero1.getPosY()][Hero1.getPosX() - 1] = ' ';
-						 Hero1.setPosX(ReturnX);
-						 Hero1.setPosY(ReturnY);
+						 Hero1.setPosX(Hero1.getReturnX());
+						 Hero1.setPosY(Hero1.getReturnY());
 						 mapentity[Hero1.getPosY()][Hero1.getPosX() - 1] = 'P';
 						 break;
 					 }
 				 }
 			 }
+			 
 			 if(xpfight == -69) {
 				 break;
 			 }
 			 else if(xpfight > 0) {
-				Objet dropp = Objet.drop(Inv);
-		        System.out.print("\n");
-		        System.out.print(AsciiArt.ANSI_YELLOW + "il s'emblerait que le monstre est drop un objet : "+  dropp.getName() + AsciiArt.ANSI_RESET);
-		        System.out.print("\n");
+				Objet dropp = Objet.drop(CommunLoot);
+				if(xpfight == 5) {
+			        System.out.print("\n");
+			        System.out.print(AsciiArt.ANSI_YELLOW + "You found an object into the chest : "+  dropp.getName() + AsciiArt.ANSI_RESET);
+			        System.out.print("\n");
+				}
+				else if(xpfight == 8) {
+					dropp = Objet.drop(RareLoot);
+			        System.out.print("\n");
+			        System.out.print(AsciiArt.ANSI_YELLOW + "You found an object into the rare chest : "+  dropp.getName() + AsciiArt.ANSI_RESET);
+			        System.out.print("\n");
+				}
+				else {
+			        System.out.print("\n");
+			        System.out.print(AsciiArt.ANSI_YELLOW + "il s'emblerait que le monstre est drop un objet : "+  dropp.getName() + AsciiArt.ANSI_RESET);
+			        System.out.print("\n");
+				}
 		        Thread.sleep(3000);
 				int breaker = 0;
 		        while(true) {
@@ -284,7 +330,6 @@ public class GameTurn{
 				 System.out.print("\n");
 				 System.out.print("+20 HP, +10 Dommage, +5 Defense");
 				 System.out.print("\n");
-				 
 			 }
 			 
 			 
@@ -318,7 +363,7 @@ public class GameTurn{
 	    	//**************************     INVENTORY     ********************************
 	    	//*****************************************************************************	
 
-	        if (action.equals("inventory")){
+	        else if (action.equals("inventory")){
 	        		inventaire.OpenInventory(Hero1, InvArme,EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
 	        }
 	        
@@ -328,7 +373,7 @@ public class GameTurn{
 	    	//*******************************     MAP     *********************************
 	    	//*****************************************************************************	
 
-	        if (action.equals("map info")){
+	        else if (action.equals("map info")){
 	        	System.out.println("/ = fin de carte");
 	        	System.out.println("White = Wall");
 	        	System.out.println("Green = forest");

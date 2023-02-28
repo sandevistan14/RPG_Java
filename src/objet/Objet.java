@@ -26,6 +26,10 @@ public class Objet{
 		Objet obj = inv[num%inv.length];
 		return obj;
 	}
+	@Override
+	public String toString() {
+		return "Objet [Name=" + Name + ", Type=" + Type + "]";
+	}
 	
 }
 
