@@ -3,30 +3,30 @@ package objet;
 public class Arme extends Objet{
 	
 
-	int BonusDommage;
-	int DrainOfLife;
+	int bonusDommage;
+	int drainOfLife;
 	
 	public Arme(String name, String type, int BonusDommage, int DrainOflife) {
 		super(name, type);
-		BonusDommage = getBonusDommage();
-		DrainOfLife = getDrainOfLife();
+		bonusDommage = BonusDommage;
+		drainOfLife = DrainOflife;
 		// TODO Auto-generated constructor stub
 	}
 
 	public int getBonusDommage() {
-		return BonusDommage;
+		return bonusDommage;
 	}
 
-	public void setBonusDommage(int bonusDommage) {
-		BonusDommage = bonusDommage;
+	public void setBonusDommage(int BonusDommage) {
+		bonusDommage = BonusDommage;
 	}
 
 	public int getDrainOfLife() {
-		return DrainOfLife;
+		return drainOfLife;
 	}
 
-	public void setDrainOfLife(int drainOfLife) {
-		DrainOfLife = drainOfLife;
+	public void setDrainOfLife(int DrainOflife) {
+		drainOfLife = DrainOflife;
 	}
 
 }
