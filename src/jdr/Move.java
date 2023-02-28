@@ -13,16 +13,16 @@ public class Move {
 	    	//*****************************************************************************
 	    	//********************************     UP     *********************************
 	    	//*****************************************************************************
-        if((action.equals("Up") || action.equals("uP") || action.equals("up") || action.equals("UP"))
-        	|| (action.equals("Down") || action.equals("down") || action.equals("DOWN") || action.equals("DOwn"))
-        	|| (action.equals("Right") || action.equals("right") || action.equals("RIGHT") || action.equals("RIght"))
-        	|| (action.equals("Left") || action.equals("left") || action.equals("LEFT") || action.equals("LEft"))
-        	||  (action.equals("move"))){
+        if((action.equalsIgnoreCase("Up"))
+        	|| (action.equalsIgnoreCase("Down"))
+        	|| (action.equalsIgnoreCase("Right"))
+        	|| (action.equalsIgnoreCase("Left"))
+        	||  (action.equalsIgnoreCase("move"))){
         	
         		Hero1.setReturnX(Hero1.getPosX());
         		Hero1.setReturnY(Hero1.getPosY());
         	
-        	if (action.equals("Up") || action.equals("uP") || action.equals("up") || action.equals("UP"))  {
+        	if (action.equalsIgnoreCase("Up"))  {
         		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
@@ -36,7 +36,7 @@ public class Move {
 	    	//*****************************************************************************
 	    	//*******************************     DOWN     ********************************
 	    	//*****************************************************************************
-        	if (action.equals("Down") || action.equals("down") || action.equals("DOWN") || action.equals("DOwn")) {
+        	if (action.equalsIgnoreCase("Down") || action.equalsIgnoreCase("down") || action.equalsIgnoreCase("DOWN") || action.equalsIgnoreCase("DOwn")) {
         		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
@@ -52,7 +52,7 @@ public class Move {
 	    	//*****************************************************************************
 	    	//******************************     RIGHT     ********************************
 	    	//*****************************************************************************
-        	if (action.equals("Right") || action.equals("right") || action.equals("RIGHT") || action.equals("RIght")) {
+        	if (action.equalsIgnoreCase("Right")) {
         		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
@@ -67,7 +67,7 @@ public class Move {
 	    	//*****************************************************************************
 	    	//*******************************     LEFT     ********************************
 	    	//*****************************************************************************
-        	if (action.equals("Left") || action.equals("left") || action.equals("LEFT") || action.equals("LEft") ) {
+        	if (action.equalsIgnoreCase("Left")) {
         		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
         			System.out.print("\n");
         			System.out.print("A wall block your way");
@@ -81,7 +81,7 @@ public class Move {
 	    	//*****************************************************************************
 	    	//******************************     ELSE     *********************************
 	    	//*****************************************************************************
-			if (action.equals("move")) {
+			if (action.equalsIgnoreCase("move")) {
 	        	System.out.println("Where do you want to go ?");
 	        	System.out.println("Up");
 	        	System.out.println("Down");
@@ -91,12 +91,12 @@ public class Move {
 				Scanner sc3 = new Scanner(System.in);
 		        String str3 = sc3.nextLine();
 		        
-	        	if (str3.equals("cancel")){return mapentity;}
+	        	if (str3.equalsIgnoreCase("cancel")){return mapentity;}
 	        	
 		    	//*****************************************************************************
 		    	//********************************     UP     *********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Up") || str3.equals("uP") || str3.equals("up") || str3.equals("UP"))  {
+	        	if (str3.equalsIgnoreCase("Up"))  {
 	        		if (map[Hero1.getPosY()-1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()-1][Hero1.getPosX()-1] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
@@ -110,7 +110,7 @@ public class Move {
 		    	//*****************************************************************************
 		    	//*******************************     DOWN     ********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Down") || str3.equals("down") || str3.equals("DOWN") || str3.equals("DOwn")) {
+	        	if (str3.equalsIgnoreCase("Down")) {
 	        		if (map[Hero1.getPosY()+1][Hero1.getPosX()-1] == 'X' || map[Hero1.getPosY()+1][Hero1.getPosX()-1] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
@@ -124,7 +124,7 @@ public class Move {
 		    	//*****************************************************************************
 		    	//******************************     RIGHT     ********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Right") || str3.equals("right") || str3.equals("RIGHT") || str3.equals("RIght")) {
+	        	if (str3.equalsIgnoreCase("Right")) {
 	        		if (map[Hero1.getPosY()][Hero1.getPosX()] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");
@@ -138,7 +138,7 @@ public class Move {
 		    	//*****************************************************************************
 		    	//*******************************     LEFT     ********************************
 		    	//*****************************************************************************
-	        	if (str3.equals("Left") || str3.equals("left") || str3.equals("LEFT") || str3.equals("LEft") ) {
+	        	if (str3.equalsIgnoreCase("Left")) {
 	        		if (map[Hero1.getPosY()][Hero1.getPosX()-2] == 'X' || map[Hero1.getPosY()][Hero1.getPosX()-2] == '/') {
 	        			System.out.print("\n");
 	        			System.out.print("A wall block your way");

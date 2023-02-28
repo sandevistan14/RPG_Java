@@ -49,7 +49,7 @@ public class Hero extends Entity{
 	        System.out.print("\n");
 	        String classs = scan.nextLine();
 	        
-	        if (classs.equals("Paladins")){
+	        if (classs.equalsIgnoreCase("Paladins")){
 	        	Hero1.setName("Paladins");
 	        	Hero1.setDommage(20);
 	        	Hero1.setLife(120);
@@ -58,9 +58,9 @@ public class Hero extends Entity{
 	        	Hero1.setMaxHP(120);
 	        	IsClass = true;}
 	        
-	        if (classs.equals("Paladins info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, good at sword and user of heal magic");}
+	        if (classs.equalsIgnoreCase("Paladins info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, good at sword and user of heal magic");}
 	        
-	        if (classs.equals("Archer")){
+	        if (classs.equalsIgnoreCase("Archer")){
 	        	Hero1.setName("Archer");
 	        	Hero1.setDommage(40);
 	        	Hero1.setLife(80);
@@ -69,9 +69,9 @@ public class Hero extends Entity{
 	        	Hero1.setMaxHP(80);
 	        	IsClass = true;}
 	        
-	        if (classs.equals("Archer info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, powerfull user of magic");}
+	        if (classs.equalsIgnoreCase("Archer info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, powerfull user of magic");}
 	        
-	        if (classs.equals("Chevalier")){
+	        if (classs.equalsIgnoreCase("Chevalier")){
 	        	Hero1.setName("Chevalier");
 	        	Hero1.setDommage(30);
 	        	Hero1.setLife(100);
@@ -80,9 +80,9 @@ public class Hero extends Entity{
 	        	Hero1.setMaxHP(100);
 	        	IsClass = true;}
 	        
-	        if (classs.equals("Chevalier info")){System.out.println("0,0,30,100,40");}
+	        if (classs.equalsIgnoreCase("Chevalier info")){System.out.println("0,0,30,100,40");}
 	        
-	        if (classs.equals("Mage")){
+	        if (classs.equalsIgnoreCase("Mage")){
 	        	Hero1.setName("Mage");
 	        	Hero1.setDommage(40);
 	        	Hero1.setLife(70);
@@ -90,9 +90,9 @@ public class Hero extends Entity{
 	        	Hero1.setSpeed(0);
 	        	Hero1.setMaxHP(70);
 	        	IsClass = true;}
-	        if (classs.equals("Mage info")){System.out.println("Dommage : 40, LifePoint : 70 defence : 0, powerfull user of magic");}
+	        if (classs.equalsIgnoreCase("Mage info")){System.out.println("Dommage : 40, LifePoint : 70 defence : 0, powerfull user of magic");}
 	        
-	        if (classs.equals("Assassin")){
+	        if (classs.equalsIgnoreCase("Assassin")){
 	        	Hero1.setName("Assassin");
 	        	Hero1.setDommage(50);
 	        	Hero1.setLife(80);
@@ -100,7 +100,7 @@ public class Hero extends Entity{
 	        	Hero1.setSpeed(15);
 	        	Hero1.setMaxHP(80);
 	        	IsClass = true;}
-	        if (classs.equals("Assassin info")){System.out.println("0,0,50,80,0");}
+	        if (classs.equalsIgnoreCase("Assassin info")){System.out.println("0,0,50,80,0");}
         }
 		return IsClass; 
 	}

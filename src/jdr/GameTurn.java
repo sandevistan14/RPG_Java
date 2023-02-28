@@ -1,7 +1,9 @@
 //package
 package jdr;
 
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 // Game Made By sandevistan14
 //import
@@ -22,7 +24,10 @@ import objet.Objet;
 
 public class GameTurn{
 	
+	
 	public static void GameTrun() throws InterruptedException, IOException {	
+
+
 		 
 		//*****************************************************************************
 		//**************************     Initialization     ***************************
@@ -85,17 +90,11 @@ public class GameTurn{
 				TabMonsterForest[7] = new Monster('W', "WolfF6", 0, 0, 20, 80, 0,20,40);
 				TabMonsterForest[8] = new Monster('W', "WolfF7", 0, 0, 20, 80, 0,20,40);
 				TabMonsterForest[9] = new Monster('W', "WolfF8", 0, 0, 20, 80, 0,20,40);
-				TabMonsterForest[10] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50,100,30);
+				TabMonsterForest[10] = new Monster('D', "Dragon1", 0, 0, 40, 200, 50,100,0);
 
 
-
-			 
-		 Monster[] TabMonster = new Monster[4];
-			 TabMonster[0] = new Monster('S', "Slime1", 26, 15, 10, 40, 0,10,0);
-			 TabMonster[1] = new Monster('D', "Dragon1", 21, 15, 40, 200, 50,100,30);
-			 TabMonster[2] = new Monster('M', "Mother of dead", 20, 15, 100, 1000, 200,999999,0);
-			 TabMonster[3] = new Monster('W', "Wolf", 27, 15, 20, 80, 10,20,40);
-			 
+		 ArrayList<Monster> TabMonster = Map.CreateMonster(mapmonster);
+				 
 		 Hero Hero1 = new Hero('P',"",28,15,0,0,0,0,0,0,0);
 		 
 		 //inventory
@@ -137,7 +136,8 @@ public class GameTurn{
 //******************************     WHILE     ********************************
 //*****************************************************************************
 		 while (true){	
-
+			 System.out.print(AsciiArt.ANSI_SCREENRESET);
+			 System.out.flush();  
 			//*****************************************************************************
 			//******************************     CHEST     ********************************
 			//*****************************************************************************
@@ -171,13 +171,13 @@ public class GameTurn{
 				 double rand = Math.random()*100;
 				 if(rand >= 80) {
 					 xpfight = -50;
-					 xpfight = Fight.fight(Hero1, TabMonster[MonsterInForest], xpfight, mapmonster, InvArme, EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
+					 xpfight = Fight.fight(Hero1, TabMonsterForest[MonsterInForest], xpfight, mapmonster, InvArme, EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
 					 MonsterInForest += 1;
 				 }
 			 }
-			 for(int i = 0;i < TabMonster.length; i += 1) {
-				 if(TabMonster[i].getPosX() == Hero1.getPosX() && TabMonster[i].getPosY() == Hero1.getPosY()) {
-					 xpfight = Fight.fight(Hero1, TabMonster[i], xpfight, mapmonster, InvArme, EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
+			 for(int i = 0;i < TabMonster.size(); i += 1) {
+				 if(TabMonster.get(i).getPosX() == Hero1.getPosX()-1 && TabMonster.get(i).getPosY() == Hero1.getPosY()) {
+					 xpfight = Fight.fight(Hero1, TabMonster.get(i), xpfight, mapmonster, InvArme, EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
 					 if(xpfight == 0) {
 						 mapentity[Hero1.getPosY()][Hero1.getPosX() - 1] = ' ';
 						 Hero1.setPosX(Hero1.getReturnX());
@@ -216,22 +216,22 @@ public class GameTurn{
 					Scanner scan = new Scanner(System.in);
 			        System.out.print("\n");
 			        System.out.print("What do you want to do ?");
-			        System.out.print("\n- Equip \n- Put into the inventory \n- Ignor(will delet the object)");
+			        System.out.print("\n- Equip(1) \n- Put into the inventory(2) \n- Ignor(will delet the object)(3)");
 			        System.out.print("\n");
 			        String strdrop = scan.nextLine();
-			        if(strdrop.equals("Ignor")) {
+			        if(strdrop.equalsIgnoreCase("Ignor") || strdrop.equalsIgnoreCase("3")) {
 			        	break;
 			        }
-			        else if(strdrop.equals("Put into the inventory")) {
-			        	if(dropp.getType().equals("Arme")) {
+			        else if(strdrop.equalsIgnoreCase("Put into the inventory") || (strdrop.equalsIgnoreCase("2"))) {
+			        	if(dropp.getType().equalsIgnoreCase("Arme")) {
 				        	InvArme = (Arme[]) inventaire.AddIntoInv(InvArme,dropp);
 				        	break;
 			        	}
-			        	else if(dropp.getType().equals("Potion")) {
+			        	else if(dropp.getType().equalsIgnoreCase("Potion")) {
 			        		InvPotion = (Potion[]) inventaire.AddIntoInv(InvPotion,dropp);
 			        		break;
 			        	}
-			        	else if(dropp.getType().equals("Artefact")) {
+			        	else if(dropp.getType().equalsIgnoreCase("Artefact")) {
 				        	InvArtefact = (Artefact[]) inventaire.AddIntoInv(InvArtefact,dropp);
 				        	break;
 			        	}
@@ -239,9 +239,9 @@ public class GameTurn{
 					        System.out.println("You can't put this object into your inventory");
 			        	}
 			        }
-			        else if(strdrop.equals("Equip")) {
+			        else if(strdrop.equalsIgnoreCase("Equip")|| (strdrop.equalsIgnoreCase("1"))) {
 			        	while(true) {
-				        	if(dropp.getType().equals("Arme")) {
+				        	if(dropp.getType().equalsIgnoreCase("Arme")) {
 				        		if ((EqiArme[0].getName() == "vide")){
 				        			System.out.println("You equip " + dropp.getName());
 				        			EqiArme[0] = (Arme) dropp;
@@ -252,7 +252,7 @@ public class GameTurn{
 					        			break;
 				        		}
 				        	}
-				        	else if(dropp.getType().equals("Boot")) {
+				        	else if(dropp.getType().equalsIgnoreCase("Boot")) {
 				        		if ((EqiBoot[0].getName() == "vide")){
 				        			System.out.println("You equip " + dropp.getName());
 				        			EqiBoot[0] = (boot) dropp;
@@ -263,7 +263,7 @@ public class GameTurn{
 					        			break;
 				        		}
 				        	}
-				        	else if(dropp.getType().equals("ChestPlate")) {
+				        	else if(dropp.getType().equalsIgnoreCase("ChestPlate")) {
 				        		if ((EqiChestPlate[0].getName() == "vide")){
 				        			System.out.println("You equip " + dropp.getName());
 				        			EqiChestPlate[0] = (ChestPlate) dropp;
@@ -274,7 +274,7 @@ public class GameTurn{
 					        			break;
 				        		}
 				        	}
-				        	else if(dropp.getType().equals("Helmet")) {
+				        	else if(dropp.getType().equalsIgnoreCase("Helmet")) {
 				        		if ((EqiHelmet[0].getName() == "vide")){
 				        			System.out.println("You equip " + dropp.getName());
 				        			EqiHelmet[0] = (Helmet) dropp;
@@ -285,7 +285,7 @@ public class GameTurn{
 					        			break;
 				        		}
 				        	}
-				        	else if(dropp.getType().equals("Legging")) {
+				        	else if(dropp.getType().equalsIgnoreCase("Legging")) {
 				        		if ((EqiLegging[0].getName() == "vide")){
 				        			System.out.println("You equip " + dropp.getName());
 				        			EqiLegging[0] = (Legging) dropp;
@@ -351,7 +351,7 @@ public class GameTurn{
 	    	//*****************************     LEAVE     *********************************
 	    	//*****************************************************************************	
 
-	        if (action.equals("leave")){
+	        if (action.equalsIgnoreCase("leave")){
 	        	System.out.println("end of game");
 	        	break;
 	        }
@@ -361,7 +361,7 @@ public class GameTurn{
 	    	//**************************     INVENTORY     ********************************
 	    	//*****************************************************************************	
 
-	        else if (action.equals("inventory")){
+	        else if (action.equalsIgnoreCase("inventory")){
 	        		inventaire.OpenInventory(Hero1, InvArme,EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
 	        }
 	        
@@ -371,7 +371,7 @@ public class GameTurn{
 	    	//*******************************     MAP     *********************************
 	    	//*****************************************************************************	
 
-	        else if (action.equals("map info")){
+	        else if (action.equalsIgnoreCase("map info")){
 	        	System.out.println("/ = fin de carte");
 	        	System.out.println("White = Wall");
 	        	System.out.println("Green = forest");

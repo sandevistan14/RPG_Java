@@ -43,11 +43,11 @@ public class inventaire{
 			Scanner scan = new Scanner(System.in);
 			String str = scan.nextLine();
 			
-			if(str.equals("Yes")) {
+			if(str.equalsIgnoreCase("Yes")) {
 				EqObjet[pos] = Objet;
 				return EqObjet;
 			}
-			else if (str.equals("No")){
+			else if (str.equalsIgnoreCase("No")){
 				return EqObjet;
 			}
 		}
@@ -64,11 +64,15 @@ public class inventaire{
 			}
 			Scanner scan5 = new Scanner(System.in);
 			String str5 = scan5.nextLine();
+			try {
 			for(int m = 0;m < TabObj.length; m += 1) {
 				if(m+1 == Integer.parseInt(str5)) {
 					TabObj[m] = obj;
 					return TabObj;
 				}
+			  }
+			 } catch (NumberFormatException e) {
+				return TabObj;
 			}
 		}
 	}
@@ -121,14 +125,14 @@ public class inventaire{
 			System.out.print("\n");
 			Scanner scan = new Scanner(System.in);
 			String str = scan.nextLine();
-			if(str.equals("Use potion")) {
+			if(str.equalsIgnoreCase("Use potion")) {
 				while(true) {
 					System.out.println("Whitch potion do you want to use ?");
 					System.out.print(" - Leave");
 					System.out.print("\n");
 					Scanner scan4 = new Scanner(System.in);
 					String str4 = scan4.nextLine();
-					if(str4.equals("Leave")) {
+					if(str4.equalsIgnoreCase("Leave")) {
 						break;
 					}
 					for(int i = 0;i < InvPotion.length;i+=1) {
@@ -150,15 +154,15 @@ public class inventaire{
 				}
 			}
 			
-			if(str.equals("Leave")){break;}
+			if(str.equalsIgnoreCase("Leave")){break;}
 			
-			if(str.equals("Equip")) {
+			if(str.equalsIgnoreCase("Equip")) {
 				System.out.print("\n");
 				System.out.println("what do yo want to equip ?");
 				System.out.println("- Weapon");
 				Scanner scan2 = new Scanner(System.in);
 				String str2 = scan2.nextLine();
-				if(str2.equals("Weapon")) {
+				if(str2.equalsIgnoreCase("Weapon")) {
 					boolean breaker = false;
 					while(true) {
 						System.out.println("Whitch weapon do you want to equip ?");
@@ -166,7 +170,7 @@ public class inventaire{
 						Scanner scan3 = new Scanner(System.in);
 						String str3 = scan3.nextLine();
 						for(int i = 0;i < InvArme.length;i+=1) {
-							if(InvArme[i].getName().equals(str3)) {
+							if(InvArme[i].getName().equalsIgnoreCase(str3)) {
 								EqiArme = (Arme[]) EquipObjet(EqiArme,InvArme[i],i);
 								breaker = true;
 								break;

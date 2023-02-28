@@ -28,7 +28,6 @@ public class Arme extends Objet{
 	public void setDrainOfLife(int DrainOflife) {
 		drainOfLife = DrainOflife;
 	}
-
 }
 
 

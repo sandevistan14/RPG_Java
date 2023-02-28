@@ -92,11 +92,11 @@ public class Fight{
 			 
 
 			 
-			 if(str4.equals("Inv")){
+			 if(str4.equalsIgnoreCase("Inv")){
 				 inventaire.OpenInventory(Hero1, InvArme,EqiArme, EqiBoot, EqiHelmet, EqiChestPlate, EqiLegging, InvArtefact, InvPotion);
 			 }
 			 
-			 else if(str4.equals("Attack")) {//if Attack
+			 else if(str4.equalsIgnoreCase("Attack")) {//if Attack
 				 int HeroDommage = (Hero1.getDommage() + EqiArme[0].getBonusDommage()) - (monster.getDefense()/10);
 				 
 				 Hero1.setLife(EqiArme[0].getDrainOfLife()+Hero1.getLife());
@@ -111,7 +111,7 @@ public class Fight{
 				 act = true;
 			 }
 			 
-			 else if(str4.equals("Flee") && Flee == true) {xp = 0;break;}//if Flee if possible
+			 else if(str4.equalsIgnoreCase("Flee") && Flee == true) {xp = 0;break;}//if Flee if possible
 			 
 			 
 			 //monster Attack
