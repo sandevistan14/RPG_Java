@@ -1,10 +1,6 @@
 package objet;
 
 public class Objet{
-	
-
-
-
 	String Name;
 	String Type;
 	public Objet(String name, String type) {

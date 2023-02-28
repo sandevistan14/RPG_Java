@@ -25,13 +25,11 @@ public class Text {
     	@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
         System.out.print("\n");
-        System.out.println("quel action voulez vous faire :");
-        System.out.println("- move");
+        System.out.println("What action do you want to do ?");
+        System.out.println("- move(up,right,down,left)");
         System.out.println("- inventory");
-        System.out.println("- leave (for leave the game)");
-        System.out.println("- show map");
         System.out.println("- map info");
-        System.out.println("- constant map on/off(map will be show after at each command");
+        System.out.println("- leave (the game)");
         String str = sc.nextLine();
 		return str;
     }
@@ -41,11 +39,11 @@ public class Text {
 
 		 if(premierCaractere == 'S') {
 			 System.out.print("\n");
-			 System.out.println("Oh no ! a slime bloc your way !");
+			 System.out.println("Oh no ! a slime block your way !");
 		 }
 		 else if(premierCaractere == 'D') {
 			 System.out.print("\n");
-			 System.out.println("Oh no ! a Dragon bloc your way !");
+			 System.out.println("Oh no ! a Dragon block your way !");
 		 }
 		 else if(premierCaractere == 'M') {
 			 System.out.print("\n");

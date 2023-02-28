@@ -14,7 +14,7 @@ public class Armor extends Objet{
 		this.bonusDefense = bonusDefense;
 		ReturnDommage = returnDommage;
 	}
-
+	
 
 	public int getBonusLife() {
 		return bonusLife;

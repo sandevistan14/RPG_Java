@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Hero extends Entity{
 	int ReturnX;
 	int ReturnY;
-	public Hero(char lettre, String name, int posY, int posX, int dommage, int life, int defense, int speed, int ReturnX,int ReturnY) {
+	int MaxHP;
+	public Hero(char lettre, String name, int posY, int posX, int dommage, int life, int defense, int speed, int ReturnX,int ReturnY, int MaxHp) {
 		super(lettre, name, posY, posX, dommage, life, defense,speed);
 		// TODO Auto-generated constructor stub
 	}
@@ -20,6 +21,13 @@ public class Hero extends Entity{
 	}
 	public void setReturnY(int returnY) {
 		ReturnY = returnY;
+	}
+	
+	public int getMaxHP() {
+		return MaxHP;
+	}
+	public void setMaxHP(int maxHP) {
+		MaxHP = maxHP;
 	}
 	public static boolean SetHeroClass(Hero Hero1) {
 		//*****************************************************************************
@@ -47,6 +55,7 @@ public class Hero extends Entity{
 	        	Hero1.setLife(120);
 	        	Hero1.setDefense(50);
 	        	Hero1.setSpeed(5);
+	        	Hero1.setMaxHP(120);
 	        	IsClass = true;}
 	        
 	        if (classs.equals("Paladins info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, good at sword and user of heal magic");}
@@ -57,6 +66,7 @@ public class Hero extends Entity{
 	        	Hero1.setLife(80);
 	        	Hero1.setDefense(20);
 	        	Hero1.setSpeed(0);
+	        	Hero1.setMaxHP(80);
 	        	IsClass = true;}
 	        
 	        if (classs.equals("Archer info")){System.out.println("Dommage : 20, LifePoint : 120 defence : 50, powerfull user of magic");}
@@ -67,6 +77,7 @@ public class Hero extends Entity{
 	        	Hero1.setLife(100);
 	        	Hero1.setDefense(40);
 	        	Hero1.setSpeed(5);
+	        	Hero1.setMaxHP(100);
 	        	IsClass = true;}
 	        
 	        if (classs.equals("Chevalier info")){System.out.println("0,0,30,100,40");}
@@ -77,6 +88,7 @@ public class Hero extends Entity{
 	        	Hero1.setLife(70);
 	        	Hero1.setDefense(0);
 	        	Hero1.setSpeed(0);
+	        	Hero1.setMaxHP(70);
 	        	IsClass = true;}
 	        if (classs.equals("Mage info")){System.out.println("Dommage : 40, LifePoint : 70 defence : 0, powerfull user of magic");}
 	        
@@ -86,6 +98,7 @@ public class Hero extends Entity{
 	        	Hero1.setLife(80);
 	        	Hero1.setDefense(0);
 	        	Hero1.setSpeed(15);
+	        	Hero1.setMaxHP(80);
 	        	IsClass = true;}
 	        if (classs.equals("Assassin info")){System.out.println("0,0,50,80,0");}
         }
