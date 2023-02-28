@@ -11,6 +11,7 @@ public class AsciiArt{
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_GREENBACKGROUND = "\u001B[42m"; 
     public static final String ANSI_WHITEBACKGROUND = "\u001B[47m";
     public static final String ANSI_REDBACKGROUND = "\u001B[41m";  
@@ -373,9 +374,9 @@ public class AsciiArt{
 		System.out.println("|----------|");
 		System.out.println("\n");
 	}
-	public static void PrintBlueEyesDragon(Monster monster) {
+	public static void PrintDragonKing(Monster monster) {
 
-		System.out.println("                                                                                                                                                                                  \r\n"
+		System.out.println(ANSI_BLUE +"                                                                                                                                                                               \r\n"
 				+ "                                                                                                                                            ░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▒▒░░░░  \r\n"
 				+ "    ░░▒▒▓▓▓▓▓▓▒▒▒▒▒▒░░                                                                                                            ░░▒▒▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██████████▓▓▒▒  \r\n"
 				+ "  ▒▒██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒                                                                                                    ▒▒▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓██████████▓▓▓▓▓▓▓▓▒▒          \r\n"
@@ -416,7 +417,7 @@ public class AsciiArt{
 				+ "                                                    ▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▒▒              ░░▓▓▓▓████▓▓██▓▓▓▓▓▓▓▓▓▓                                                                      \r\n"
 				+ "                                                        ▓▓████▒▒▓▓▓▓▒▒              ▒▒▓▓██████▓▓████▓▓▓▓▓▓▓▓                                                                      \r\n"
 				+ "                                                          ████▓▓▓▓▓▓▓▓              ▓▓▓▓██████  ████▓▓▓▓▒▒▓▓░░                                                                    \r\n"
-				+ "                                                          ▓▓▓▓"+ ANSI_BLUE +"▒▒" + ANSI_RESET +"▓▓▓▓▓▓▓▓          ▒▒▓▓██████  ▒▒  ▓▓▓▓▒▒▒▒▓▓▓▓                                                                    \r\n"
+				+ "                                                          ▓▓▓▓"+ ANSI_RESET + ANSI_RED +"▒▒" + ANSI_RESET +ANSI_BLUE +"▓▓▓▓▓▓▓▓          ▒▒▓▓██████  ▒▒  ▓▓▓▓▒▒▒▒▓▓▓▓                                                                    \r\n"
 				+ "                                                          ▓▓▓▓▓▓██▓▓████▒▒        ▓▓▒▒██▓▓▓▓████░░██████▓▓██▓▓                                                                    \r\n"
 				+ "                                                            ▓▓▓▓▓▓  ▒▒▓▓▓▓        ▓▓████▓▓████▓▓  ▓▓██▓▓▓▓▓▓▓▓▒▒                                                                  \r\n"
 				+ "                                                            ░░▓▓██    ▒▒▓▓        ▓▓██▓▓░░████    ██▓▓██▓▓▓▓▓▓▓▓▓▓                                                                \r\n"
@@ -435,7 +436,7 @@ public class AsciiArt{
 				+ "                                                                    ░░▓▓              ▒▒▓▓██▓▓              ▒▒    ▓▓                                                              \r\n"
 				+ "                                                                      ▓▓▓▓░░░░░░  ▒▒▒▒██▓▓██                ░░    ░░                                                              \r\n"
 				+ "                                                                      ░░▓▓▓▓▒▒▓▓▒▒▓▓▓▓██▓▓                                                                                        \r\n"
-				+ "                                                                        ▒▒▓▓▓▓▓▓▓▓▓▓▓▓░░                                                                                          "
+				+ "                                                                        ▒▒▓▓▓▓▓▓▓▓▓▓▓▓░░                                                                                          "+ ANSI_RESET
 				);
 		System.out.println("|----------|");
 		System.out.println("|HP :\t" + monster.getLife()+"|");

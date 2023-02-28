@@ -27,8 +27,6 @@ public class GameTurn{
 	
 	public static void GameTrun() throws InterruptedException, IOException {	
 
-
-		 
 		//*****************************************************************************
 		//**************************     Initialization     ***************************
 		//*****************************************************************************
@@ -43,25 +41,18 @@ public class GameTurn{
 		 int xpreq = 40;
 		 int level = 1;
 		 
-		 //objet
-		 Objet[] CommunLoot = new Objet[12];
-		 CommunLoot[0] = new Arme("Epeelongue","Arme",20,1);
-		 CommunLoot[1] = new Arme("Arc","Arme",15,1);
-		 CommunLoot[2] = new Arme("Massue","Arme",25,1);
-		 CommunLoot[3] = new Arme("baguette","Arme",20,1);
-		 CommunLoot[4] = new Arme("poignard","Arme",15,5);
-		 CommunLoot[5] = new Artefact("talissement de fortification","Artefact","Dommage",20);
-		 CommunLoot[6] = new Potion("Petite Potion de soin","Potion",20);
-		 CommunLoot[7] = new Potion("Moyenne Potion de soin","Potion",40);
-		 CommunLoot[8] = new boot("StandarBoot","Boot",0, 10, 0);
-		 CommunLoot[9] = new Helmet("StandarHelmet", "Helmet", 0, 10, 0);
-		 CommunLoot[10] = new ChestPlate("StandarChestPlate","ChestPlate", 0, 20, 0);
-		 CommunLoot[11] = new Legging("StandarLegging", "Legging", 0, 10, 0);
+		 //Commun objet
+		 Objet[] CommunLoot = Objet.CommunItem();
 		 
-		//objet
-		 Objet[] RareLoot = new Objet[1];
-		 RareLoot[0] = new Arme("Epee du vide","Arme",40,5);
-			 
+		//rare objet
+		 Objet[] RareLoot = Objet.RareItem();
+		 
+		 //epic objet
+		 Objet[] EpicLoot = Objet.EpicItem();
+		 
+		 //legendary objet
+		 Objet[] LegendaryLoot = Objet.LegendaryItem();
+		 
 		 //weapon
 		 Arme[] InvArme = new Arme[2];
 		 Arme[] EqiArme = new Arme[1];
@@ -93,7 +84,7 @@ public class GameTurn{
 				TabMonsterForest[10] = new Monster('D', "Dragon1", 0, 0, 40, 200, 50,100,0);
 
 
-		 ArrayList<Monster> TabMonster = Map.CreateMonster(mapmonster);
+		 ArrayList<Monster> TabMonster = Monster.CreateMonster(mapmonster);
 				 
 		 Hero Hero1 = new Hero('P',"",28,15,0,0,0,0,0,0,0);
 		 
@@ -109,57 +100,69 @@ public class GameTurn{
 	        Text.text_intro(); //Introduction text
 	        
 	        // check if Helmet is null or not and if it's null send empty
-	     	for(int i = 0;i < EqiHelmet.length; i += 1) {if (Objects.isNull(EqiHelmet[i])) {EqiHelmet[i] = new Helmet("vide", "vide", 0, 0, 0); }}
+	     	for(int i = 0;i < EqiHelmet.length; i += 1) {if (Objects.isNull(EqiHelmet[i])) {EqiHelmet[i] = new Helmet("vide", "vide","\u001B[37m", 0, 0, 0); }}
 	     			
 	     	// check if Boot is null or not and if it's null send empty
-			for(int i = 0;i < EqiBoot.length; i += 1) {if (Objects.isNull(EqiBoot[i])) {EqiBoot[i] = new boot("vide", "vide", 0, 0, 0); }}
+			for(int i = 0;i < EqiBoot.length; i += 1) {if (Objects.isNull(EqiBoot[i])) {EqiBoot[i] = new boot("vide", "vide","\u001B[37m", 0, 0, 0); }}
 			
 			// check if ChestPlate is null or not and if it's null send empty
-			for(int i = 0;i < EqiChestPlate.length; i += 1) {if (Objects.isNull(EqiChestPlate[i])) {EqiChestPlate[i] = new ChestPlate("vide", "vide", 0, 0, 0); }}
+			for(int i = 0;i < EqiChestPlate.length; i += 1) {if (Objects.isNull(EqiChestPlate[i])) {EqiChestPlate[i] = new ChestPlate("vide", "vide","\u001B[37m", 0, 0, 0); }}
 			
 			// check if Legging is null or not and if it's null send empty
-			for(int i = 0;i < EqiLegging.length; i += 1) {if (Objects.isNull(EqiLegging[i])) {EqiLegging[i] = new Legging("vide", "vide", 0, 0, 0); }}
+			for(int i = 0;i < EqiLegging.length; i += 1) {if (Objects.isNull(EqiLegging[i])) {EqiLegging[i] = new Legging("vide", "vide","\u001B[37m", 0, 0, 0); }}
 	    	
 			// check if EqiArme is null or not and if it's null send empty
-			for(int i = 0;i < EqiArme.length; i += 1) {if (Objects.isNull(EqiArme[i])) {EqiArme[i] = new Arme("vide", "vide", 0, 0); }}
+			for(int i = 0;i < EqiArme.length; i += 1) {if (Objects.isNull(EqiArme[i])) {EqiArme[i] = new Arme("vide", "vide","\u001B[37m", 0, 0); }}
 	    	
 			// check if Arme is null or not and if it's null send empty
-			for(int i = 0;i < InvArme.length; i += 1) {if (Objects.isNull(InvArme[i])) {InvArme[i] = new Arme("vide", "vide", 0, 0); }}
+			for(int i = 0;i < InvArme.length; i += 1) {if (Objects.isNull(InvArme[i])) {InvArme[i] = new Arme("vide", "vide","\u001B[37m", 0, 0); }}
 			
 			// check if Artefact is null or not and if it's null send empty
-			for(int i = 0;i < InvArtefact.length; i += 1) {if (Objects.isNull(InvArtefact[i])) {InvArtefact[i] = new Artefact("vide", "vide", "vide", 0); }}
+			for(int i = 0;i < InvArtefact.length; i += 1) {if (Objects.isNull(InvArtefact[i])) {InvArtefact[i] = new Artefact("vide", "vide","\u001B[37m", "vide", 0); }}
 			
 			// check if Potion is null or not and if it's null send empty
-			for(int i = 0;i < InvPotion.length; i += 1) {if (Objects.isNull(InvPotion[i])) {InvPotion[i] = new Potion("vide", "vide", 0); }}
+			for(int i = 0;i < InvPotion.length; i += 1) {if (Objects.isNull(InvPotion[i])) {InvPotion[i] = new Potion("vide", "vide","\u001B[37m", 0); }}
 			
 //*****************************************************************************
 //******************************     WHILE     ********************************
 //*****************************************************************************
 		 while (true){	
+			 
+			 //clear screen doesn't work
 			 System.out.print(AsciiArt.ANSI_SCREENRESET);
 			 System.out.flush();  
+			 
+			//*****************************************************************************
+			//*****************************     FINISH     ********************************
+			//*****************************************************************************
+			 if(map[Hero1.getPosY()][Hero1.getPosX()-1] == 'E') {
+				 AsciiArt.DanceFortnite();
+				 Text.WIN();
+				 break;
+			 }
+			 
 			//*****************************************************************************
 			//******************************     CHEST     ********************************
 			//*****************************************************************************
 			 
 			 if(map[Hero1.getPosY()][Hero1.getPosX()-1] == 'C') {
-				 if(!(Map.CheckAround(Hero1, mapmonster))) {
+				 if((Map.checkSurroundings(Hero1, mapmonster))) {
 					 System.out.println("Vous ouvrez le coffre et gagnez 5xp");
 					 xpfight = 5;
 					 map[Hero1.getPosY()][Hero1.getPosX()-1] = '.';
 				 }
 				 else {
-					 System.out.println("Vous ne pouvez pas ouvrir le coffre il y a un enemie autour");
+					 System.out.println("You can't open the chest there is an enemie around");
 				 }
 			 }
 			 else if(map[Hero1.getPosY()][Hero1.getPosX()-1] == 'G') {
-				 if(!(Map.CheckAround(Hero1, mapmonster))) {
-					 System.out.println("Vous ouvrez le Giga coffre et gagnez 8xp");
+				 if((Map.checkSurroundings(Hero1, mapmonster))) {
+					 System.out.println("You open a Giga coffre and earn 8xp");
 					 xpfight = 8;
 					 map[Hero1.getPosY()][Hero1.getPosX()-1] = '.';
 				 }
 				 else {
-					 System.out.println("Vous ne pouvez pas ouvrir le Giga coffre il y a un enemie autour");
+					 System.out.println("You can't open the chest there is an enemie around");
 				 }
 			 }
 				 
@@ -187,26 +190,42 @@ public class GameTurn{
 					 }
 				 }
 			 }
+			 Objet dropp;
+			 dropp = Objet.drop(CommunLoot);
+			 double rand2 = Math.random()*100;
+			 if(rand2 > 70) {
+				 dropp = Objet.drop(RareLoot);
+			 }
 			 
 			 if(xpfight == -69) {
 				 break;
 			 }
-			 else if(xpfight > 0) {
-				Objet dropp = Objet.drop(CommunLoot);
+			 
+			 if(xpfight > 0) {
+				 if(xpfight >70 || xpfight == 8) {
+					 System.out.print("\n");
+					 double rand3 = Math.random()*100;
+					 if(rand3 > 70) {
+						 dropp = Objet.drop(LegendaryLoot);
+					 }
+					 else {
+						 dropp = Objet.drop(EpicLoot);	
+					 }
+				 }
+
 				if(xpfight == 5) {
 			        System.out.print("\n");
-			        System.out.print(AsciiArt.ANSI_YELLOW + "You found an object into the chest : "+  dropp.getName() + AsciiArt.ANSI_RESET);
+			        System.out.print(AsciiArt.ANSI_YELLOW + "You found an item into the chest : " + AsciiArt.ANSI_RESET + dropp.getRarity() + dropp.getName() + AsciiArt.ANSI_RESET);
 			        System.out.print("\n");
 				}
 				else if(xpfight == 8) {
-					dropp = Objet.drop(RareLoot);
 			        System.out.print("\n");
-			        System.out.print(AsciiArt.ANSI_YELLOW + "You found an object into the rare chest : "+  dropp.getName() + AsciiArt.ANSI_RESET);
+			        System.out.print(AsciiArt.ANSI_YELLOW + "You found an item into the rare chest : "+ AsciiArt.ANSI_RESET + dropp.getRarity() +  dropp.getName() + AsciiArt.ANSI_RESET);
 			        System.out.print("\n");
 				}
 				else {
 			        System.out.print("\n");
-			        System.out.print(AsciiArt.ANSI_YELLOW + "il s'emblerait que le monstre est drop un objet : "+  dropp.getName() + AsciiArt.ANSI_RESET);
+			        System.out.print(AsciiArt.ANSI_YELLOW + "it look like the monster drop an item : "+ AsciiArt.ANSI_RESET + dropp.getRarity() +  dropp.getName() + AsciiArt.ANSI_RESET);
 			        System.out.print("\n");
 				}
 		        Thread.sleep(3000);
@@ -318,17 +337,20 @@ public class GameTurn{
 				 xp -= xpreq;
 				 xpreq += 10;
 				 level += 1;
-				 Hero1.setLife(Hero1.getLife()+20);
-				 Hero1.setDommage(Hero1.getDommage()+10);
+				 Hero1.setLife(Hero1.getLife()+10);
+				 Hero1.setMaxHP(Hero1.getMaxHP()+10);
+				 Hero1.setDommage(Hero1.getDommage()+5);
 				 Hero1.setDefense(Hero1.getDefense()+5);
 				 System.out.print("\n");
 				 System.out.print("\n");
-				 System.out.print("Congrats level UP ! Your now level :");
+				 System.out.print(AsciiArt.ANSI_YELLOW + "Congrats level UP ! Your now level :");
 				 System.out.print(level);
 				 System.out.print("\n");
-				 System.out.print("+20 HP, +10 Dommage, +5 Defense");
-				 System.out.print("\n");
+				 System.out.print("+10 HP, +10 MaxHp , +10 Dommage, +5 Defense");
+				 System.out.print("\n" + AsciiArt.ANSI_RESET);
+				 Thread.sleep(4000);//sleep
 			 }
+			 
 			 
 			 
 	//*****************************************************************************

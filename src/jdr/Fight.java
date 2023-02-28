@@ -63,12 +63,13 @@ public class Fight{
 				 System.out.print("\n");
 				 System.out.print("\n");
 				 monster.setPosX(0); monster.setPosY(0); //bug correction for not fight a dead Monster
-				 Thread.sleep(4000);//sleep
+				 Thread.sleep(3000);//sleep
 				 xp = monster.getXp();//get Xp from monster
 				 mapmonster[Hero1.getPosY()][Hero1.getPosX()-1] = ' ';// erase the monster on the map
 				 break;
 			 }
 			 if(premierCaractere == 'M') {AsciiArt.PrintMotherOfDeath(monster);}
+			 if(premierCaractere == 'K') {AsciiArt.PrintDragonKing(monster);}
 			 if(premierCaractere == 'D') {AsciiArt.PrintRedEyesDragon(monster);}
 			 if(premierCaractere == 'W') {AsciiArt.PrintWolf(monster);}
 			 if(premierCaractere == 'S') {double num = Math.random()*100;
@@ -98,6 +99,11 @@ public class Fight{
 			 
 			 else if(str4.equalsIgnoreCase("Attack")) {//if Attack
 				 int HeroDommage = (Hero1.getDommage() + EqiArme[0].getBonusDommage()) - (monster.getDefense()/10);
+				 for(int Artefact = 0;Artefact < InvArtefact.length; Artefact += 1) {
+					 if(InvArtefact[Artefact].getBonusName().equalsIgnoreCase("Dommage")) {
+						 HeroDommage += InvArtefact[Artefact].getBonus();
+					 }
+				 }
 				 
 				 Hero1.setLife(EqiArme[0].getDrainOfLife()+Hero1.getLife());
 				 if(Hero1.getLife()>Hero1.getMaxHP()) {

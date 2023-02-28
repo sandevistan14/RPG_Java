@@ -3,8 +3,8 @@ package objet;
 public class Artefact extends Objet{
 	String BonusName;
 	int Bonus;
-	public Artefact(String name, String type, String bonusName, int bonus) {
-		super(name, type);
+	public Artefact(String name, String type,String Rarity, String bonusName, int bonus) {
+		super(name, type, Rarity);
 		BonusName = bonusName;
 		Bonus = bonus;
 	}
@@ -19,6 +19,10 @@ public class Artefact extends Objet{
 	}
 	public void setBonus(int bonus) {
 		Bonus = bonus;
+	}
+	@Override
+	public String toString() {
+		return "Artefact [BonusName=" + BonusName + ", Bonus=" + Bonus + "]";
 	}
 
 

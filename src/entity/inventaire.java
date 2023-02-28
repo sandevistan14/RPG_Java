@@ -5,6 +5,7 @@ import Armor.ChestPlate;
 import Armor.Helmet;
 import Armor.Legging;
 import Armor.boot;
+import jdr.AsciiArt;
 import objet.Arme;
 import objet.Artefact;
 import objet.Objet;
@@ -35,10 +36,9 @@ public class inventaire{
 	public static Objet[] EquipObjet(Objet[] EqObjet, Objet Objet,int pos) {
 		while(true) {
 			System.out.print("\n");
-			System.out.println("Are you sure to want to replace " + EqObjet[0].getName() + " by " + Objet.getName());
-			System.out.println("- No");
+			System.out.println("Are you sure to want to replace " + EqObjet[0].getRarity()+ EqObjet[0].getName()+ AsciiArt.ANSI_RESET + " by " + Objet.getName());
 			System.out.println("- Yes");
-			System.out.print(" - If you want more information on the weapon tape : 'info <nomarme>'");
+			System.out.println("- No");
 			System.out.print("\n");
 			Scanner scan = new Scanner(System.in);
 			String str = scan.nextLine();
@@ -57,10 +57,10 @@ public class inventaire{
 		while(true) {
 			System.out.print("\n");
 			System.out.print("Where do you want to equip ?(position)");
-			System.out.println("(Si vous remplacez un objet il sera définitivement supprimer)");
+			System.out.println("\n");
 			System.out.print("\n");
 			for(int k = 1;k < TabObj.length+1; k += 1) {
-				System.out.println("Place n°" + k + " -> Nom de l'objet : "+ TabObj[k-1].getName());
+				System.out.println("Place n°" + k + " -> Nom de l'objet : "+ TabObj[k-1].getRarity()+ TabObj[k-1].getName()+ AsciiArt.ANSI_RESET );
 			}
 			Scanner scan5 = new Scanner(System.in);
 			String str5 = scan5.nextLine();
@@ -92,30 +92,30 @@ public class inventaire{
 			System.out.println("|          Weapon :      |          Artefact :    |          Potion :      |");
 			System.out.println("|------------------------|------------------------|------------------------|");
 			System.out.println("|      Emplacement 1 :   |      Emplacement 1 :   |      Emplacement 1 :   |");
-			System.out.println("|\t   "+ InvArme[0].getName()+" \t |\t"+ InvArtefact[0].getName()+ "\t\t|\t  "+ InvPotion[0].getName()+   "\t\t|");
+			System.out.println("|\t   "+InvArme[0].getRarity()+ InvArme[0].getName()+ AsciiArt.ANSI_RESET+" \t |\t"+ InvArtefact[0].getRarity() + InvArtefact[0].getName()+ AsciiArt.ANSI_RESET + "\t\t|\t  "+ InvPotion[0].getRarity()+ InvPotion[0].getName()+ AsciiArt.ANSI_RESET+   "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|      Emplacement 2 :   |      Emplacement 2 :   |      Emplacement 2 :   |");
-			System.out.println("|\t   "+ InvArme[1].getName()+"   \t |\t   "+ InvArtefact[1].getName()+"\t\t|\t"+ InvPotion[1].getName()+ "\t\t|");
+			System.out.println("|\t   "+InvArme[1].getRarity()+ InvArme[1].getName()+ AsciiArt.ANSI_RESET+"   \t |\t   "+  InvArtefact[2].getRarity() + InvArtefact[2].getName()+ AsciiArt.ANSI_RESET+"\t\t|\t"+ InvPotion[1].getRarity()+ InvPotion[1].getName()+ AsciiArt.ANSI_RESET+ "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|                        |      Emplacement 3 :   |      Emplacement 3 :   |");
-			System.out.println("|                        |\t   "+ InvArtefact[2].getName()+"\t\t|\t   "+ InvPotion[2].getName()+  "\t\t|");
+			System.out.println("|                        |\t   "+  InvArtefact[2].getRarity() + InvArtefact[2].getName()+ AsciiArt.ANSI_RESET+"\t\t|\t   "+ InvPotion[2].getRarity()+ InvPotion[2].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|                        |                        |      Emplacement 4 :   |");
-			System.out.println("|                        |                        |\t   "+ InvPotion[3].getName()+  "\t\t|");
+			System.out.println("|                        |                        |\t   "+ InvPotion[3].getRarity()+ InvPotion[3].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|                        |                        |      Emplacement 5 :   |");
-			System.out.println("|                        |                        |\t   "+ InvPotion[4].getName()+  "\t\t|");
+			System.out.println("|                        |                        |\t   "+ InvPotion[4].getRarity()+ InvPotion[4].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
 			System.out.println("|                        |                        |                        |");	
 			System.out.println("|------------------------|------------------------|------------------------|");
 			System.out.print("\n");
 			System.out.println("Equip Stuff : ");
 			System.out.print("\n");
-			System.out.println("Hemet : " + EqiHelmet[0].getName());
-			System.out.println("ChestPlate : "+EqiChestPlate[0].getName());
-			System.out.println("Legging : " + EqiLegging[0].getName());
-			System.out.println("Boot : "+ EqiBoot[0].getName());
+			System.out.println("Hemet : "+EqiHelmet[0].getRarity() + EqiHelmet[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("ChestPlate : "+EqiChestPlate[0].getRarity()+EqiChestPlate[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("Legging : " +EqiLegging[0].getRarity()+ EqiLegging[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("Boot : "+EqiBoot[0].getRarity()+ EqiBoot[0].getName()+ AsciiArt.ANSI_RESET);
 			System.out.println("");
-			System.out.println("Weapon : "+ EqiArme[0].getName());
+			System.out.println("Weapon : "+EqiArme[0].getRarity()+ EqiArme[0].getName()+ AsciiArt.ANSI_RESET);
 			System.out.println("");
 			System.out.println("What do you want to do ?");
 			System.out.println("- Leave");
@@ -146,7 +146,7 @@ public class inventaire{
 								if(Hero1.getLife()>Hero1.getMaxHP()) {
 									Hero1.setLife(Hero1.getMaxHP());
 								}
-								InvPotion[i] = new Potion("vide", "vide", 0);
+								InvPotion[i] = new Potion("vide", "vide","vide", 0);
 							}
 						}//end if name = str4
 					}//end for i in InvPotion

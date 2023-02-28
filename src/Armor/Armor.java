@@ -8,8 +8,8 @@ public class Armor extends Objet{
 	int bonusDefense;
 	int ReturnDommage;
 
-	public Armor(String name, String type, int bonusLife, int bonusDefense, int returnDommage) {
-		super(name, type);
+	public Armor(String name, String type,String Rarity, int bonusLife, int bonusDefense, int returnDommage) {
+		super(name, type,Rarity);
 		this.bonusLife = bonusLife;
 		this.bonusDefense = bonusDefense;
 		ReturnDommage = returnDommage;
@@ -43,6 +43,13 @@ public class Armor extends Objet{
 
 	public void setReturnDommage(int returnDommage) {
 		ReturnDommage = returnDommage;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Armor [bonusLife=" + bonusLife + ", bonusDefense=" + bonusDefense + ", ReturnDommage=" + ReturnDommage
+				+ "]";
 	}
 	
 	

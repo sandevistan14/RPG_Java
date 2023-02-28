@@ -100,7 +100,7 @@ public class Hero extends Entity{
 	        	Hero1.setSpeed(15);
 	        	Hero1.setMaxHP(80);
 	        	IsClass = true;}
-	        if (classs.equalsIgnoreCase("Assassin info")){System.out.println("0,0,50,80,0");}
+	        if (classs.equalsIgnoreCase("Assassin info")){System.out.println("Dommage : 50, LifePoint : 80 defence : 0, powerfull slayer");}
         }
 		return IsClass; 
 	}

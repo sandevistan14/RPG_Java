@@ -6,8 +6,8 @@ public class Arme extends Objet{
 	int bonusDommage;
 	int drainOfLife;
 	
-	public Arme(String name, String type, int BonusDommage, int DrainOflife) {
-		super(name, type);
+	public Arme(String name, String type,String Rarity, int BonusDommage, int DrainOflife) {
+		super(name, type, Rarity);
 		bonusDommage = BonusDommage;
 		drainOfLife = DrainOflife;
 		// TODO Auto-generated constructor stub
@@ -28,6 +28,13 @@ public class Arme extends Objet{
 	public void setDrainOfLife(int DrainOflife) {
 		drainOfLife = DrainOflife;
 	}
+
+	@Override
+	public String toString() {
+		return "Arme [bonusDommage=" + bonusDommage + ", drainOfLife=" + drainOfLife + "]";
+	}
+	
+	
 }
 
 
