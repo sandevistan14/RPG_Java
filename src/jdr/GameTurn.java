@@ -1,7 +1,9 @@
 //package
 package jdr;
 
+import java.io.IOException;
 import java.util.Objects;
+// Game Made By sandevistan14
 //import
 import java.util.Scanner;
 import Armor.ChestPlate;
@@ -16,11 +18,11 @@ import objet.Arme;
 import objet.Potion;
 import objet.Artefact;
 import objet.Objet;
-
+		
 
 public class GameTurn{
 	
-	public static void GameTrun() throws InterruptedException {	
+	public static void GameTrun() throws InterruptedException, IOException {	
 		 
 		//*****************************************************************************
 		//**************************     Initialization     ***************************
@@ -134,12 +136,10 @@ public class GameTurn{
 //*****************************************************************************
 //******************************     WHILE     ********************************
 //*****************************************************************************
-		 while (true){
-			 System.out.println(CommunLoot[4].toString());
-			 EqiArme[0] = (Arme) CommunLoot[4];
-			 System.out.println(((Potion) CommunLoot[6]).getHeal());
-			 System.out.println((((Arme) CommunLoot[4]).getBonusDommage()));
-			 System.out.println(((Arme) RareLoot[0]).getBonusDommage());
+		 while (true){	
+			 Runtime.getRuntime().exec("cls");
+	        System.out.print("\033[H\033[2J");
+	        System.out.flush();
 			//*****************************************************************************
 			//******************************     CHEST     ********************************
 			//*****************************************************************************

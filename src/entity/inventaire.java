@@ -56,7 +56,7 @@ public class inventaire{
 	public static Objet[] AddIntoInv(Objet[] TabObj,Objet obj) {
 		while(true) {
 			System.out.print("\n");
-			System.out.print("Votre inventaire est plein a quel place voulez vous l'equipe ");
+			System.out.print("Where do you want to equip ?(position)");
 			System.out.println("(Si vous remplacez un objet il sera définitivement supprimer)");
 			System.out.print("\n");
 			for(int k = 1;k < TabObj.length+1; k += 1) {
