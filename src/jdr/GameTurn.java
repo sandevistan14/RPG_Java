@@ -300,7 +300,7 @@ public class GameTurn{
 				        			break;
 				        		}
 				        		else {
-					        			EqiHelmet = (Helmet[]) inventaire.EquipObjet(EqiArme,dropp,0);
+					        			EqiHelmet = (Helmet[]) inventaire.EquipObjet(EqiHelmet,dropp,0);
 					        			break;
 				        		}
 				        	}
