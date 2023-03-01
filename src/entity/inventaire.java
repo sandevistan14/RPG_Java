@@ -36,7 +36,7 @@ public class inventaire{
 	public static Objet[] EquipObjet(Objet[] EqObjet, Objet Objet,int pos) {
 		while(true) {
 			System.out.print("\n");
-			System.out.println("Are you sure to want to replace " + EqObjet[0].getRarity()+ EqObjet[0].getName()+ AsciiArt.ANSI_RESET + " by " + Objet.getName());
+			System.out.println("Are you sure to want to replace " + EqObjet[0].getRarity()+ EqObjet[0].getName()+ AsciiArt.ANSI_RESET + " by " + Objet.getRarity()+ Objet.getName() + AsciiArt.ANSI_RESET);
 			System.out.println("- Yes");
 			System.out.println("- No");
 			System.out.print("\n");
