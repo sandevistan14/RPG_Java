@@ -2,7 +2,7 @@
 
 ### Map info :  
 F = forest  
-X ad / = wall  
+X and / = wall  
 C = chest  
 G = Giga Chest  
 E = Exit  
