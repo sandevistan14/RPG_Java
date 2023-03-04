@@ -30,7 +30,7 @@ public class Text {
         System.out.println("What action do you want to do ?");
         System.out.println("- move(up,right,down,left)");
         System.out.println("- inventory");
-        System.out.println("- map info");
+        System.out.println("- info");
         System.out.println("- leave (the game)");
         String str = sc.nextLine();
 		return str;

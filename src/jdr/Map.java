@@ -167,6 +167,31 @@ public class Map{
 		 }
 	}
 	
+	public static int Chest(Hero Hero1, char[][] map,char[][] mapmonster) {
+		int xpfight = 0;
+		 if(map[Hero1.getPosY()][Hero1.getPosX()-1] == 'C') {
+			 if((Map.checkSurroundings(Hero1, mapmonster))) {
+				 System.out.println("Vous ouvrez le coffre et gagnez 5xp");
+				 xpfight = 5;
+				 map[Hero1.getPosY()][Hero1.getPosX()-1] = '.';
+			 }
+			 else {
+				 System.out.println("You can't open the chest there is an enemie around");
+			 }
+		 }
+		 else if(map[Hero1.getPosY()][Hero1.getPosX()-1] == 'G') {
+			 if((Map.checkSurroundings(Hero1, mapmonster))) {
+				 System.out.println("You open a Giga coffre and earn 8xp");
+				 xpfight = 8;
+				 map[Hero1.getPosY()][Hero1.getPosX()-1] = '.';
+			 }
+			 else {
+				 System.out.println("You can't open the chest there is an enemie around");
+			 }
+		 }
+		 return xpfight;
+	}
+	
 	public static boolean checkSurroundings(Hero hero, char[][] map) {
 	    int posX = hero.getPosX()-1;
 	    int posY = hero.getPosY();

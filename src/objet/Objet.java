@@ -1,9 +1,13 @@
 package objet;
 
+import java.util.Scanner;
+
 import Armor.ChestPlate;
 import Armor.Helmet;
 import Armor.Legging;
 import Armor.boot;
+import entity.Hero;
+import entity.inventaire;
 import jdr.AsciiArt;
 
 public class Objet{
@@ -100,6 +104,134 @@ public class Objet{
 		 LegendaryLoot[1] = new Potion("An old potion of healing","Potion",AsciiArt.ANSI_YELLOW,999);
 		 LegendaryLoot[2] = new Arme("Wood stick","Arme",AsciiArt.ANSI_YELLOW,70,0);
 		return LegendaryLoot;
+	}
+	
+	public static void DropItem(Hero hero,int xpfight,Objet[] CommunLoot,Objet[] RareLoot,Objet[] EpicLoot,Objet[] LegendaryLoot, Scanner scan) throws InterruptedException {
+		if(xpfight > 0) {
+			 Objet dropp;
+			 dropp = Objet.drop(CommunLoot);
+			 double rand2 = Math.random()*100;
+			 if(rand2 > 70) {
+				 dropp = Objet.drop(RareLoot);
+			 }
+			 if(xpfight >70 || xpfight == 8) {
+				 System.out.print("\n");
+				 double rand3 = Math.random()*100;
+				 if(rand3 > 70) {
+					 dropp = Objet.drop(LegendaryLoot);
+				 }
+				 else {
+					 dropp = Objet.drop(EpicLoot);	
+				 }
+			 }
+
+			if(xpfight == 5) {
+		        System.out.print("\n");
+		        System.out.print(AsciiArt.ANSI_YELLOW + "You found an item into the chest : " + AsciiArt.ANSI_RESET + dropp.getRarity() + dropp.getName() + AsciiArt.ANSI_RESET);
+		        System.out.print("\n");
+			}
+			else if(xpfight == 8) {
+		        System.out.print("\n");
+		        System.out.print(AsciiArt.ANSI_YELLOW + "You found an item into the rare chest : "+ AsciiArt.ANSI_RESET + dropp.getRarity() +  dropp.getName() + AsciiArt.ANSI_RESET);
+		        System.out.print("\n");
+			}
+			else {
+		        System.out.print("\n");
+		        System.out.print(AsciiArt.ANSI_YELLOW + "it look like the monster drop an item : "+ AsciiArt.ANSI_RESET + dropp.getRarity() +  dropp.getName() + AsciiArt.ANSI_RESET);
+		        System.out.print("\n");
+			}
+	        Thread.sleep(3000);
+			int breaker = 0;
+			
+	        while(true) {
+		        System.out.print("\n");
+		        System.out.print("What do you want to do ?");
+		        System.out.print("\n- Equip(1) \n- Put into the inventory(2) \n- Ignor(will delet the object)(3)");
+		        System.out.print("\n");
+		        String strdrop = scan.nextLine();
+		        if(strdrop.equalsIgnoreCase("Ignor") || strdrop.equalsIgnoreCase("3")) {
+		        	break;
+		        }
+		        else if(strdrop.equalsIgnoreCase("Put into the inventory") || (strdrop.equalsIgnoreCase("2"))) {
+		        	if(dropp.getType().equalsIgnoreCase("Arme")) {
+			        	hero.setInvArmetab((Arme[]) inventaire.AddIntoInv(hero.getInvArme(),dropp));
+			        	break;
+		        	}
+		        	else if(dropp.getType().equalsIgnoreCase("Potion")) {
+		        		hero.setInvPotiontab((Potion[]) inventaire.AddIntoInv(hero.getInvPotion(),dropp));
+		        		break;
+		        	}
+		        	else if(dropp.getType().equalsIgnoreCase("Artefact")) {
+			        	hero.setInvArtefacttab((Artefact[]) inventaire.AddIntoInv(hero.getInvArtefact(),dropp));
+			        	break;
+		        	}
+		        	else {
+				        System.out.println("You can't put this object into your inventory");
+		        	}
+		        }
+		        else if(strdrop.equalsIgnoreCase("Equip")|| (strdrop.equalsIgnoreCase("1"))) {
+		        	while(true) {
+			        	if(dropp.getType().equalsIgnoreCase("Arme")) {
+			        		if ((hero.getEqiArme()[0].getName() == "vide")){
+			        			System.out.println("You equip " + dropp.getName());
+			        			hero.setEqiArme((Arme) dropp,0);
+			        			break;
+			        		}
+			        		else {
+				        			hero.setEqiArmetab((Arme[]) inventaire.EquipObjet(hero.getEqiArme(),dropp,0));
+				        			break;
+			        		}
+			        	}
+			        	else if(dropp.getType().equalsIgnoreCase("Boot")) {
+			        		if ((hero.getEqiBoot()[0].getName() == "vide")){
+			        			System.out.println("You equip " + dropp.getName());
+			        			hero.setEqiBoot((boot) dropp,0);
+			        			break;
+			        		}
+			        		else {					        		
+				        			hero.setEqiBoottab((boot[]) inventaire.EquipObjet(hero.getEqiBoot(),dropp,0));
+				        			break;
+			        		}
+			        	}
+			        	else if(dropp.getType().equalsIgnoreCase("ChestPlate")) {
+			        		if ((hero.getEqiChestPlate()[0].getName() == "vide")){
+			        			System.out.println("You equip " + dropp.getName());
+			        			hero.setEqiChestPlate((ChestPlate) dropp,0);
+			        			break;
+			        		}
+			        		else {
+				        			hero.setEqiChestPlatetab((ChestPlate[]) inventaire.EquipObjet(hero.getEqiChestPlate(),dropp,0));
+				        			break;
+			        		}
+			        	}
+			        	else if(dropp.getType().equalsIgnoreCase("Helmet")) {
+			        		if ((hero.getEqiHelmet()[0].getName() == "vide")){
+			        			System.out.println("You equip " + dropp.getName());
+			        			hero.setEqiHelmet((Helmet) dropp,0);
+			        			break;
+			        		}
+			        		else {
+				        			hero.setEqiHelmettab((Helmet[]) inventaire.EquipObjet(hero.getEqiHelmet(),dropp,0));
+				        			break;
+			        		}
+			        	}
+			        	else if(dropp.getType().equalsIgnoreCase("Legging")) {
+			        		
+			        		
+			        		if ((hero.getEqiLegging()[0].getName() == "vide")){
+			        			System.out.println("You equip " + dropp.getName());hero.setEqiLegging((Legging) dropp,0);break;}
+			        		
+			        		//replace
+			        		else {
+			        			hero.setEqiLeggingtab((Legging[]) inventaire.EquipObjet(hero.getEqiLegging(),dropp,0));break;}}
+			        	
+			        	else {// if you can't equip it
+			        		System.out.println("You can't equip this");breaker = 1;break;}
+		        	}
+		        	if (breaker == 0) {	break;}
+		        }
+	        }
+		 }
 	}
 	
 }

@@ -42,5 +42,22 @@ public class Monster extends Entity{
 		}
 		return Monstre;
 	}
+	
+	public static Monster[] MonsterForest() {
+		Monster[] TabMonsterForest = new Monster[11];
+		int MonsterInForest = 0;
+		TabMonsterForest[0] = new Monster('W', "WolfF1", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[1] = new Monster('S', "SlimeF1", 0, 0, 10, 40, 0,10,10);
+		TabMonsterForest[2] = new Monster('W', "WolfF2", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[3] = new Monster('S', "SlimeF2", 0, 0, 10, 40, 0,10,10);
+		TabMonsterForest[4] = new Monster('W', "WolfF3", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[5] = new Monster('W', "WolfF4", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[6] = new Monster('W', "WolfF5", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[7] = new Monster('W', "WolfF6", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[8] = new Monster('W', "WolfF7", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[9] = new Monster('W', "WolfF8", 0, 0, 20, 80, 0,20,40);
+		TabMonsterForest[10] = new Monster('D', "Dragon1", 0, 0, 40, 200, 50,100,0);
+		return TabMonsterForest;
+	}
 }
 

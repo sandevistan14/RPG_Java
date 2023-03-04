@@ -2,14 +2,146 @@ package entity;
 
 import java.util.Scanner;
 
+import Armor.ChestPlate;
+import Armor.Helmet;
+import Armor.Legging;
+import Armor.boot;
+import jdr.AsciiArt;
+import objet.Arme;
+import objet.Artefact;
+import objet.Potion;
+
 public class Hero extends Entity{
+	
+	Arme[] InvArme = new Arme[2];
+	Arme[] EqiArme = new Arme[1];
+	boot[] EqiBoot = new boot[1];
+	Helmet[] EqiHelmet = new Helmet[1];
+	ChestPlate[] EqiChestPlate = new ChestPlate[1];
+	Legging[] EqiLegging = new Legging[1];
+	Artefact[] InvArtefact = new Artefact[3];
+	Potion[] InvPotion = new Potion[5];
 	int ReturnX;
 	int ReturnY;
 	int MaxHP;
-	public Hero(char lettre, String name, int posY, int posX, int dommage, int life, int defense, int speed, int ReturnX,int ReturnY, int MaxHp) {
+	int xp = 0;
+	int xpreq = 40;
+	int level = 1;
+	
+	public Hero(char lettre, String name, 
+			
+			int posY, int posX, int dommage, int life,
+			
+			int defense, int speed,
+			
+			int ReturnX,int ReturnY, int MaxHp) {
+		
 		super(lettre, name, posY, posX, dommage, life, defense,speed);
-		// TODO Auto-generated constructor stub
 	}
+
+	
+	public void setInvArme(Arme arme,int pos) {
+		InvArme[pos] = arme;
+	}
+
+
+	public void setEqiArme(Arme Arme, int pos) {
+		EqiArme[pos] = Arme;
+	}
+
+
+	public void setEqiBoot(boot Boot, int pos) {
+		EqiBoot[pos] = Boot;
+	}
+
+	
+	public void setEqiHelmet(Helmet Helmet, int pos) {
+		EqiHelmet[0] = Helmet;
+	}
+
+	
+	public void setEqiChestPlate(ChestPlate ChestPlate, int pos) {
+		EqiChestPlate[pos] = ChestPlate;
+	}
+
+
+	public void setEqiLegging(Legging Legging, int pos) {
+		EqiLegging[pos] = Legging;
+	}
+
+	public void setInvArtefact(Artefact Artefact, int pos) {
+		InvArtefact[pos] = Artefact;
+	}
+
+
+	public void setInvPotion(Potion potions,int pos) {
+		InvPotion[pos] =  potions;
+	}
+
+	public Arme[] getInvArme() {
+		return InvArme;
+	}
+
+	public void setInvArmetab(Arme[] invArme) {
+		InvArme = invArme;
+	}
+
+	public Arme[] getEqiArme() {
+		return EqiArme;
+	}
+
+	public void setEqiArmetab(Arme[] eqiArme) {
+		EqiArme = eqiArme;
+	}
+
+	public boot[] getEqiBoot() {
+		return EqiBoot;
+	}
+
+	public void setEqiBoottab(boot[] eqiBoot) {
+		EqiBoot = eqiBoot;
+	}
+
+	public Helmet[] getEqiHelmet() {
+		return EqiHelmet;
+	}
+
+	public void setEqiHelmettab(Helmet[] eqiHelmet) {
+		EqiHelmet = eqiHelmet;
+	}
+
+	public ChestPlate[] getEqiChestPlate() {
+		return EqiChestPlate;
+	}
+
+	public void setEqiChestPlatetab(ChestPlate[] eqiChestPlate) {
+		EqiChestPlate = eqiChestPlate;
+	}
+
+	public Legging[] getEqiLegging() {
+		return EqiLegging;
+	}
+
+	public void setEqiLeggingtab(Legging[] eqiLegging) {
+		EqiLegging = eqiLegging;
+	}
+
+	public Artefact[] getInvArtefact() {
+		return InvArtefact;
+	}
+
+	public void setInvArtefacttab(Artefact[] invArtefact) {
+		InvArtefact = invArtefact;
+	}
+
+	public Potion[] getInvPotion() {
+		return InvPotion;
+	}
+
+	public void setInvPotiontab(Potion[] invPotion) {
+		InvPotion = invPotion;
+	}
+
 	public int getReturnX() {
 		return ReturnX;
 	}
@@ -28,6 +160,24 @@ public class Hero extends Entity{
 	}
 	public void setMaxHP(int maxHP) {
 		MaxHP = maxHP;
+	}
+	public int getXp() {
+		return xp;
+	}
+	public void setXp(int xp) {
+		this.xp = xp;
+	}
+	public int getXpreq() {
+		return xpreq;
+	}
+	public void setXpreq(int xpreq) {
+		this.xpreq = xpreq;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	}
 	public static boolean SetHeroClass(Hero Hero1) {
 		//*****************************************************************************
@@ -103,6 +253,26 @@ public class Hero extends Entity{
 	        if (classs.equalsIgnoreCase("Assassin info")){System.out.println("Dommage : 50, LifePoint : 80 defence : 0, powerfull slayer");}
         }
 		return IsClass; 
+	}
+	public void LevelUp () throws InterruptedException {
+		 while(this.getXp() >= this.getXpreq()) {
+
+			 this.setXp(this.getXp() - this.getXpreq());
+			 this.setXpreq(this.getXpreq() + 10);
+			 this.setLevel(this.getLevel()+1);
+			 this.setLife(this.getLife()+10);
+			 this.setMaxHP(this.getMaxHP()+10);
+			 this.setDommage(this.getDommage()+5);
+			 this.setDefense(this.getDefense()+5);
+			 System.out.print("\n");
+			 System.out.print("\n");
+			 System.out.print(AsciiArt.ANSI_YELLOW + "Congrats level UP ! Your now level :");
+			 System.out.print(this.getLevel());
+			 System.out.print("\n");
+			 System.out.print("+10 HP, +10 MaxHp , +10 Dommage, +5 Defense");
+			 System.out.print("\n" + AsciiArt.ANSI_RESET);
+			 Thread.sleep(4000);//sleep
+		 }
 	}
 }
 	

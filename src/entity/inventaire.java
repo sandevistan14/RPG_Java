@@ -80,11 +80,11 @@ public class inventaire{
 	
 	
 	@SuppressWarnings("unlikely-arg-type")
-	public static void OpenInventory(Hero Hero1,Arme[] InvArme, Arme[] EqiArme,boot[] EqiBoot,Helmet[] EqiHelmet,ChestPlate[] EqiChestPlate,Legging[] EqiLegging,Artefact[] InvArtefact,Potion[] InvPotion) {
+	public static void OpenInventory(Hero hero) {
 		while(true) {
 
 			System.out.print("\n");
-			System.out.print("Hero HP : " + Hero1.getLife() + "/" + Hero1.getMaxHP());
+			System.out.print("Hero HP : " + hero.getLife() + "/" + hero.getMaxHP());
 			System.out.print("\n");
 			System.out.println("Inventory :");
 			System.out.print("\n");
@@ -92,30 +92,30 @@ public class inventaire{
 			System.out.println("|          Weapon :      |          Artefact :    |          Potion :      |");
 			System.out.println("|------------------------|------------------------|------------------------|");
 			System.out.println("|      Emplacement 1 :   |      Emplacement 1 :   |      Emplacement 1 :   |");
-			System.out.println("|\t   "+InvArme[0].getRarity()+ InvArme[0].getName()+ AsciiArt.ANSI_RESET+" \t |\t"+ InvArtefact[0].getRarity() + InvArtefact[0].getName()+ AsciiArt.ANSI_RESET + "\t\t|\t  "+ InvPotion[0].getRarity()+ InvPotion[0].getName()+ AsciiArt.ANSI_RESET+   "\t\t|");
+			System.out.println("|\t   "+hero.getInvArme()[0].getRarity()+ hero.getInvArme()[0].getName()+ AsciiArt.ANSI_RESET+" \t |\t"+ hero.getInvArtefact()[0].getRarity() + hero.getInvArtefact()[0].getName()+ AsciiArt.ANSI_RESET + "\t\t|\t  "+ hero.getInvPotion()[0].getRarity()+ hero.getInvPotion()[0].getName()+ AsciiArt.ANSI_RESET+   "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|      Emplacement 2 :   |      Emplacement 2 :   |      Emplacement 2 :   |");
-			System.out.println("|\t   "+InvArme[1].getRarity()+ InvArme[1].getName()+ AsciiArt.ANSI_RESET+"   \t |\t   "+  InvArtefact[2].getRarity() + InvArtefact[2].getName()+ AsciiArt.ANSI_RESET+"\t\t|\t"+ InvPotion[1].getRarity()+ InvPotion[1].getName()+ AsciiArt.ANSI_RESET+ "\t\t|");
+			System.out.println("|\t   "+hero.getInvArme()[1].getRarity()+ hero.getInvArme()[1].getName()+ AsciiArt.ANSI_RESET+"   \t |\t   "+  hero.getInvArtefact()[2].getRarity() + hero.getInvArtefact()[2].getName()+ AsciiArt.ANSI_RESET+"\t\t|\t"+ hero.getInvPotion()[1].getRarity()+ hero.getInvPotion()[1].getName()+ AsciiArt.ANSI_RESET+ "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|                        |      Emplacement 3 :   |      Emplacement 3 :   |");
-			System.out.println("|                        |\t   "+  InvArtefact[2].getRarity() + InvArtefact[2].getName()+ AsciiArt.ANSI_RESET+"\t\t|\t   "+ InvPotion[2].getRarity()+ InvPotion[2].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
+			System.out.println("|                        |\t   "+  hero.getInvArtefact()[2].getRarity() + hero.getInvArtefact()[2].getName()+ AsciiArt.ANSI_RESET+"\t\t|\t   "+ hero.getInvPotion()[2].getRarity()+ hero.getInvPotion()[2].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|                        |                        |      Emplacement 4 :   |");
-			System.out.println("|                        |                        |\t   "+ InvPotion[3].getRarity()+ InvPotion[3].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
+			System.out.println("|                        |                        |\t   "+ hero.getInvPotion()[3].getRarity()+ hero.getInvPotion()[3].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
 			System.out.println("|                        |                        |                        |");
 			System.out.println("|                        |                        |      Emplacement 5 :   |");
-			System.out.println("|                        |                        |\t   "+ InvPotion[4].getRarity()+ InvPotion[4].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
+			System.out.println("|                        |                        |\t   "+ hero.getInvPotion()[4].getRarity()+ hero.getInvPotion()[4].getName()+ AsciiArt.ANSI_RESET+  "\t\t|");
 			System.out.println("|                        |                        |                        |");	
 			System.out.println("|------------------------|------------------------|------------------------|");
 			System.out.print("\n");
 			System.out.println("Equip Stuff : ");
 			System.out.print("\n");
-			System.out.println("Hemet : "+EqiHelmet[0].getRarity() + EqiHelmet[0].getName()+ AsciiArt.ANSI_RESET);
-			System.out.println("ChestPlate : "+EqiChestPlate[0].getRarity()+EqiChestPlate[0].getName()+ AsciiArt.ANSI_RESET);
-			System.out.println("Legging : " +EqiLegging[0].getRarity()+ EqiLegging[0].getName()+ AsciiArt.ANSI_RESET);
-			System.out.println("Boot : "+EqiBoot[0].getRarity()+ EqiBoot[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("Hemet : "+hero.getEqiHelmet()[0].getRarity() + hero.getEqiHelmet()[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("ChestPlate : "+hero.getEqiChestPlate()[0].getRarity()+hero.getEqiChestPlate()[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("Legging : " +hero.getEqiLegging()[0].getRarity()+ hero.getEqiLegging()[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("Boot : "+hero.getEqiBoot()[0].getRarity()+ hero.getEqiBoot()[0].getName()+ AsciiArt.ANSI_RESET);
 			System.out.println("");
-			System.out.println("Weapon : "+EqiArme[0].getRarity()+ EqiArme[0].getName()+ AsciiArt.ANSI_RESET);
+			System.out.println("Weapon : "+hero.getEqiArme()[0].getRarity()+ hero.getEqiArme()[0].getName()+ AsciiArt.ANSI_RESET);
 			System.out.println("");
 			System.out.println("What do you want to do ?");
 			System.out.println("- Leave");
@@ -135,18 +135,18 @@ public class inventaire{
 					if(str4.equalsIgnoreCase("Leave")) {
 						break;
 					}
-					for(int i = 0;i < InvPotion.length;i+=1) {
+					for(int i = 0;i < hero.getInvPotion().length;i+=1) {
 						if(i+1 == Integer.parseInt(str4)) {
-							if(InvPotion[i].getName() == "vide") {
+							if(hero.getInvPotion()[i].getName() == "vide") {
 								System.out.println("There is not a potion in this emplacement");
 							}
 							else {
-								Hero1.setLife(Hero1.getLife()+InvPotion[i].getHeal());
-								System.out.println("you use a Potion of Healing and earn "+InvPotion[i].getHeal());
-								if(Hero1.getLife()>Hero1.getMaxHP()) {
-									Hero1.setLife(Hero1.getMaxHP());
+								hero.setLife(hero.getLife()+hero.getInvPotion()[i].getHeal());
+								System.out.println("you use a Potion of Healing and earn "+hero.getInvPotion()[i].getHeal());
+								if(hero.getLife()>hero.getMaxHP()) {
+									hero.setLife(hero.getMaxHP());
 								}
-								InvPotion[i] = new Potion("vide", "vide","vide", 0);
+								hero.setInvPotion( new Potion("vide", "vide",AsciiArt.ANSI_WHITE, 0),1);
 							}
 						}//end if name = str4
 					}//end for i in InvPotion
@@ -169,9 +169,9 @@ public class inventaire{
 						System.out.print("\n");
 						Scanner scan3 = new Scanner(System.in);
 						String str3 = scan3.nextLine();
-						for(int i = 0;i < InvArme.length;i+=1) {
-							if(InvArme[i].getName().equalsIgnoreCase(str3)) {
-								EqiArme = (Arme[]) EquipObjet(EqiArme,InvArme[i],i);
+						for(int i = 0;i < hero.getInvArme().length;i+=1) {
+							if(hero.getInvArme()[i].getName().equalsIgnoreCase(str3)) {
+								hero.setEqiArmetab((Arme[]) EquipObjet(hero.getEqiArme(),hero.getInvArme()[i],i));
 								breaker = true;
 								break;
 							}//end if name = str3
