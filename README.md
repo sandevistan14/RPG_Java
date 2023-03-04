@@ -1,4 +1,4 @@
-# JDR_Java
+# RPG_Java
 
 ### Map info :  
 F = forest  
