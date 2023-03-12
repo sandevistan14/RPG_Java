@@ -6,4 +6,5 @@
  *
  */
 module JDR {
+	requires java.desktop;
 }

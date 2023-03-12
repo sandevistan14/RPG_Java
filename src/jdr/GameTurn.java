@@ -13,7 +13,6 @@ import Armor.Helmet;
 import Armor.Legging;
 import Armor.boot;
 import entity.inventaire;
-import entity.Entity;
 import entity.Hero;
 import entity.Monster;
 import objet.Arme;
@@ -25,7 +24,7 @@ import objet.Objet;
 public class GameTurn{
 	
 	
-	public static void GameTrun() throws InterruptedException, IOException {	
+	public static void GameTrun() throws InterruptedException {	
 		Scanner scan = new Scanner(System.in);
 
 		//*****************************************************************************
@@ -51,9 +50,8 @@ public class GameTurn{
 		 //legendary objet
 		 Objet[] LegendaryLoot = Objet.LegendaryItem();
 		 
-
-		
-		Monster[] TabMonsterForest = Monster.MonsterForest();
+		 // create monster in the forest
+		 Monster[] TabMonsterForest = Monster.MonsterForest();
 				int MonsterInForest = 0;
 
 		 //TabMonster with all monster		
@@ -97,11 +95,15 @@ public class GameTurn{
 			// check if Potion is null or not and if it's null send empty
 			for(int i = 0;i < hero.getInvPotion().length; i += 1) {if (Objects.isNull(hero.getInvPotion()[i])) {hero.setInvPotion( new Potion("vide", "vide","\u001B[37m", 0),i); }}
 			
+			
+			
 //*****************************************************************************
 //******************************     WHILE     ********************************
 //*****************************************************************************
+			
+			
 		 while (true){	
- 			 
+			 
 			 // finish if your on the 'E'
 			 if(map[hero.getPosY()][hero.getPosX()-1] == 'E') {
 				 AsciiArt.DanceFortnite();Text.WIN();break;}
@@ -133,9 +135,9 @@ public class GameTurn{
 					 }
 				 }
 			 }
-			 if(xpfight == -69) {
-				 break;
-			 }
+			 
+			 //if dead break the while
+			 if(xpfight == -69){break;}
 			 
 			 //drop item
 			 Objet.DropItem(hero, xpfight, CommunLoot, RareLoot, EpicLoot, LegendaryLoot, scan);
