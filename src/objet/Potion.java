@@ -1,26 +1,26 @@
-package objet;
+package Objet;
 
 public class Potion extends Objet{
-	int Heal;
-	
-	public Potion(String name, String type,String Rarity, int heal) {
-		super(name, type, Rarity);
-		Heal = heal;
-	}
+    int Heal;
 
-	public int getHeal() {
-		return Heal;
-	}
+    public Potion(String name, String type,String Rarity, int heal) {
+        super(name, type, Rarity);
+        Heal = heal;
+    }
 
-	public void setHeal(int heal) {
-		Heal = heal;
-	}
+    public int getHeal() {
+        return Heal;
+    }
 
-	@Override
-	public String toString() {
-		return "Potion [Heal=" + Heal + "]";
-	}
+    public void setHeal(int heal) {
+        Heal = heal;
+    }
 
-	
+    @Override
+    public String toString() {
+        return "Potion [Heal=" + Heal + "]";
+    }
+
+
 }
 

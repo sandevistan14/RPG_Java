@@ -1,90 +1,88 @@
-package entity;
+package Entity;
 
 public class Entity{
-   char lettre;
-   String name;
-   int posY;
-   int posX;
-   int dommage;
-   int life;
-   int defense;
-   int speed;
-   
+    char lettre;
+    String name;
+    int posY;
+    int posX;
+    int dommage;
+    int life;
+    int defense;
+    int speed;
 
-public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense, int speed) {
-	this.name = name;
-	this.posY = posY;
-	this.posX = posX;
-	this.dommage = dommage;
-	this.life = life;
-	this.defense = defense;
-	this.speed = speed;
-}
+    public Entity(char lettre, String name, int posY, int posX, int dommage, int life, int defense, int speed) {
+        this.name = name;
+        this.posY = posY;
+        this.posX = posX;
+        this.dommage = dommage;
+        this.life = life;
+        this.defense = defense;
+        this.speed = speed;
+    }
+    public int getSpeed() {
+        return speed;
+    }
 
-public int getSpeed() {
-	return speed;
-}
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 
-public void setSpeed(int speed) {
-	this.speed = speed;
-}
+    public String getName() {
+        return name;
+    }
 
-public String getName() {
-	return name;
-}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-public void setName(String name) {
-	this.name = name;
-}
+    public int getPosY() {
+        return this.posY;
+    }
 
-public int getPosY() {
-	return this.posY;
-}
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
 
-public void setPosY(int posY) {
-	this.posY = posY;
-}
+    public int getPosX() {
+        return this.posX;
+    }
 
-public int getPosX() {
-	return this.posX;
-}
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
 
-public void setPosX(int posX) {
-	this.posX = posX;
-}
+    public int getDommage() {
+        return this.dommage;
+    }
 
-public int getDommage() {
-	return this.dommage;
-}
+    public void setDommage(int dommage) {
+        this.dommage = dommage;
+    }
 
-public void setDommage(int dommage) {
-	this.dommage = dommage;
-}
+    public int getLife() {
+        return this.life;
+    }
 
-public int getLife() {
-	return this.life;
-}
+    public void setLife(int life) {
+        this.life = life;
+    }
 
-public void setLife(int life) {
-	this.life = life;
-}
+    public  int getDefense() {
+        return this.defense;
+    }
 
-public  int getDefense() {
-	return this.defense;
-}
+    public  void setDefense(int defense) {
+        this.defense = defense;
+    }
 
-public  void setDefense(int defense) {
-	this.defense = defense;
-}
+    public char getLettre() {
+        return this.lettre;
+    }
 
-public char getLettre() {
-	return this.lettre;
-}
+    public void setLettre(char lettre) {
+        this.lettre = lettre;
+    }
 
-public void setLettre(char lettre) {
-	this.lettre = lettre;
-}
-
-   /** Constructs a Author instance with the given inputs */
+    /** Constructs a Author instance with the given inputs */
 
 }
